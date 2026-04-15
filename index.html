@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СП'26 · Дашборд жюри</title>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050a12;--bg-grad:linear-gradient(160deg, #020617 0%, #064e3b 100%);--bg2:#0a0f18;--s:rgba(15,25,45,0.7);--s2:rgba(25,40,65,0.6);--s3:rgba(35,55,85,0.85);--br:rgba(255,255,255,0.08);--br2:rgba(255,255,255,0.15);--tx:#FFFFFF;--txm:#A0AEC0;--txs:#4A5568;--grn:#10b981;--blu:#3B82F6;--grad:linear-gradient(135deg, #059669, #10b981);--grad-glass:linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.15));--pb1:#0ea5e9;--pb2:#10b981;--pb3:#064e3b;--sh1:0 1px 4px rgba(0,0,0,0.5);--sh2:0 8px 32px rgba(0,0,0,0.6);--sh3:0 12px 48px rgba(0,0,0,0.8);--r8:8px;--r12:12px;--r16:16px;--r20:20px;--hh:64px;--fn:'Inter',system-ui,sans-serif;--ease:cubic-bezier(0.4,0,0.2,1)}
+[data-theme=light]{--bg:#f8fafc;--bg-grad:linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #f5f3ff 100%);--bg2:#e2e8f0;--s:rgba(255,255,255,0.65);--s2:rgba(241,245,249,0.5);--s3:rgba(226,232,240,0.75);--br:rgba(15,23,42,0.06);--br2:rgba(15,23,42,0.12);--tx:#0f172a;--txm:#475569;--txs:#94a3b8;--grn:#059669;--blu:#0284c7;--red:#ef4444;--redd:rgba(239,68,68,0.08);--yel:#f59e0b;--yeld:rgba(245,158,11,0.08);--grad:linear-gradient(135deg, #10b981, #0ea5e9);--grad-glass:linear-gradient(135deg, rgba(16,185,129,0.1), rgba(14,165,233,0.1));--pb1:#86efac;--pb2:#7dd3fc;--pb3:#2dd4bf;--sh1:0 1px 4px rgba(15,23,42,0.04);--sh2:0 8px 32px rgba(15,23,42,0.05);--sh3:0 12px 48px rgba(15,23,42,0.08)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{height:100%}body{font-family:var(--fn);color:var(--tx);min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased;background:var(--bg-grad);background-attachment:fixed;overflow-x:hidden;transition:background .4s}
+#bg-parallax{position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;pointer-events:none}
+.pblob{position:absolute;width:90vw;height:90vw;border-radius:50%;filter:blur(180px);opacity:0.35;animation:bmove 40s infinite alternate;transition:background .8s}
+.pb1{background:var(--pb1);top:-30%;left:-20%}
+.pb2{background:var(--pb2);bottom:-30%;right:-20%;animation-delay:-20s}
+.pb3{background:var(--pb3);top:20%;left:15%;width:60vw;height:60vw;opacity:0.2;animation-duration:50s;animation-delay:-10s}
+@keyframes bmove{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(10%,15%) rotate(15deg)}}
+a{color:inherit}button{cursor:pointer}
+#hdr{position:fixed;top:0;left:0;right:0;height:var(--hh);background:var(--s);border-bottom:1px solid var(--br);display:flex;align-items:center;padding:0 20px;gap:12px;z-index:300;box-shadow:var(--sh1)}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-chip{background:var(--grad);color:#fff;font:800 13px/1 var(--fn);letter-spacing:-.3px;padding:6px 11px;border-radius:var(--r8);box-shadow:0 4px 12px rgba(59,130,246,0.3);flex-shrink:0}
+.logo-title{font:700 14px/1 var(--fn)}.logo-sub{font:400 11px/1 var(--fn);color:var(--txm)}
+.hgap{flex:1}.hnav{display:flex;align-items:center;gap:8px;margin-right:12px}
+.ntab{padding:8px 14px;border-radius:var(--r12);border:none;background:transparent;color:var(--txm);font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
+.ntab:hover{background:var(--s2);color:var(--tx)}.ntab.active{background:var(--grad-glass);color:var(--tx);box-shadow:inset 0 0 12px rgba(59,130,246,0.15);border:1px solid rgba(255,255,255,0.05)}
+.hbadge{display:none;align-items:center;gap:7px;padding:5px 12px;border-radius:var(--r12);font:600 12px/1 var(--fn);border:1px solid}
+.hbadge.coord{background:var(--blud);border-color:rgba(59,130,246,.3);color:var(--blu)}
+.hbadge.exp{background:var(--grnd);border-color:rgba(33,160,56,.3);color:var(--grn)}
+.hbdot{width:7px;height:7px;border-radius:50%;animation:blink 2s infinite}
+.coord .hbdot{background:var(--blu)}.exp .hbdot{background:var(--grn)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hfb{display:flex;align-items:center;gap:6px;font:600 11px/1 var(--fn);color:var(--txm);padding:4px 10px;border-radius:var(--r8);border:1px solid var(--br);background:var(--s2);cursor:pointer;transition:all .2s}
+.hfb:hover{background:var(--s3)}.hfb-dot{width:6px;height:6px;border-radius:50%}
+.hfb-dot.ok{background:var(--grn)}.hfb-dot.err{background:var(--red)}.hfb-dot.loading{background:var(--yel);animation:blink 1s infinite}
+.thbtn{width:34px;height:34px;border-radius:var(--r8);border:1px solid var(--br);background:var(--s2);color:var(--txm);font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.thbtn:hover{background:var(--s3);color:var(--tx)}
+main{padding-top:var(--hh)}
+.scr{display:none;max-width:1160px;margin:0 auto;padding:28px 22px 90px;animation:fu .3s var(--ease)}
+.scr.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pghd{margin-bottom:22px}.pghd h2{font:800 24px/1.1 var(--fn);letter-spacing:-.6px;margin-bottom:4px}.pghd p{font:400 13px/1.5 var(--fn);color:var(--txm)}
+.card{background:var(--s);border:1px solid var(--br);border-radius:var(--r20);padding:22px;box-shadow:var(--sh1)}
+.card-sm{padding:16px 18px;border-radius:var(--r16)}
+.flbl{display:block;font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.7px;color:var(--txm);margin-bottom:6px}
+.finp{width:100%;padding:9px 13px;background:var(--s2);border:1.5px solid var(--br);border-radius:var(--r12);color:var(--tx);font:14px/1.4 var(--fn);outline:none;transition:border .2s,box-shadow .2s}
+.finp:focus{border-color:var(--grn);box-shadow:0 0 0 3px var(--grnd)}.finp::placeholder{color:var(--txs)}
+textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size:12px;border-radius:var(--r8)}
+.fgrp{margin-bottom:12px}.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:var(--r12);font:600 13px/1 var(--fn);cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;padding:9px 17px}
+.btn:disabled{opacity:.45;pointer-events:none}
+.btn-p{background:linear-gradient(135deg,#21A038,#18882C);color:#fff;box-shadow:0 4px 14px rgba(33,160,56,0.3);font-weight:700;letter-spacing:0.3px;}
+.btn-p:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-s{background:var(--s2);border:1px solid var(--br2);color:var(--tx)}.btn-s:hover{background:var(--s3)}
+.btn-d{background:transparent;border:1px solid var(--red);color:var(--red)}.btn-d:hover{background:var(--redd)}
+.btn-g{background:transparent;border:none;color:var(--txm);font:600 12px/1 var(--fn);padding:4px 6px}.btn-g:hover{color:var(--tx)}
+.btn-lg{padding:13px 26px;font-size:15px;border-radius:var(--r16)}
+.btn-sm{padding:5px 12px;font-size:12px;border-radius:var(--r8)}
+.btn-xs{padding:3px 8px;font-size:11px;border-radius:6px}
+.btn-ic{width:32px;height:32px;padding:0;border-radius:var(--r8);font-size:14px}
+.badd{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r12);border:1.5px dashed var(--br2);background:transparent;color:var(--txm);font:600 12px/1 var(--fn);cursor:pointer;transition:all .2s}
+.badd:hover{border-color:var(--grn);color:var(--grn);background:var(--grnd)}
+.div{height:1px;background:var(--br);margin:14px 0}
+.alrt{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:var(--r12);font-size:13px;margin-bottom:12px;line-height:1.5}
+.alrt-i{background:var(--blud);border:1px solid rgba(59,130,246,.25);color:var(--blu)}
+.alrt-w{background:var(--yeld);border:1px solid rgba(240,168,51,.3);color:var(--yel)}
+.alrt-e{background:var(--redd);border:1px solid rgba(232,69,69,.3);color:var(--red)}
+.shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.shd-t{font:700 13px/1 var(--fn)}
+/* Firebase setup */
+.fbwrap{max-width:640px;margin:0 auto;padding:32px 0}
+.fbwrap-icon{font-size:52px;text-align:center;margin-bottom:16px}
+.fbwrap h2{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;text-align:center;margin-bottom:6px}
+.fbwrap-sub{text-align:center;color:var(--txm);font-size:13px;margin-bottom:28px}
+.fbsteps{display:flex;flex-direction:column;gap:0;margin-bottom:20px}
+.fbstep{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--br)}
+.fbstep:last-child{border-bottom:none}
+.fbstep-n{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--grn),#168028);color:#fff;font:800 13px/1 var(--fn);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px var(--grng)}
+.fbstep-t{font:700 13px/1 var(--fn);margin-bottom:3px}
+.fbstep-s{font:400 12px/1.5 var(--fn);color:var(--txm)}.fbstep-s a{color:var(--blu);text-decoration:none}.fbstep-s a:hover{text-decoration:underline}
+/* Setup grid */
+.setup-grid{display:grid;grid-template-columns:1fr 350px;gap:18px;align-items:start}
+@media(max-width:800px){.setup-grid{grid-template-columns:1fr}}
+.pjcard{background:var(--s);border:1.5px solid var(--br);border-radius:var(--r16);overflow:hidden;margin-bottom:10px;transition:border-color .2s}
+.pjcard:hover{border-color:var(--br2)}.pjcard.open{border-color:rgba(33,160,56,.35)}
+.pjcard-hd{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;user-select:none}
+.pjcard-num{width:30px;height:30px;border-radius:var(--r8);background:var(--s3);color:var(--txm);font:700 13px/1 var(--fn);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.pjcard.open .pjcard-num{background:var(--grnd);color:var(--grn)}
+.pjcard-info{flex:1;min-width:0}.pjcard-name{font:700 13px/1.2 var(--fn);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pjcard-sub{font:400 11px/1 var(--fn);color:var(--txm);margin-top:3px}
+.pjcard-arr{color:var(--txm);font-size:11px;transition:transform .2s}.pjcard.open .pjcard-arr{transform:rotate(180deg)}
+.pjcard-body{display:none;padding:14px 16px 16px;border-top:1px solid var(--br)}.pjcard.open .pjcard-body{display:block}
+.mtable{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}
+.mtable th{background:var(--s2);padding:6px 10px;font:700 10px/1 var(--fn);text-transform:uppercase;letter-spacing:.5px;color:var(--txm);text-align:left;border-bottom:1px solid var(--br)}
+.mtable td{padding:5px 8px;border-bottom:1px solid var(--br)}.mtable tr:last-child td{border-bottom:none}
+.exp-panel{position:sticky;top:calc(var(--hh) + 16px)}
+.exp-item{background:var(--s2);border:1px solid var(--br);border-radius:var(--r12);padding:12px 14px;margin-bottom:8px}
+.exp-item-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.exp-link{font:500 11px/1.4 var(--fn);color:var(--blu);word-break:break-all;margin:5px 0;cursor:pointer}.exp-link:hover{text-decoration:underline}
+/* Expert screen */
+.tabs-bar{display:flex;overflow-x:auto;gap:3px;padding:10px 20px 0;background:var(--s);border-bottom:2px solid var(--br);position:sticky;top:var(--hh);z-index:100;scrollbar-width:none}
+.tabs-bar::-webkit-scrollbar{display:none}
+.ptab{padding:9px 16px;border-radius:var(--r12) var(--r12) 0 0;border:1px solid var(--br);border-bottom:none;background:var(--s2);color:var(--txm);font:600 12px/1 var(--fn);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px;flex-shrink:0;position:relative;top:2px}
+.ptab:hover{background:var(--s3);color:var(--tx)}.ptab.active{background:var(--s);color:var(--tx);border-bottom-color:var(--s)}
+.ptab-chk{color:var(--grn);font-size:10px}
+.exp-body{padding:20px 22px 90px;max-width:880px;margin:0 auto}
+.pi{background:var(--s);border:1px solid var(--br);border-radius:var(--r20);padding:22px 24px;margin-bottom:14px}
+.pi-team{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.7px;color:var(--txm);margin-bottom:5px}
+.pi-name{font:900 24px/1.1 var(--fn);letter-spacing:-.5px;margin-bottom:12px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.pi-desc{font:400 13px/1.65 var(--fn);color:var(--txm);margin-bottom:12px}
+.pi-desc.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pi-links{display:flex;gap:8px;flex-wrap:wrap}
+.twrap{background:var(--s);border:1px solid var(--br);border-radius:var(--r16);padding:14px 20px;margin-bottom:14px}
+.twrap-hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.twrap-lbl{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.6px;color:var(--txm)}
+.tmini{font:700 14px/1 var(--fn)}.twrap-body{margin-top:14px}
+.tdig{font:900 52px/1 var(--fn);letter-spacing:-3px;font-variant-numeric:tabular-nums;transition:color .3s}
+.tdig.danger{color:var(--red);animation:tpulse 1s ease infinite}
+@keyframes tpulse{0%,100%{opacity:1}50%{opacity:.6}}
+.tprog{height:5px;background:var(--s3);border-radius:100px;overflow:hidden;margin:10px 0}
+.tprog-f{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--grn),#5BD97A);transition:width 1s linear,background .4s}
+.tprog-f.danger{background:linear-gradient(90deg,var(--red),#FF7373)}
+.tctrl{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.bcard{background:var(--s);border:1px solid var(--br);border-top:1px solid rgba(255,255,255,0.15);border-radius:var(--r16);padding:18px 20px;margin-bottom:12px;transition:all .3s var(--ease);backdrop-filter:blur(16px);position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.bcard::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);transition:all .5s}
+.bcard:hover::before{left:200%}
+.bcard.scored{border-color:var(--grn);box-shadow:0 0 20px rgba(33,160,56,0.1)}
+.btop{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.btop-t{display:flex;flex-direction:column;gap:2px}
+.btop-t .bnm{font:800 15px/1.2 var(--fn);color:var(--tx);text-transform:uppercase;letter-spacing:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btop-w{font:700 10px/1 var(--fn);color:var(--txm);opacity:0.8}
+.bmain{display:flex;gap:12px;align-items:stretch;margin-bottom:20px;height:150px}
+.srow{display:flex;flex-direction:column;gap:8px;width:110px;flex-shrink:0}
+.sopt{flex:1;display:flex}
+.sopt input{display:none}
+.slbl{flex:1;display:flex;align-items:center;justify-content:center;border-radius:var(--r12);background:rgba(255,255,255,0.03);border:1px solid var(--br);cursor:pointer;transition:all .2s var(--ease);user-select:none;font:700 14px/1 var(--fn);color:var(--tx)}
+.slbl:hover{background:rgba(255,255,255,0.08);border-color:var(--br2)}
+.sopt input:checked+.slbl{background:var(--grad);color:#fff;border:none;box-shadow:0 4px 15px rgba(59,130,246,0.3);transform:scale(1.05);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
+.bhint{flex:1;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;transition:all .3s var(--ease);opacity:0.4}
+.bhint.active{opacity:1;background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
+.bhint-txt{font:400 12.5px/1.45 var(--fn);color:var(--tx);transition:all .2s}
+.bsw{width:100px;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.bsw.active{background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
+.bdig{font:900 64px/1 var(--fn);letter-spacing:-3px;color:rgba(255,255,255,0.04);transition:all .3s}
+.bdig.active{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.1);filter:drop-shadow(0 0 15px rgba(59,130,246,0.4));text-shadow: 0 0 2px rgba(255,255,255,0.1)}
+.bfield{display:flex;flex-direction:column;gap:10px}
+.bfield-lbl{font:700 10px/1 var(--fn);text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.6);margin:0}
+.bfield-f{width:100%;background:var(--bg);border:none;border-radius:var(--r12);padding:14px;color:var(--tx);font:400 13px/1.5 var(--fn);outline:none;resize:vertical;min-height:75px;transition:all .2s;box-shadow:none}
+.bfield-f:focus{background:#131a22}
+@media(max-width:640px){
+  .bmain{flex-direction:column;height:auto}.srow{width:100%;flex-direction:row}
+}
+
+.subm-bar{position:fixed;bottom:0;left:0;right:0;background:var(--s);border-top:1px solid var(--br);padding:12px 24px;display:none;align-items:center;justify-content:space-between;z-index:200;box-shadow:0 -4px 30px rgba(0,0,0,.4);backdrop-filter:blur(10px)}
+.subm-bar.vis{display:flex}
+.subm-prog{font:400 13px/1 var(--fn);color:var(--txm)}
+.subm-prog strong{color:var(--tx);font-weight:700}
+.subm-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#21A038,#18882C);color:#fff;border:none;border-radius:var(--r12);padding:10px 22px;font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(33,160,56,0.3);white-space:nowrap}
+.subm-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.done-scr{text-align:center;padding:72px 24px}
+.done-ico{font-size:60px;margin-bottom:18px}.done-t{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;margin-bottom:8px}
+.done-s{font:400 14px/1.6 var(--fn);color:var(--txm);margin-bottom:24px}
+/* Loading screen */
+#scr-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;text-align:center}
+.l-ico{font-size:48px;margin-bottom:20px;animation:lspin 1.5s linear infinite}
+@keyframes lspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+/* Dashboard */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.echip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:var(--r12);font:600 12px/1 var(--fn);border:1px solid;transition:all .3s}
+.echip.sub{background:var(--grnd);border-color:rgba(33,160,56,.3);color:var(--grn)}
+.echip.pend{background:var(--s2);border-color:var(--br2);color:var(--txm)}
+.echip-dot{width:7px;height:7px;border-radius:50%}
+.echip.sub .echip-dot{background:var(--grn)}.echip.pend .echip-dot{background:var(--txs)}
+.twrap-outer{overflow-x:auto;border:1px solid var(--br);border-radius:var(--r16)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--s2);padding:10px 14px;font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.5px;color:var(--txm);text-align:left;border-bottom:1px solid var(--br);white-space:nowrap}
+tbody tr:hover td{background:var(--s2)}tbody tr:last-child td{border-bottom:none}
+td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
+.td-r{width:40px;font:700 13px/1 var(--fn);color:var(--txm)}.td-r.r1{color:#F5C400}.td-r.r2{color:#A8B0C0}.td-r.r3{color:#BB8540}
+.td-nm{font:700 13px/1.3 var(--fn)}.td-sub{font:400 11px/1 var(--fn);color:var(--txm)}
+.td-c{text-align:center}
+.sc{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;border-radius:var(--r8);font:700 12px/1 var(--fn);padding:0 5px}
+.sc-n{background:var(--s2);color:var(--txs)}.sc-L{background:var(--redd);color:var(--red)}.sc-M{background:var(--yeld);color:var(--yel)}.sc-H{background:var(--grnd);color:var(--grn)}
+.av{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:28px;border-radius:var(--r12);font:800 14px/1 var(--fn);padding:0 8px;border:1px solid}
+.av-n{background:var(--s2);border-color:var(--br);color:var(--txs)}.av-L{background:var(--redd);border-color:rgba(232,69,69,.25);color:var(--red)}
+.av-M{background:var(--yeld);border-color:rgba(240,168,51,.25);color:var(--yel)}.av-H{background:var(--grnd);border-color:rgba(33,160,56,.25);color:var(--grn)}
+.tbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.tbar-info{font:400 13px/1 var(--fn);color:var(--txm)}.tbar-acts{display:flex;gap:8px}
+/* Modals */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:400;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(5px)}
+.overlay.vis{display:flex}
+.mbox{background:var(--s);border:1px solid var(--br2);border-radius:var(--r20);padding:26px;max-width:580px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:var(--sh3);animation:mshow .3s var(--ease)}
+@keyframes mshow{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.mhd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
+.mhd h3{font:800 18px/1.1 var(--fn);letter-spacing:-.3px}
+.mclose{width:32px;height:32px;border-radius:var(--r8);border:1px solid var(--br);background:var(--s2);color:var(--txm);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.mclose:hover{background:var(--s3);color:var(--tx)}.macts{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.toast{position:fixed;bottom:80px;right:22px;background:var(--s);border:1px solid var(--br2);color:var(--tx);padding:10px 16px;border-radius:var(--r12);font:600 13px/1 var(--fn);box-shadow:var(--sh3);z-index:9999;display:flex;align-items:center;gap:8px;animation:si .3s var(--ease);pointer-events:none}
+@keyframes si{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media print{#hdr,.tabs-bar,.subm-bar,.np{display:none!important}main{padding-top:0}.scr{padding:8px;max-width:100%}body{background:#fff!important;color:#000!important}}
+@media(max-width:768px){.exp-body,.scr{padding-left:14px;padding-right:14px}.fg2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<input type="file" id="fi-xls" accept=".xlsx,.xls,.csv" style="display:none" onchange="onXLSBulkImport(event)">
+
+<header id="hdr">
+  <div class="logo" onclick="goHome()">
+    <div class="logo-chip">СП'26</div>
+    <div><div class="logo-title">Дашборд жюри</div><div class="logo-sub">Современное предприятие · Sber University</div></div>
+  </div>
+  <div class="hgap"></div>
+  <div id="hbadge" class="hbadge" style="display:none"><div class="hbdot"></div><span id="hbadge-txt"></span></div>
+  <nav id="hnav" class="hnav" style="display:none">
+    <button class="ntab" id="nt-setup" onclick="goSetup()">⚙️ Настройка</button>
+    <button class="ntab" id="nt-dash" onclick="goDash()">📊 Дашборд</button>
+  </nav>
+  <div class="hfb" id="hfb" onclick="showFBModal()">
+    <div class="hfb-dot loading" id="hfb-dot"></div>
+    <span id="hfb-txt">Firebase…</span>
+  </div>
+  <button class="thbtn" id="thbtn" onclick="toggleTheme()">🌙</button>
+</header>
+
+<main>
+<!-- SCREEN: Loading -->
+<div class="scr active" id="scr-loading">
+  <div class="l-ico">⚙️</div>
+  <div style="font:800 18px var(--fn);margin-bottom:6px">Загрузка системы…</div>
+  <div style="font-size:13px;color:var(--txm)">Пожалуйста, подождите</div>
+</div>
+
+<!-- SCREEN: Firebase Setup -->
+<div class="scr" id="scr-firebase">
+  <div class="fbwrap">
+    <div class="fbwrap-icon">🔥</div>
+    <h2>Подключение Firebase</h2>
+    <p class="fbwrap-sub">Для синхронизации оценок между устройствами нужна база данных Firebase. Это бесплатно.</p>
+    <div class="card card-sm" style="margin-bottom:18px">
+      <div class="fbsteps">
+        <div class="fbstep"><div class="fbstep-n">1</div><div><div class="fbstep-t">Создайте Firebase-проект</div><div class="fbstep-s">Перейдите на <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a> → «Добавить проект» → название → отключите Analytics → «Создать»</div></div></div>
+        <div class="fbstep"><div class="fbstep-n">2</div><div><div class="fbstep-t">Создайте Realtime Database</div><div class="fbstep-s">Левое меню: «Сборка» → «Realtime Database» → «Создать базу данных» → выберите регион → <strong>«Начать в тестовом режиме»</strong> → «Включить»</div></div></div>
+        <div class="fbstep"><div class="fbstep-n">3</div><div><div class="fbstep-t">Скопируйте конфигурацию</div><div class="fbstep-s">Шестерёнка → «Настройки проекта» → «Ваши приложения» → «Добавить приложение» → Веб (</>) → придумайте псевдоним → «Зарегистрировать» → вкладка «JSON» → скопируйте объект <code>firebaseConfig</code></div></div></div>
+        <div class="fbstep"><div class="fbstep-n">4</div><div><div class="fbstep-t">Вставьте конфигурацию ниже</div><div class="fbstep-s">Нажмите «Подключить» — конфигурация сохранится в браузере</div></div></div>
+      </div>
+    </div>
+    <div class="card card-sm">
+      <div class="fgrp"><label class="flbl">Firebase Config (JSON)</label>
+        <textarea class="finp" id="fb-inp" rows="9" placeholder='{
+  "apiKey": "AIza...",
+  "authDomain": "my-project.firebaseapp.com",
+  "databaseURL": "https://my-project-default-rtdb.firebaseio.com",
+  "projectId": "my-project",
+  "storageBucket": "my-project.appspot.com",
+  "messagingSenderId": "123456",
+  "appId": "1:123..."
+}'></textarea></div>
+      <div id="fb-err" class="alrt alrt-e" style="display:none"></div>
+      <button class="btn btn-p btn-lg" style="width:100%" onclick="connectFirebase()">🔥 Подключить Firebase</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Setup (Coordinator) -->
+<div class="scr" id="scr-setup">
+  <div class="pghd"><h2>⚙️ Настройка сессии</h2><p>Защита проектов 16.04.2026 · Заполните данные и сгенерируйте ссылки для экспертов</p></div>
+  <div class="card card-sm" style="margin-bottom:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>
+        <div style="font:700 13px/1 var(--fn);margin-bottom:3px">📊 Импорт всех участников из XLS/Excel</div>
+        <div style="font:400 11px/1.4 var(--fn);color:var(--txm)">Формат: <strong>Группа №</strong> | ФИО | Организация | Должность · «Группа №» должна совпадать с полем в карточке проекта</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-s btn-sm" onclick="dlXLSTemplate()">📥 Шаблон XLS</button>
+        <button class="btn btn-p btn-sm" onclick="G('fi-xls').click()">📊 Импорт XLS</button>
+      </div>
+    </div>
+  </div>
+  <div class="setup-grid">
+    <div>
+      <div class="shd"><div class="shd-t">🏢 Проекты и команды</div><button class="btn btn-p btn-sm" onclick="addProject()">＋ Добавить проект</button></div>
+      <div id="proj-list"><div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div></div>
+    </div>
+    <div class="exp-panel">
+      <div class="card card-sm">
+        <div class="shd" style="margin-bottom:14px"><div class="shd-t">👥 Эксперты</div><button class="badd" onclick="addExpert()">＋ Добавить</button></div>
+        <div id="experts-list"><div style="font:400 12px/1 var(--fn);color:var(--txm);padding:8px 0">Нет экспертов</div></div>
+        <div class="div"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-s btn-sm" onclick="saveCfgToFB()">☁️ Сохранить в Firebase</button>
+          <button class="btn btn-s btn-sm" onclick="saveCfgLocal()">💾 Локально</button>
+        </div>
+        <div id="save-hint" style="font-size:11px;color:var(--txm);margin-top:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Expert Scoring -->
+<div class="scr" id="scr-expert">
+  <div class="tabs-bar np" id="ptabs"></div>
+  <div class="exp-body" id="exp-body">
+    <div class="pi" id="pi">
+      <div class="pi-team" id="pi-team"></div>
+      <div class="pi-name" id="pi-name"></div>
+      <div class="pi-desc clamp" id="pi-desc"></div>
+      <button class="btn-g" id="pi-expand" onclick="expandDesc()" style="font-size:12px;margin:4px 0 10px;display:none">▼ Показать полностью</button>
+      <div class="pi-links" id="pi-links"></div>
+    </div>
+    <div class="twrap">
+      <div class="twrap-hd" onclick="toggleTimer()"><span class="twrap-lbl">⏱ Таймер выступления (12 мин)</span><span class="tmini" id="tmini">12:00</span></div>
+      <div class="twrap-body" id="twrap-body" style="display:none">
+        <div class="tdig" id="tdig">12:00</div>
+        <div class="tprog"><div class="tprog-f" id="tprog-f" style="width:100%"></div></div>
+        <div class="tctrl">
+          <button class="btn btn-s" id="btn-ts" onclick="timerStart()">▶ Старт</button>
+          <button class="btn btn-s" id="btn-tp" style="display:none" onclick="timerPause()">⏸ Пауза</button>
+          <button class="btn btn-s" onclick="timerReset()">↺ Сброс</button>
+        </div>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b1">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm" style="color:var(--grn)">1. ПРОБЛЕМА</div></div>
+        <div class="btop-w">ВЕС: 25%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b1"></div>
+        <div class="bhint" id="hint-b1"><div class="bhint-txt" id="htxt-b1">Выберите балл слева для отображения критерия...</div></div>
+        <div class="bsw" id="sw-b1"><div class="bdig" id="ds-b1">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b1" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b1')"></textarea>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b2">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm">2. ТЕХНОЛОГИИ</div></div>
+        <div class="btop-w">ВЕС: 30%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b2"></div>
+        <div class="bhint" id="hint-b2"><div class="bhint-txt" id="htxt-b2">Выберите балл слева...</div></div>
+        <div class="bsw" id="sw-b2"><div class="bdig" id="ds-b2">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b2" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b2')"></textarea>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b3">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm">3. ЭКОНОМИКА</div></div>
+        <div class="btop-w">ВЕС: 25%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b3"></div>
+        <div class="bhint" id="hint-b3"><div class="bhint-txt" id="htxt-b3">Выберите балл слева...</div></div>
+        <div class="bsw" id="sw-b3"><div class="bdig" id="ds-b3">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b3" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b3')"></textarea>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b4">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm" style="color:var(--red)">4. ПИТЧ</div></div>
+        <div class="btop-w">ВЕС: 20%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b4"></div>
+        <div class="bhint" id="hint-b4"><div class="bhint-txt" id="htxt-b4">Выберите балл слева...</div></div>
+        <div class="bsw" id="sw-b4"><div class="bdig" id="ds-b4">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b4" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b4')"></textarea>
+      </div>
+    </div>
+    <div class="bcard">
+      <div class="btop"><div><div class="bey">ИТОГОВЫЙ КОММЕНТАРИЙ</div><div class="bnm">Общее резюме к проекту</div><div class="bmx">необязательно</div></div></div>
+      <textarea class="finp" id="comment-f" placeholder="Общее мнение по проекту в целом..." rows="3" oninput="saveComment()"></textarea>
+    </div>
+  </div>
+  <div class="done-scr" id="done-scr" style="display:none">
+    <div class="done-ico">✅</div>
+    <div class="done-t">Оценки отправлены!</div>
+    <div class="done-s" id="done-s">Спасибо за работу</div>
+    <button class="btn btn-s" onclick="undoSubmit()">↩ Изменить оценки</button>
+  </div>
+</div>
+
+<!-- SCREEN: Dashboard -->
+<div class="scr" id="scr-dashboard">
+  <div class="pghd"><h2>📊 Дашборд организатора</h2><p>Результаты обновляются в реальном времени через Firebase</p></div>
+  <div class="chips" id="exp-status"></div>
+  <div class="tbar np">
+    <div class="tbar-info" id="t-info">Ожидание данных…</div>
+    <div class="tbar-acts"><button class="btn btn-s btn-sm" onclick="window.print()">🖨️</button><button class="btn btn-s btn-sm" onclick="exportCSV()">📄 CSV</button></div>
+  </div>
+  <div class="twrap-outer"><table><thead id="t-head"></thead><tbody id="t-body"></tbody></table></div>
+</div>
+</main>
+
+<div class="subm-bar np" id="subm-bar">
+  <div class="subm-prog">Оценено: <strong id="subm-cnt">0/0</strong> проектов</div>
+  <button class="subm-btn" onclick="submitScores()"><span>✓</span> Отправить оценки</button>
+</div>
+
+<!-- Modal: Members -->
+<div class="overlay" id="modal-members">
+  <div class="mbox">
+    <div class="mhd"><h3 id="mm-title">Состав команды</h3><button class="mclose" onclick="closeModal('modal-members')">✕</button></div>
+    <div id="mm-content"></div>
+  </div>
+</div>
+
+<!-- Modal: Confirm without comments -->
+<div class="overlay" id="modal-confirm">
+  <div class="mbox">
+    <div class="mhd"><h3>Отправить без комментариев?</h3><button class="mclose" onclick="closeModal('modal-confirm')">✕</button></div>
+    <div class="alrt alrt-w">⚠️ Не заполнены комментарии для проектов:</div>
+    <div id="mc-list" style="margin-bottom:12px"></div>
+    <p style="font:400 13px/1.5 var(--fn);color:var(--txm)">Вы можете вернуться и добавить комментарии, или отправить оценки без них.</p>
+    <div class="macts"><button class="btn btn-s" onclick="closeModal('modal-confirm')">← Вернуться</button><button class="btn btn-p" onclick="doSubmit()">Отправить всё равно</button></div>
+  </div>
+</div>
+
+<!-- Modal: Firebase config quick edit -->
+<div class="overlay" id="modal-fb">
+  <div class="mbox" style="max-width:500px">
+    <div class="mhd"><h3>🔥 Firebase конфигурация</h3><button class="mclose" onclick="closeModal('modal-fb')">✕</button></div>
+    <div class="fgrp"><label class="flbl">Firebase Config JSON</label><textarea class="finp" id="fb-modal-inp" rows="8"></textarea></div>
+    <div class="macts"><button class="btn btn-s" onclick="closeModal('modal-fb')">Отмена</button><button class="btn btn-p" onclick="reconnectFB()">🔥 Переподключить</button></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+  console.log('[GLOBAL ERROR]', msg, 'at', lineNo + ':' + columnNo);
+  // Ignore generic cross-origin script errors that offer no info (often caused by extensions/Telegram)
+  if (msg.toLowerCase().indexOf('script error') > -1) return false;
+  alert('Проблема: ' + msg + '\nЛиния: ' + lineNo);
+  return false;
+};
+console.log('--- SCRIPT START v1.1.4 ---');
+// ── КОНФИГУРАЦИЯ FIREBASE (вшита в файл) ──────────────
+const BAKED_FB = {
+  apiKey: "AIzaSyCGnae1nfCk_DfTqgc67H-BVvnIjwmHneU",
+  authDomain: "sp26-6602a.firebaseapp.com",
+  databaseURL: "https://sp26-6602a-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "sp26-6602a",
+  storageBucket: "sp26-6602a.firebasestorage.app",
+  messagingSenderId: "1071347166487",
+  appId: "1:1071347166487:web:91947b490d1a160748db52"
+};
+// ── END CONFIG ─────────────────────────────────────────
+let db=null,dashRef=null,dashCb=null;
+const CFG={projects:{},experts:{},_pid:1,_eid:1};
+const EXP={id:null,name:null,scores:{},submitted:false,activePid:null};
+const DASH={data:null};
+const TIMER={total:720,left:720,running:false,iv:null,open:false};
+const BMAX={b1:3,b2:3,b3:3,b4:1};
+const BCRIT={
+  b1:[
+    "Проблема не сформулирована, или решение с ней не связано",
+    "Проблема обозначена, но не подкреплена данными. Решение выбрано без анализа альтернатив",
+    "Проблема подтверждена исследованием (CJM, JTBD, опросы, статистика, внутренние данные компании). Показаны последствия бездействия. Обоснован выбор конкретного решения",
+    "Всё из уровня 2, плюс: явно показана связь проекта со стратегическими целями компании; проанализированы ≥ 2 альтернативных варианта решения с обоснованием финального выбора"
+  ],
+  b2:[
+    "Технология не описана или упомянута декларативно - без схемы и обоснования",
+    "Технология названа, общая логика работы показана, но архитектура не проработана",
+    "Представлена верхнеуровневая архитектура (схема принципа работы), обоснован выбор технологического стека, проведён бенчмарк ≥ 2 аналогичных решений",
+    "Всё из уровня 2, плюс: описаны ключевые интеграции и зависимости; представлен реалистичный детализированный план реализации (roadmap с этапами и ответственными)"
+  ],
+  b3:[
+    "Финансовая модель отсутствует или содержит внутренние противоречия",
+    "Объём инвестиций (CAPEX/OPEX) оценён, но ключевые показатели эффективности (NPV / IRR / ROI) не рассчитаны или не обоснованы",
+    "Рассчитаны NPV, IRR, ROI / PP; направления инвестиций (статьи расходов) и источники экономического эффекта явно разделены и описаны",
+    "Всё из уровня 2, плюс: представлены ≥ 2 сценария (реалистичный / оптимистичный / негативный) или анализ чувствительности; риски оценены"
+  ],
+  b4:[
+    "Структура выступления не прослеживается ИЛИ спикер не смог ответить на вопросы",
+    "Выступление построено по логике «проблема → решение → экономика → внедрение». Ключевые тезисы считываются на слайдах. Спикер уверенно отвечает на вопросы"
+  ]
+};
+const BTAGS={b1:['0','1','2','3'],b2:['0','1','2','3'],b3:['0','1','2','3'],b4:['0','1']};
+let _theme='dark';
+
+function G(id){return document.getElementById(id);}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function pad(n){return String(n).padStart(2,'0');}
+function parseHash(){const h=location.hash.replace(/^#/,'');const p={};h.split('&').forEach(x=>{const i=x.indexOf('=');if(i>-1)try{p[x.slice(0,i)]=decodeURIComponent(x.slice(i+1));}catch(e){p[x.slice(0,i)]=x.slice(i+1);}else if(x)p.screen=x;});return p;}
+function objVals(o){return Object.values(o||{});}
+function objSize(o){return Object.keys(o||{}).length;}
+function scCls(n){if(n===null||n===undefined)return'sc-n';if(n<=4)return'sc-L';if(n<=7)return'sc-M';return'sc-H';}
+function avCls(n){if(n===null||n===undefined)return'av-n';if(n<=4)return'av-L';if(n<=7)return'av-M';return'av-H';}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>{t.style.transition='opacity .3s';t.style.opacity='0';setTimeout(()=>t.remove(),330);},2800);}
+function copyTxt(txt,msg){navigator.clipboard?.writeText(txt).then(()=>toast(msg)).catch(()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast(msg);});}
+
+/* ── THEME ── */
+function toggleTheme(){applyTheme(_theme==='dark'?'light':'dark');}
+function applyTheme(t){
+  _theme=t;document.documentElement.setAttribute('data-theme',t);
+  const b = G('thbtn'); if(b) b.textContent=t==='dark'?'☀️':'🌙';
+  localStorage.setItem('sp26v3-theme',t);
+}
+
+/* ── FIREBASE ── */
+function setFBStatus(state,txt){
+  const dot = G('hfb-dot'), t = G('hfb-txt');
+  console.log(`[FB Status] ${state}: ${txt}`);
+  if(dot) dot.className='hfb-dot '+state;
+  if(t) t.textContent=txt;
+}
+
+function initFirebase(cfg){
+  console.log('[Init] Start with:', cfg ? cfg.projectId : 'null');
+  try{
+    if(!cfg || !cfg.apiKey) throw new Error('Invalid config');
+    if(!cfg.databaseURL && cfg.projectId) cfg.databaseURL=`https://${cfg.projectId}-default-rtdb.firebaseio.com`;
+    
+    if(typeof firebase === 'undefined') {
+      throw new Error('Firebase library not loaded');
+    }
+
+    if(firebase.apps.length===0) {
+      console.log('[Init] Initializing app...');
+      firebase.initializeApp(cfg);
+    }
+    
+    db=firebase.database();
+    console.log('[Init] Database ready');
+    
+    db.ref('.info/connected').on('value',s=>{
+      const connected = !!s.val();
+      console.log('[Init] Connection listener:', connected);
+      setFBStatus(connected ? 'ok' : 'err', connected ? 'Firebase ✓' : 'Офлайн');
+    });
+    
+    try { localStorage.setItem('sp26v3-fb',JSON.stringify(cfg)); } catch(e) { console.warn('localStorage save failed'); }
+    return true;
+  }catch(e){
+    console.error('[Init] Fatal error:', e);
+    setFBStatus('err','Ошибка инициализации');
+    return false;
+  }
+}
+
+function connectFirebase(){
+  const raw=G('fb-inp').value.trim();
+  try{
+    const m=raw.match(/\{[\s\S]*\}/);
+    if(!m)throw new Error('JSON не найден');
+    const cfg=JSON.parse(m[0]);
+    G('fb-err').style.display='none';
+    if(!initFirebase(cfg)){G('fb-err').textContent='❌ Не удалось подключиться. Проверьте databaseURL.';G('fb-err').style.display='';return;}
+    routeHash();
+  }catch(e){G('fb-err').textContent='❌ Ошибка JSON: '+e.message;G('fb-err').style.display='';}
+}
+function showFBModal(){const raw=localStorage.getItem('sp26v3-fb')||'{}';G('fb-modal-inp').value=raw;openModal('modal-fb');}
+function reconnectFB(){
+  try{const cfg=JSON.parse(G('fb-modal-inp').value);if(initFirebase(cfg)){closeModal('modal-fb');toast('Firebase переподключён');}}catch(e){alert('Ошибка: '+e.message);}
+}
+function cleanupListeners(){if(dashRef&&dashCb){try{dashRef.off('value',dashCb);}catch(e){}dashRef=null;dashCb=null;}}
+
+function boot(){
+  console.log('[BOOT] v1.1.5 init');
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', doBoot);
+  } else {
+    doBoot();
+  }
+}
+
+function doBoot(){
+  console.log('[BOOT] doBoot executing...');
+  if (G('scr-loading')) G('scr-loading').style.display = 'none'; // Ensure loading screen is hidden
+  try {
+    try {
+      var theme = localStorage.getItem('sp26v3-theme') || 'dark';
+      applyTheme(theme);
+    } catch(e) { console.warn('Theme apply error:', e); }
+
+    var params = parseHash();
+    var ok = false;
+    
+    // 1. Hardcoded Config (Highest priority)
+    if(typeof BAKED_FB !== 'undefined' && BAKED_FB && BAKED_FB.apiKey) {
+      console.log('[BOOT] Using BAKED_FB:', BAKED_FB.projectId);
+      ok = initFirebase(BAKED_FB);
+    }
+    
+    // 2. URL Parameters
+    if(!ok && params.fb) {
+      try {
+        console.log('[BOOT] Using URL config');
+        ok = initFirebase(JSON.parse(atob(params.fb)));
+      } catch(e) { console.warn('[BOOT] URL config error', e); }
+    }
+    
+    // 3. Local Storage fallback
+    if(!ok) {
+      try {
+        var raw = localStorage.getItem('sp26v3-fb');
+        if(raw) {
+          console.log('[BOOT] Using localStorage config');
+          ok = initFirebase(JSON.parse(raw));
+        }
+      } catch(e) { console.warn('[BOOT] localStorage error', e); }
+    }
+    
+    if(!ok) {
+      console.log('[BOOT] No config found -> setup');
+      show('firebase');
+      setFBStatus('err','Нужна настройка');
+      return;
+    }
+    
+    console.log('[BOOT] Success, routing...');
+    routeHash();
+  } catch(e) {
+    console.error('[BOOT] CRASH:', e);
+    show('firebase');
+    setFBStatus('err', 'Сбой системы');
+  }
+}
+window.addEventListener('hashchange',()=>{cleanupListeners();routeHash();});
+function routeHash(){
+  const p=parseHash();
+  console.log('[Route] Hash:', location.hash);
+  if(p.expert)goExpertMode(p.expert);
+  else if(p.screen==='dashboard'){goCoordMode();goDash();}
+  else{goCoordMode();goSetup();}
+}
+
+/* ── NAVIGATION ── */
+function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('active'));const e=G('scr-'+id);if(e)e.classList.add('active');window.scrollTo(0,0);}
+function goHome(){history.pushState(null,'',location.pathname);goCoordMode();goSetup();}
+function goSetup(){loadCfgFromFB();show('setup');setNavAct('setup');}
+function goDash(){startDashListener();show('dashboard');setNavAct('dash');}
+function setNavAct(id){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));const e=G('nt-'+id);if(e)e.classList.add('active');}
+function goCoordMode(){
+  G('hnav').style.display='flex';
+  const b=G('hbadge');b.className='hbadge coord';b.style.display='flex';G('hbadge-txt').textContent='Организатор';
+  G('subm-bar').classList.remove('vis');
+}
+
+/* ── EXPERT MODE ── */
+function goExpertMode(eid){
+  G('hnav').style.display='none';
+  setFBStatus('loading','Загрузка…');
+  db.ref('sp26/config').once('value').then(snap=>{
+    const d=snap.val();
+    if(!d||!d.experts||!d.experts[eid]){showExpertErr(eid);return;}
+    CFG.projects=d.projects||{};CFG.experts=d.experts||{};
+    const expert=CFG.experts[eid];
+    EXP.id=eid;EXP.name=expert.name;
+    const b=G('hbadge');b.className='hbadge exp';b.style.display='flex';G('hbadge-txt').textContent=EXP.name;
+    setFBStatus('ok','Firebase ✓');
+    db.ref(`sp26/scores/${eid}`).once('value').then(ss=>{
+      const sd=ss.val()||{};
+      EXP.scores=sd.scores||{};EXP.submitted=sd.submitted||false;
+      if(EXP.submitted){showSubmitted();show('expert');return;}
+      G('subm-bar').classList.add('vis');
+      renderExpert();show('expert');
+    });
+  }).catch(()=>{setFBStatus('err','Ошибка');showExpertErr(eid);});
+}
+function showExpertErr(eid){
+  G('exp-body').innerHTML=`<div style="text-align:center;padding:60px 20px"><div style="font-size:44px;margin-bottom:16px">⚠️</div><div style="font:800 20px/1.1 var(--fn);margin-bottom:8px">Не найдено</div><p style="font-size:13px;color:var(--txm)">Эксперт «${esc(eid)}» не найден. Проверьте ссылку у организатора.</p></div>`;
+  G('subm-bar').classList.remove('vis');G('ptabs').innerHTML='';show('expert');
+}
+
+/* ── CONFIG ── */
+function collectSetupInputs(){
+  Object.keys(CFG.projects).forEach(pid=>{
+    const p=CFG.projects[pid];
+    const gn=G('pin-grp-'+pid);if(gn)p.groupNum=parseInt(gn.value)||0;
+    const tn=G('pin-team-'+pid);if(tn)p.teamName=tn.value;
+    const pn=G('pin-name-'+pid);if(pn)p.projName=pn.value;
+    const pd=G('pin-desc-'+pid);if(pd)p.desc=pd.value;
+    const mu=G('pin-murl-'+pid);if(mu)p.materialsUrl=mu.value;
+  });
+  Object.keys(CFG.experts).forEach(eid=>{
+    const e=CFG.experts[eid];
+    const ni=G('ein-'+eid);if(ni)e.name=ni.value;
+    const oi=G('eorg-'+eid);if(oi)e.org=oi.value;
+  });
+}
+function loadCfgFromFB(){
+  if(!db)return;
+  db.ref('sp26/config').once('value').then(s=>{
+    const d=s.val();
+    if(d){CFG.projects=d.projects||{};CFG.experts=d.experts||{};CFG._pid=d._pid||objSize(CFG.projects)+1;CFG._eid=d._eid||objSize(CFG.experts)+1;}
+    renderSetup();
+  });
+}
+function saveCfgToFB(){
+  if(!db){toast('Firebase не подключён');return;}
+  collectSetupInputs();
+  db.ref('sp26/config').set({projects:CFG.projects,experts:CFG.experts,_pid:CFG._pid,_eid:CFG._eid,updatedAt:Date.now()})
+    .then(()=>{G('save-hint').textContent='☁️ Сохранено: '+new Date().toLocaleTimeString('ru');toast('Сохранено в Firebase');})
+    .catch(e=>toast('Ошибка: '+e.message));
+}
+function saveCfgLocal(){
+  collectSetupInputs();
+  localStorage.setItem('sp26v3-cfg',JSON.stringify({projects:CFG.projects,experts:CFG.experts,_pid:CFG._pid,_eid:CFG._eid}));
+  G('save-hint').textContent='💾 Сохранено локально: '+new Date().toLocaleTimeString('ru');toast('Сохранено локально');
+}
+
+/* ── SETUP RENDER ── */
+function addProject(){
+  collectSetupInputs();
+  const pid='p'+CFG._pid++;
+  CFG.projects[pid]={id:pid,groupNum:objSize(CFG.projects)+1,teamName:'',projName:'',desc:'',materialsUrl:'',members:[]};
+  renderSetup();setTimeout(()=>{toggleCard(pid,true);G('pin-team-'+pid)?.focus();},40);
+}
+function removeProject(pid){collectSetupInputs();delete CFG.projects[pid];renderSetup();}
+function addExpert(){
+  collectSetupInputs();
+  const eid='e'+CFG._eid++;
+  CFG.experts[eid]={id:eid,name:'',org:''};
+  renderSetup();setTimeout(()=>G('ein-'+eid)?.focus(),40);
+}
+function removeExpert(eid){collectSetupInputs();delete CFG.experts[eid];renderSetup();}
+function toggleCard(pid,force){const c=G('pc-'+pid);if(!c)return;const open=force!==undefined?force:!c.classList.contains('open');c.classList.toggle('open',open);}
+function addMember(pid){const p=CFG.projects[pid];if(!p)return;if(!p.members)p.members=[];p.members.push({name:'',org:'',role:''});renderMembersTable(pid);}
+function removeMember(pid,i){const p=CFG.projects[pid];if(!p||!p.members)return;p.members.splice(i,1);renderMembersTable(pid);}
+function setMember(pid,i,f,v){const p=CFG.projects[pid];if(p&&p.members&&p.members[i])p.members[i][f]=v;}
+function renderMembersTable(pid){
+  const p=CFG.projects[pid];const tb=G('mtb-'+pid);if(!p||!tb)return;
+  const m=p.members||[];
+  if(!m.length){tb.innerHTML='<div style="font-size:12px;color:var(--txm);padding:6px 0">Нет участников · Добавьте вручную или импортируйте XLS</div>';return;}
+  tb.innerHTML=`<table class="mtable"><thead><tr><th>ФИО</th><th>Организация</th><th>Должность</th><th></th></tr></thead><tbody>${
+    m.map((r,i)=>`<tr><td><input class="finp finp-sm" value="${esc(r.name)}" placeholder="Имя Фамилия" oninput="setMember('${pid}',${i},'name',this.value)"></td><td><input class="finp finp-sm" value="${esc(r.org)}" placeholder="Организация" oninput="setMember('${pid}',${i},'org',this.value)"></td><td><input class="finp finp-sm" value="${esc(r.role)}" placeholder="Должность" oninput="setMember('${pid}',${i},'role',this.value)"></td><td><button class="btn btn-xs btn-d" onclick="removeMember('${pid}',${i})">✕</button></td></tr>`).join('')
+  }</tbody></table>`;
+}
+function getBaseUrl(){return location.href.split('#')[0];}
+function genLink(eid){
+  const fb=localStorage.getItem('sp26v3-fb')||'{}';
+  try{
+    const fbEnc=encodeURIComponent(btoa(fb));
+    return `${getBaseUrl()}#expert=${eid}&fb=${fbEnc}`;
+  }catch(e){
+    return `${getBaseUrl()}#expert=${eid}`;
+  }
+}
+function renderSetup(){
+  const pids=Object.keys(CFG.projects);
+  const pl=G('proj-list');
+  if(!pids.length){pl.innerHTML='<div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div>';}
+  else{
+    pl.innerHTML=pids.map((pid,i)=>{const p=CFG.projects[pid];return`<div class="pjcard" id="pc-${pid}"><div class="pjcard-hd" onclick="toggleCard('${pid}')"><div class="pjcard-num">${i+1}</div><div class="pjcard-info"><div class="pjcard-name">${esc(p.projName||p.teamName||'Проект '+(i+1))}</div><div class="pjcard-sub">Группа ${p.groupNum||'?'} · ${esc(p.teamName||'—')} · ${(p.members||[]).length} участн.</div></div><span class="pjcard-arr">▾</span><button class="btn btn-xs btn-d" onclick="event.stopPropagation();removeProject('${pid}')">✕</button></div><div class="pjcard-body"><div class="fg2" style="margin-bottom:10px"><div class="fgrp"><label class="flbl">Группа №</label><input id="pin-grp-${pid}" class="finp" type="number" value="${p.groupNum||''}" style="width:80px" min="1" oninput="CFG.projects['${pid}'].groupNum=parseInt(this.value)||0"></div><div class="fgrp"><label class="flbl">Название команды</label><input id="pin-team-${pid}" class="finp" type="text" value="${esc(p.teamName)}" placeholder="Команда А" oninput="CFG.projects['${pid}'].teamName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=G('pin-name-${pid}').value||this.value"></div></div><div class="fgrp"><label class="flbl">Название проектной работы</label><input id="pin-name-${pid}" class="finp" type="text" value="${esc(p.projName)}" placeholder="Цифровая трансформация…" oninput="CFG.projects['${pid}'].projName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=this.value"></div><div class="fgrp"><label class="flbl">Описание проектной работы</label><textarea id="pin-desc-${pid}" class="finp" rows="3" placeholder="Цель, решение, ожидаемый эффект…" oninput="CFG.projects['${pid}'].desc=this.value">${esc(p.desc)}</textarea></div><div class="fgrp"><label class="flbl">Ссылка на материалы проекта</label><input id="pin-murl-${pid}" class="finp" type="url" value="${esc(p.materialsUrl)}" placeholder="https://drive.google.com/…" oninput="CFG.projects['${pid}'].materialsUrl=this.value"></div><div class="div"></div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div style="font:700 12px/1 var(--fn);color:var(--txm)">👤 Участники команды</div><button class="btn btn-sm btn-s" onclick="addMember('${pid}')">＋ Строку</button></div><div id="mtb-${pid}"></div></div></div>`;}).join('');
+    pids.forEach(pid=>renderMembersTable(pid));
+  }
+  const eids=Object.keys(CFG.experts);
+  const el=G('experts-list');
+  if(!eids.length){el.innerHTML='<div style="font:400 12px/1 var(--fn);color:var(--txm);padding:8px 0">Нет экспертов</div>';return;}
+  el.innerHTML=eids.map((eid,i)=>{const e=CFG.experts[eid];const link=genLink(eid);return`<div class="exp-item"><div class="exp-item-hd"><span style="font:700 13px/1 var(--fn)">${i+1}. <input id="ein-${eid}" class="finp finp-sm" style="width:auto;display:inline" type="text" value="${esc(e.name)}" placeholder="Имя Фамилия" oninput="CFG.experts['${eid}'].name=this.value"></span><button class="btn btn-xs btn-d" onclick="removeExpert('${eid}')">✕</button></div><input id="eorg-${eid}" class="finp finp-sm" type="text" value="${esc(e.org)}" placeholder="Организация" style="margin:5px 0" oninput="CFG.experts['${eid}'].org=this.value"><div class="exp-link" onclick="copyTxt('${link}','Ссылка скопирована')" title="${link}">🔗 ${esc(e.name||('Эксперт '+(i+1)))}</div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn btn-sm btn-s" onclick="copyTxt(genLink('${eid}'),'Ссылка скопирована')">📋 Скопировать</button><button class="btn btn-sm btn-s" onclick="window.open(genLink('${eid}'),'_blank')">↗ Открыть</button></div></div>`;}).join('');
+}
+
+/* ── XLS BULK IMPORT ── */
+function onXLSBulkImport(ev){
+  const file=ev.target.files[0];if(!file)return;ev.target.value='';
+  const reader=new FileReader();
+  reader.onload=e=>{
+    let rows=[];
+    if(typeof XLSX!=='undefined'){
+      const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+      const ws=wb.Sheets[wb.SheetNames[0]];
+      const raw=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+      let start=0;
+      for(let r=0;r<Math.min(3,raw.length);r++){const s=raw[r].join('').toLowerCase();if(s.includes('группа')||s.includes('фио')||s.includes('имя')){start=r+1;break;}}
+      rows=raw.slice(start).filter(r=>r[0]&&String(r[0]).trim()).map(r=>({groupNum:parseInt(String(r[0]||'').trim())||0,name:String(r[1]||'').trim(),org:String(r[2]||'').trim(),role:String(r[3]||'').trim()}));
+    }else{
+      const text=new TextDecoder().decode(e.target.result);
+      rows=text.split('\n').slice(1).filter(l=>l.trim()).map(l=>l.split(/[,;]/).map(c=>c.replace(/^"|"$/g,'').trim())).filter(r=>r[0]).map(r=>({groupNum:parseInt(r[0])||0,name:r[1]||'',org:r[2]||'',role:r[3]||''}));
+    }
+    const grouped={};rows.forEach(r=>{if(!grouped[r.groupNum])grouped[r.groupNum]=[];grouped[r.groupNum].push({name:r.name,org:r.org,role:r.role});});
+    let matched=0,missed=[];
+    Object.keys(grouped).forEach(gn=>{const pid=Object.keys(CFG.projects).find(k=>String(CFG.projects[k].groupNum)===String(gn));if(pid){CFG.projects[pid].members=grouped[gn];matched++;}else missed.push(gn);});
+    renderSetup();
+    let msg=`Импортировано: ${rows.length} участников в ${matched} группах.`;
+    if(missed.length)msg+=` Группы не найдены: ${missed.join(', ')}`;
+    toast(msg.length>80?msg.slice(0,77)+'…':msg);if(missed.length)alert(msg);
+  };
+  reader.readAsArrayBuffer(file);
+}
+function dlXLSTemplate(){
+  if(typeof XLSX!=='undefined'){
+    const wb=XLSX.utils.book_new();
+    const ws=XLSX.utils.aoa_to_sheet([['Группа №','ФИО','Организация (место работы)','Должность'],[1,'Иванов Иван Иванович','ПАО Сбер','Руководитель проекта'],[1,'Петрова Мария','ПАО Сбер','Аналитик'],[2,'Сидоров Алексей','ВТБ','PM']]);
+    ws['!cols']=[{wch:10},{wch:28},{wch:28},{wch:22}];
+    XLSX.utils.book_append_sheet(wb,ws,'Участники');XLSX.writeFile(wb,'sp26-participants-template.xlsx');
+  }else{
+    const csv='\uFEFFГруппа №;ФИО;Организация;Должность\n1;Иванов Иван;ПАО Сбер;Руководитель\n2;Петрова Мария;ВТБ;Аналитик\n';
+    const b=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download='sp26-template.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+  }
+}
+
+/* ── EXPERT SCORING ── */
+function renderExpert(){
+  const pids=Object.keys(CFG.projects);
+  EXP.activePid=EXP.activePid||pids[0];
+  renderTabs();if(EXP.activePid)renderProjView(EXP.activePid);updateSubmitBar();
+}
+function isScored(pid){const s=EXP.scores[pid];return s&&['b1','b2','b3','b4'].every(b=>s[b]!==null&&s[b]!==undefined);}
+function renderTabs(){
+  G('ptabs').innerHTML=Object.keys(CFG.projects).map(pid=>{const p=CFG.projects[pid];const done=isScored(pid);return`<div class="ptab ${pid===EXP.activePid?'active':''}" onclick="switchProj('${pid}')">${esc(p.teamName||p.projName||pid)}${done?'<span class="ptab-chk"> ✓</span>':''}</div>`;}).join('');
+}
+function switchProj(pid){EXP.activePid=pid;renderTabs();renderProjView(pid);window.scrollTo({top:0,behavior:'smooth'});}
+function renderProjView(pid){
+  const p=CFG.projects[pid];if(!p)return;
+  G('pi-team').textContent=p.teamName||'';G('pi-name').textContent=p.projName||'Без названия';
+  const desc=G('pi-desc');desc.textContent=p.desc||'';
+  const long=p.desc&&p.desc.length>200;desc.className='pi-desc'+(long?' clamp':'');G('pi-expand').style.display=long?'':'none';
+  let links=[];
+  if(p.members&&p.members.length)links.push(`<button class="btn btn-s btn-sm" onclick="showMembers('${pid}')">👥 Состав команды (${p.members.length})</button>`);
+  if(p.materialsUrl)links.push(`<a href="${esc(p.materialsUrl)}" target="_blank" class="btn btn-s btn-sm">📁 Материалы проекта</a>`);
+  G('pi-links').innerHTML=links.join('');
+  ['b1','b2','b3','b4'].forEach(b=>{
+    buildRow(b,pid);
+    G('comm-'+b).value = (EXP.scores[pid]||{})[b+'_comment']||'';
+  });
+  G('comment-f').value=(EXP.scores[pid]||{}).comment||'';
+  updateDisp(pid);
+}
+function buildRow(b,pid){
+  const row=G('row-'+b);if(!row)return;
+  const cur=(EXP.scores[pid]||{})[b];const max=BMAX[b];const tags=BTAGS[b];
+  row.innerHTML='';
+  for(let i=0;i<=max;i++){
+    const uid=`${b}-${pid}-${i}`;
+    const d=document.createElement('div');
+    d.className='sopt';
+    d.innerHTML=`<input type="radio" name="${b}-${pid}" id="${uid}" value="${i}" ${cur===i?'checked':''} onchange="setScore('${b}','${pid}',${i})">
+    <label class="slbl" for="${uid}" onmouseover="showHint('${b}',${i})" onmouseout="restoreHint('${b}','${pid}')">
+      <span class="sn">${i}</span>
+    </label>`;
+    row.appendChild(d);
+  }
+}
+function showHint(b,val){
+  const h=G('hint-'+b),t=G('htxt-'+b);
+  if(!h||!t)return;
+  t.textContent=BCRIT[b][val]||'—';
+  h.classList.add('active');
+}
+function restoreHint(b,pid){
+  const h=G('hint-'+b),t=G('htxt-'+b);
+  if(!h||!t)return;
+  const cur=(EXP.scores[pid]||{})[b];
+  if(cur!==null && cur!==undefined){
+    t.textContent=BCRIT[b][cur]||'—';
+    h.classList.add('active');
+  } else {
+    t.textContent='Выберите балл, чтобы увидеть критерий';
+    h.classList.remove('active');
+  }
+}
+function setScore(b,pid,val){
+  if(!EXP.scores[pid])EXP.scores[pid]={b1:null,b2:null,b3:null,b4:null,comment:''};
+  EXP.scores[pid][b]=val;
+  updateDisp(pid);renderTabs();updateSubmitBar();
+  showHint(b,val);
+  if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/scores/${pid}`).update({[b]:val,updatedAt:Date.now()});
+}
+function saveBlockComment(b){
+  const pid=EXP.activePid;if(!pid)return;
+  if(!EXP.scores[pid])EXP.scores[pid]={b1:null,b2:null,b3:null,b4:null,comment:''};
+  const c=G('comm-'+b).value;EXP.scores[pid][b+'_comment']=c;
+  if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/scores/${pid}`).update({[b+'_comment']:c,updatedAt:Date.now()});
+}
+function saveComment(){
+  const pid=EXP.activePid;if(!pid)return;
+  if(!EXP.scores[pid])EXP.scores[pid]={b1:null,b2:null,b3:null,b4:null,comment:''};
+  const c=G('comment-f').value;EXP.scores[pid].comment=c;
+  if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/scores/${pid}`).update({comment:c,updatedAt:Date.now()});
+}
+function updateDisp(pid){
+  const sc=EXP.scores[pid]||{};
+  ['b1','b2','b3','b4'].forEach(b=>{
+    const bc=G('bc-'+b), ds=G('ds-'+b), sw=G('sw-'+b);
+    if(sc[b]!==null&&sc[b]!==undefined){
+      bc.classList.add('scored');
+      if(ds){ ds.textContent=sc[b]; ds.classList.add('active'); }
+      if(sw){ sw.classList.add('active'); }
+    }else{
+      bc.classList.remove('scored');
+      if(ds){ ds.textContent='—'; ds.classList.remove('active'); }
+      if(sw){ sw.classList.remove('active'); }
+    }
+  });
+}
+function getScoredCnt(){return Object.keys(CFG.projects).filter(pid=>isScored(pid)).length;}
+function updateSubmitBar(){
+  const t=objSize(CFG.projects);
+  const c=getScoredCnt();
+  const el=G('subm-cnt'); if(el) el.textContent=c+'/'+t;
+}
+function expandDesc(){G('pi-desc').classList.remove('clamp');G('pi-expand').style.display='none';}
+function togCrit(id,btn){G(id).classList.toggle('open');btn.classList.toggle('open');}
+
+/* ── SUBMIT ── */
+function submitScores(){
+  const pids=Object.keys(CFG.projects);
+  const unscored=pids.filter(pid=>!isScored(pid));
+  if(unscored.length&&!confirm(`Не заполнены оценки для ${unscored.length} проекта(ов):\n${unscored.map(pid=>CFG.projects[pid].projName||CFG.projects[pid].teamName||pid).join(', ')}\n\nОтправить всё равно?`))return;
+  const noComment=pids.filter(pid=>{
+    const s=EXP.scores[pid];
+    if(!s)return true;
+    const hasAnyBlockComment = ['b1','b2','b3','b4'].some(b=>s[b+'_comment'] && s[b+'_comment'].trim());
+    const hasMainComment = s.comment && s.comment.trim();
+    return !hasAnyBlockComment && !hasMainComment;
+  });
+  if(noComment.length){
+    G('mc-list').innerHTML=noComment.map(pid=>`<div style="padding:6px 0;border-bottom:1px solid var(--br);font-size:13px">• ${esc(CFG.projects[pid].projName||CFG.projects[pid].teamName||pid)}</div>`).join('');
+    openModal('modal-confirm');return;
+  }
+  doSubmit();
+}
+function doSubmit(){
+  closeModal('modal-confirm');EXP.submitted=true;
+  if(db&&EXP.id){
+    db.ref(`sp26/scores/${EXP.id}`).set({scores:EXP.scores,submitted:true,expertName:EXP.name,submittedAt:new Date().toISOString()})
+      .then(()=>{showSubmitted();toast('✅ Оценки отправлены в Firebase');})
+      .catch(e=>{alert('Ошибка: '+e.message);EXP.submitted=false;});
+  }else showSubmitted();
+}
+function showSubmitted(){
+  G('done-s').innerHTML=`<strong>${esc(EXP.name)}</strong><br>Оценено: ${getScoredCnt()} из ${objSize(CFG.projects)} проектов`;
+  G('exp-body').style.display='none';G('done-scr').style.display='';
+  G('subm-bar').classList.remove('vis');G('ptabs').innerHTML='';
+}
+function undoSubmit(){
+  EXP.submitted=false;
+  if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/submitted`).set(false);
+  G('exp-body').style.display='';G('done-scr').style.display='none';
+  G('subm-bar').classList.add('vis');renderExpert();
+}
+
+/* ── MEMBERS MODAL ── */
+function showMembers(pid){
+  const p=CFG.projects[pid];if(!p)return;
+  G('mm-title').textContent='Команда: '+(p.teamName||p.projName||'');
+  const m=p.members||[];
+  G('mm-content').innerHTML=m.length?`<table class="mtable"><thead><tr><th>ФИО</th><th>Организация</th><th>Должность</th></tr></thead><tbody>${m.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.org)}</td><td>${esc(r.role)}</td></tr>`).join('')}</tbody></table>`:'<div style="color:var(--txm);font-size:13px;padding:12px 0">Список участников не заполнен</div>';
+  openModal('modal-members');
+}
+
+/* ── DASHBOARD ── */
+function startDashListener(){
+  if(!db){renderDash(null);return;}
+  cleanupListeners();
+  dashRef=db.ref('sp26');
+  dashCb=snap=>{DASH.data=snap.val();renderDash(DASH.data);};
+  dashRef.on('value',dashCb);
+}
+function renderDash(data){
+  const cfg=data?.config||{};const sc=data?.scores||{};
+  const projects=objVals(cfg.projects||{});const experts=objVals(cfg.experts||{});
+  if(!projects.length||!experts.length){
+    G('exp-status').innerHTML='<div style="color:var(--txm);font-size:13px">Нет данных. Создайте конфигурацию в разделе «Настройка».</div>';
+    G('t-head').innerHTML='<tr><th>Нет данных</th></tr>';
+    G('t-body').innerHTML='<tr><td style="color:var(--txm);text-align:center;padding:32px" colspan="10">Добавьте проекты и экспертов</td></tr>';
+    G('t-info').textContent='';return;
+  }
+  G('exp-status').innerHTML=experts.map(e=>{const sub=sc[e.id]?.submitted||false;return`<div class="echip ${sub?'sub':'pend'}"><div class="echip-dot"></div>${esc(e.name)} ${sub?'✓':'— ожидание'}</div>`;}).join('');
+  const getT=(eid,pid)=>{const d=sc[eid]?.scores?.[pid];if(!d||d.b1==null||d.b2==null||d.b3==null||d.b4==null)return null;return d.b1+d.b2+d.b3+d.b4;};
+  const rows=projects.map(p=>{const ts=experts.map(e=>getT(e.id,p.id));const vs=ts.filter(t=>t!==null);const avg=vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;return{p,ts,avg};});
+  rows.sort((a,b)=>{if(a.avg===null&&b.avg===null)return 0;if(a.avg===null)return 1;if(b.avg===null)return-1;return b.avg-a.avg;});
+  G('t-head').innerHTML=`<tr><th>#</th><th>Проект / Команда</th>${experts.map(e=>`<th style="text-align:center">${esc(e.name)}</th>`).join('')}<th style="text-align:center">Среднее</th></tr>`;
+  G('t-body').innerHTML=rows.map((r,i)=>`<tr><td class="td-r ${i<3?'r'+(i+1):''}">${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td><div class="td-nm">${esc(r.p.projName||'—')}</div><div class="td-sub">${esc(r.p.teamName||'')} · Группа ${r.p.groupNum||'?'}</div></td>${r.ts.map(t=>`<td class="td-c">${t!==null?`<span class="sc ${scCls(t)}">${t}</span>`:`<span class="sc sc-n">—</span>`}</td>`).join('')}${r.avg!==null?`<td class="td-c"><span class="av ${avCls(Math.round(r.avg))}">${r.avg.toFixed(1)}</span></td>`:`<td class="td-c"><span class="av av-n">—</span></td>`}</tr>`).join('');
+  const sub=experts.filter(e=>sc[e.id]?.submitted).length;
+  G('t-info').textContent=`${projects.length} проектов · ${sub}/${experts.length} экспертов сдали оценки`;
+}
+function exportCSV(){
+  const data=DASH.data;if(!data?.config){toast('Нет данных');return;}
+  const projects=objVals(data.config.projects||{});const experts=objVals(data.config.experts||{});const sc=data.scores||{};
+  const getT=(eid,pid)=>{const d=sc[eid]?.scores?.[pid];if(!d||d.b1==null||d.b2==null||d.b3==null||d.b4==null)return'';return d.b1+d.b2+d.b3+d.b4;};
+  const rows=projects.map(p=>{const ts=experts.map(e=>getT(e.id,p.id));const vs=ts.filter(t=>t!=='').map(Number);const avg=vs.length?(vs.reduce((a,b)=>a+b,0)/vs.length).toFixed(2):'';return[`"${p.projName}"`,`"${p.teamName}"`,`${p.groupNum||''}`,...ts,avg].join(';');});
+  const hdr=['"Проект"','"Команда"','"Группа"',...experts.map(e=>`"${e.name}"`),'"Среднее"'].join(';');
+  const blob=new Blob(['\uFEFF'+hdr+'\n'+rows.join('\n')],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='sp26-results.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('CSV экспортирован');
+}
+
+/* ── TIMER ── */
+function toggleTimer(){TIMER.open=!TIMER.open;G('twrap-body').style.display=TIMER.open?'':'none';G('tmini').style.display=TIMER.open?'none':'';}
+function timerStart(){if(TIMER.running)return;TIMER.running=true;G('btn-ts').style.display='none';G('btn-tp').style.display='';TIMER.iv=setInterval(()=>{if(TIMER.left<=0){timerPause();playBeep();return;}TIMER.left--;renderTimer();},1000);}
+function timerPause(){clearInterval(TIMER.iv);TIMER.running=false;G('btn-ts').style.display='';G('btn-tp').style.display='none';}
+function timerReset(){timerPause();TIMER.left=TIMER.total;renderTimer();}
+function renderTimer(){const m=Math.floor(TIMER.left/60),s=TIMER.left%60,t=pad(m)+':'+pad(s);G('tdig').textContent=t;G('tmini').textContent=t;G('tprog-f').style.width=(TIMER.left/TIMER.total*100)+'%';const d=TIMER.left<120;G('tdig').classList.toggle('danger',d);G('tprog-f').classList.toggle('danger',d);}
+function playBeep(){try{const AC=window.AudioContext||window.webkitAudioContext,ctx=new AC();[880,1108,880,1108].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=f;const t=ctx.currentTime+i*.28;g.gain.setValueAtTime(.4,t);g.gain.exponentialRampToValueAtTime(.001,t+.22);o.start(t);o.stop(t+.28);});}catch(e){}}
+
+/* ── MODALS ── */
+function openModal(id){G(id).classList.add('vis');}
+function closeModal(id){G(id).classList.remove('vis');}
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('vis');}));
+
+boot();
+</script>
+</body>
+</html>
