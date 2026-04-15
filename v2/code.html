@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Liquid Intelligence - Панель Организатора</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dde1ff",
+                        "on-surface-variant": "#bcc8cf",
+                        "primary": "#46fa9c", /* Changed primary to a green tone to match request */
+                        "on-primary-container": "#00391d",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#00522d",
+                        "background": "#051a13", /* Darker green background base */
+                        "on-tertiary-container": "#003dc5",
+                        "surface-bright": "#1a2e27",
+                        "primary-fixed": "#59ffa4",
+                        "inverse-surface": "#dde2f0",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#1ce388",
+                        "secondary-container": "#04dd83",
+                        "on-background": "#e0f2f1",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#b7c4ff",
+                        "on-surface": "#e0f2f1",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#1ce388",
+                        "outline": "#869399",
+                        "on-tertiary-fixed": "#001452",
+                        "on-secondary-container": "#005b33",
+                        "inverse-on-surface": "#0a1e18",
+                        "surface-container-lowest": "#030d0a",
+                        "surface-container-high": "#11261f",
+                        "surface-container-low": "#0b1f18",
+                        "surface-container": "#0e241c",
+                        "outline-variant": "#3d484e",
+                        "on-tertiary-fixed-variant": "#0038b7",
+                        "secondary": "#46fa9c",
+                        "on-primary-fixed": "#00210f",
+                        "surface-container-highest": "#172d25",
+                        "surface": "#051a13",
+                        "on-primary-fixed-variant": "#00522d",
+                        "tertiary-container": "#acbbff",
+                        "surface-variant": "#172d25",
+                        "tertiary": "#d1d8ff",
+                        "surface-tint": "#46fa9c",
+                        "primary-container": "#04dd83",
+                        "secondary-fixed": "#59ffa4",
+                        "inverse-primary": "#006d3b",
+                        "on-tertiary": "#002683",
+                        "on-secondary": "#00391d",
+                        "on-secondary-fixed": "#00210f",
+                        "on-primary": "#00391d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #051a13;
+            /* Updated background gradient to dark green to light green with visual depth */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(70, 250, 156, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(4, 221, 131, 0.08) 0%, transparent 40%),
+                linear-gradient(135deg, #051a13 0%, #0c3327 100%);
+            background-attachment: fixed;
+        }
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDxyy1Nl-8rWr-Oqs_uPsOWOrawKOaLN-qEs4NeNmLjAm77XCUHzsJf0iL0Jb1GmFobBQgma-vNSngiWfaDWMc9ppOV53QHzJbDoZlD_eYwsyuAEC6dn1lQ5dffBhVXVqZveWBX0csBaSzvTFvVLKVsE0UZ_YSSvJv7CTfG0-daWjk3Vk8-UQuJ2ZDhCGeUBvNvngTglFZtU7J_poXnQwMDEsznWS_9oCuXKruviLiq66R0-rsdBDqud_CvLeUBIjPXBJO2N9SMH5Y);
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .liquid-glass {
+            background: rgba(17, 38, 31, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+        .tab-clip {
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+        }
+    </style>
+</head>
+<body class="font-body text-on-surface selection:bg-primary/30">
+<div class="noise-overlay"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#051a13]/80 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+<div class="flex justify-between items-center px-6 py-3 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent">
+                    Liquid Intelligence
+                </span>
+<nav class="hidden md:flex items-center gap-6 font-['Inter'] tracking-tight">
+<a class="text-secondary border-b-2 border-secondary pb-1" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Projects</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Jury</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-gradient-to-br from-primary to-secondary-container text-on-primary font-bold px-5 py-1.5 rounded-full hover:shadow-[0_0_15px_rgba(70,250,156,0.3)] transition-all text-sm">
+                    Live Session
+                </button>
+<div class="flex gap-2 text-slate-400">
+<span class="material-symbols-outlined hover:text-white cursor-pointer transition-all">notifications</span>
+<span class="material-symbols-outlined hover:text-white cursor-pointer transition-all">settings</span>
+</div>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3emdhrG46zIXNmjXlmkTRGuLoRexHNcO0CAav-zHcfyTktq67GtBDZ29jBL_K18hioedPprieluBwcGbQKjHxF5EFx751rqU-6z-uEqJqLMvjJtWVzJ35BEcRH1GDVHlRR2i6ofnH2n0M0YfauDatDX28GJoM0oR7OBgtkHOBNmnDLEAm_Zl3gWkXhcZ_4xJb-jA7YtZUk0E4Shg-naUo1sVXLIuNhqG0cmDP-TYG2alDfUT_dOXMljmr4TS3uHJWWJj6RR2BsX8"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto min-h-screen">
+<!-- Tabbed Navigation Header -->
+<div class="flex items-end gap-1 px-4">
+<button class="liquid-glass tab-clip px-8 py-3 text-xs font-bold tracking-widest text-slate-500 hover:text-secondary transition-all">
+                PROJECT 1
+            </button>
+<button class="bg-surface-container-high tab-clip px-8 py-4 text-xs font-black tracking-widest text-on-surface border-t border-secondary/50">
+                PROJECT 2
+            </button>
+<button class="liquid-glass tab-clip px-8 py-3 text-xs font-bold tracking-widest text-slate-500 hover:text-slate-300 transition-all">
+                PROJECT 3
+            </button>
+<button class="liquid-glass tab-clip px-8 py-3 text-xs font-bold tracking-widest text-slate-500 hover:text-slate-300 transition-all">
+                PROJECT 4
+            </button>
+<div class="ml-auto mb-2 flex items-center gap-2 bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-[10px] font-bold text-secondary tracking-tighter uppercase">Live Session: Project 2</span>
+</div>
+</div>
+<!-- Main Content Area - Bento Grid -->
+<div class="bg-surface-container-high border-t border-secondary/30 rounded-b-xl rounded-tr-xl p-8 shadow-2xl relative overflow-hidden">
+<!-- Background Light Leak -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]"></div>
+<div class="grid grid-cols-12 gap-6 relative z-10">
+<!-- Left Column: Summary Table -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="liquid-glass rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-xl font-black tracking-tight text-white">Сводная таблица оценок</h2>
+<span class="text-xs font-bold text-slate-500 tracking-widest uppercase">Обновление: 2с назад</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-3">
+<thead>
+<tr class="text-[10px] font-bold text-slate-500 tracking-widest uppercase">
+<th class="px-4 py-2">Эксперт</th>
+<th class="px-4 py-2">Критерий 1</th>
+<th class="px-4 py-2">Критерий 2</th>
+<th class="px-4 py-2">Критерий 3</th>
+<th class="px-4 py-2 text-right">Итого</th>
+</tr>
+</thead>
+<tbody>
+<tr class="group">
+<td class="px-4 py-4 bg-surface-container-low/50 rounded-l-lg border-l border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">Ж1</div>
+<span class="font-bold text-sm text-on-surface">Жюри 1 (Технический)</span>
+</div>
+</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">3</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">2</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">3</td>
+<td class="px-4 py-4 bg-surface-container-low/50 rounded-r-lg border-r border-white/5 text-right">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-black shadow-[0_0_15px_rgba(4,221,131,0.3)]">
+                                                8.0
+                                            </span>
+</td>
+</tr>
+<tr class="group">
+<td class="px-4 py-4 bg-surface-container-low/50 rounded-l-lg border-l border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">Ж2</div>
+<span class="font-bold text-sm text-on-surface">Жюри 2 (Маркетинг)</span>
+</div>
+</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">2</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">3</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">2</td>
+<td class="px-4 py-4 bg-surface-container-low/50 rounded-r-lg border-r border-white/5 text-right">
+<span class="bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-xs font-black">
+                                                7.0
+                                            </span>
+</td>
+</tr>
+<tr class="group">
+<td class="px-4 py-4 bg-surface-container-low/50 rounded-l-lg border-l border-white/5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">Ж3</div>
+<span class="font-bold text-sm text-on-surface">Жюри 3 (Дизайн)</span>
+</div>
+</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">3</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">3</td>
+<td class="px-4 py-4 bg-surface-container-low/50 font-medium text-sm">3</td>
+<td class="px-4 py-4 bg-surface-container-low/50 rounded-r-lg border-r border-white/5 text-right">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-black shadow-[0_0_15px_rgba(4,221,131,0.3)]">
+                                                9.0
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Details Card -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="liquid-glass rounded-xl p-6 relative group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<p class="text-[10px] font-bold text-secondary tracking-widest uppercase mb-2">Статус Жюри</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-300">Все оценки получены</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="mt-4 flex -space-x-2">
+<img alt="Jury 1" class="w-8 h-8 rounded-full border-2 border-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXoeCe8dADielTYl9jNe2u54DzxUIXTK0Vkh5ouA6PQIVs_UbfAUMqkumOBHBXJZWFlY6XDGf959bK9aljd7dBEXamLxNWnYi-sXEYHNbbekvi9VZe5WIZxm9YOnZJgcvel7sLyDJajNyoYdhoSxCCSiXSe2uJfSJMkaiRDvzeZMBg5RWG0UNx0lx3z8WP4LiYJ2l6qC0KKlDvqlWXzAAtKXzFdvUv-VH79afXAY0vt1XZodU5m4Q_ofoswLPC-A8H6vkpOXLTRQU"/>
+<img alt="Jury 2" class="w-8 h-8 rounded-full border-2 border-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYyMwYajlJ_R2odotEvy9adq36G3r7Jd4oT_bXKsoGFaAN2OfUb2NQbAiIhryytWCoARRaUlUPY4CBPKCwQcj60z2BINNHY5U-TICBmMSbjGFVdIiR2fOb_Nk6Ic0fQmV-n-8KTaB7x8xHQEANFtnshq_4GARNNiTfWsy-3C2xOsuzpRHgejT6MqkH7gQTcw_TfLOVGb1R_XwhoIQrcBdpFIhgcVIMao6xND8TYsNfh46TC4DynrmKug6Wk8QXMr5SazEIMGncQcY"/>
+<img alt="Jury 3" class="w-8 h-8 rounded-full border-2 border-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDthXgbyu_NVZk4CRzopLN1vVioES-Doa6U7dh5G2IidDuzAUXdCgti-_xCjwSCDBjLAXSz3tc_AVn9e91v7rt6JkKL4ZgTc41xbwaa-wg6cWawXXkV6H_iMi5DlzRnBu9o0vg17rJ17Zq1GndHHAL6y1Zy3GC9xJjyViSsMSsqXnCV8wOau8HN5EHm5MQAMVfAAwAqhWQASzkZ8HpHByVNaxjqDvsjs9h6whrjKfrgyJsmC91mhkvo8jCdzAg_JwZeNdYGRuzvc60"/>
+</div>
+</div>
+</div>
+<div class="liquid-glass rounded-xl p-6 relative group overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<p class="text-[10px] font-bold text-primary tracking-widest uppercase mb-2">Следующий проект</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-slate-300">Project 3: AI Core</span>
+<span class="material-symbols-outlined text-primary">skip_next</span>
+</div>
+<div class="mt-4 bg-primary/10 rounded px-3 py-1.5 inline-block">
+<span class="text-[10px] font-bold text-primary italic">Ожидание старта...</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Timer -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<!-- Main Timer Card -->
+<div class="liquid-glass rounded-xl p-8 text-center relative border border-white/5 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+<p class="text-[10px] font-black tracking-[0.2em] text-slate-500 uppercase mb-4 relative z-10">Оставшееся время</p>
+<div class="text-7xl font-black tracking-tighter text-white mb-6 font-headline relative z-10">
+                            07:42
+                        </div>
+<!-- Animated Progress Bar -->
+<div class="relative w-full h-2 bg-surface-container-lowest rounded-full overflow-hidden z-10">
+<div class="absolute top-0 left-0 h-full w-[65%] bg-gradient-to-r from-secondary to-primary-fixed rounded-full shadow-[0_0_15px_rgba(70,250,156,0.6)]">
+<div class="absolute right-0 top-0 h-full w-2 bg-white/50 blur-sm"></div>
+</div>
+</div>
+<div class="flex justify-between items-center mt-6 relative z-10">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Старт: 12:00</span>
+<div class="flex gap-4">
+<button class="text-secondary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">pause_circle</span>
+</button>
+<button class="text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">replay</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats Card -->
+<div class="liquid-glass rounded-xl p-8 relative overflow-hidden">
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-[60px]"></div>
+<p class="text-[10px] font-black tracking-[0.2em] text-slate-500 uppercase mb-6">Средний балл проекта</p>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-6xl font-black text-secondary tracking-tighter">8.0</span>
+<span class="text-slate-500 font-bold text-lg">/ 9.0</span>
+</div>
+<div class="space-y-4 mt-8">
+<div>
+<div class="flex justify-between text-[10px] font-bold uppercase mb-1">
+<span class="text-slate-300">Соответствие ТЗ</span>
+<span class="text-secondary">92%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-lowest rounded-full">
+<div class="h-full bg-secondary rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-bold uppercase mb-1">
+<span class="text-slate-300">Креативность</span>
+<span class="text-primary">78%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-lowest rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 rounded-xl border border-white/5 hover:bg-white/5 transition-all text-xs font-bold tracking-widest text-on-surface uppercase group flex items-center justify-center gap-2">
+                            Скачать подробный отчет
+                            <span class="material-symbols-outlined text-sm group-hover:translate-y-0.5 transition-transform">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- System Alerts / Bottom Log -->
+<div class="mt-8 flex gap-4 overflow-x-auto pb-4">
+<div class="flex-shrink-0 liquid-glass rounded-lg px-4 py-3 flex items-center gap-3 border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary text-sm">info</span>
+<span class="text-xs font-medium text-slate-300">Все эксперты подключены к сессии</span>
+</div>
+<div class="flex-shrink-0 liquid-glass rounded-lg px-4 py-3 flex items-center gap-3 border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary text-sm">history</span>
+<span class="text-xs font-medium text-slate-300">Последнее изменение: Жюри 3 обновил оценку за "Дизайн"</span>
+</div>
+<div class="flex-shrink-0 liquid-glass rounded-lg px-4 py-3 flex items-center gap-3 border-l-4 border-slate-500">
+<span class="material-symbols-outlined text-slate-500 text-sm">shield</span>
+<span class="text-xs font-medium text-slate-300">Защищенное соединение активно</span>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-primary to-secondary-container text-on-primary rounded-full shadow-[0_10px_40px_rgba(4,221,131,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>
