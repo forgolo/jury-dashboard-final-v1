@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Liquid Intelligence | Expert Evaluation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#59ffa4",
+                    "surface-container": "#0d2b21",
+                    "primary-fixed": "#bbe9ff",
+                    "surface-container-lowest": "#05120e",
+                    "primary-container": "#34cdfe",
+                    "error": "#ffb4ab",
+                    "surface": "#0a1f18",
+                    "inverse-on-surface": "#2b313a",
+                    "outline": "#869399",
+                    "tertiary": "#d1d8ff",
+                    "inverse-primary": "#006782",
+                    "on-secondary-fixed-variant": "#00522d",
+                    "tertiary-container": "#acbbff",
+                    "secondary": "#46fa9c",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#004d63",
+                    "surface-bright": "#223d34",
+                    "on-background": "#ffffff",
+                    "on-surface": "#ffffff",
+                    "secondary-container": "#04dd83",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#001452",
+                    "primary": "#a4e3ff",
+                    "primary-fixed-dim": "#60d4ff",
+                    "on-primary-container": "#00546b",
+                    "outline-variant": "#3d484e",
+                    "on-secondary-fixed": "#00210f",
+                    "surface-dim": "#0a1f18",
+                    "on-tertiary-container": "#003dc5",
+                    "surface-variant": "#122b23",
+                    "secondary-fixed-dim": "#1ce388",
+                    "on-tertiary": "#002683",
+                    "error-container": "#93000a",
+                    "surface-tint": "#60d4ff",
+                    "on-primary": "#003545",
+                    "on-secondary": "#00391d",
+                    "on-tertiary-fixed-variant": "#0038b7",
+                    "tertiary-fixed": "#dde1ff",
+                    "on-secondary-container": "#005b33",
+                    "surface-container-highest": "#28443a",
+                    "surface-container-low": "#0e251e",
+                    "surface-container-high": "#1a362c",
+                    "inverse-surface": "#dde2f0",
+                    "background": "#020f0a",
+                    "tertiary-fixed-dim": "#b7c4ff",
+                    "on-surface-variant": "#cbd5e1",
+                    "on-primary-fixed": "#001f29"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+        background-color: #0d3b26;
+        background-image: linear-gradient(135deg, #020f0a 0%, #1ce388 100%);
+        background-attachment: fixed;
+        position: relative;
+        min-height: 100vh;
+    }
+    .industrial-patterns {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+    .pattern-mesh {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(0, 33, 15, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 33, 15, 0.15) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+    .pattern-circuit {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30 M70 10 L90 10 L90 30 M10 90 L30 90 L30 70 M70 90 L90 90 L90 70 M50 10 L50 40 M10 50 L40 50 M90 50 L60 50 M50 90 L50 60' stroke='rgba(0, 33, 15, 0.1)' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(0, 33, 15, 0.1)'/%3E%3C/svg%3E");
+        background-size: 300px 300px;
+    }
+    .radial-glows {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120%;
+        height: 120%;
+        background: radial-gradient(circle at center, rgba(13, 59, 38, 0.3) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: -1;
+    }
+    .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(https://grainy-gradients.vercel.app/noise.svg);
+        opacity: 0.05;
+        filter: contrast(120%) brightness(100%);
+        pointer-events: none;
+        z-index: 100;
+    }
+    .folder-tab-active {
+        clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+    }
+    .folder-tab-inactive {
+        clip-path: polygon(5% 0, 95% 0, 100% 100%, 0% 100%);
+    }
+    .glass-panel {
+        background: rgba(13, 43, 33, 0.75);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .neon-glow {
+        box-shadow: 0 0 20px rgba(70, 250, 156, 0.2);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased selection:bg-secondary/30">
+<div class="industrial-patterns">
+<div class="pattern-mesh"></div>
+<div class="pattern-circuit"></div>
+<div class="radial-glows"></div>
+</div>
+<div class="noise-overlay"></div>
+<!-- Shared Component: TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
+<div class="flex justify-between items-center px-8 h-16 w-full max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#a4e3ff]">Liquid Intelligence</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-300 hover:text-white transition-colors" href="#">Панель управления</a>
+<a class="text-[#a4e3ff] border-b-2 border-[#a4e3ff] pb-1" href="#">Оценки</a>
+<a class="text-slate-300 hover:text-white transition-colors" href="#">Архив</a>
+<a class="text-slate-300 hover:text-white transition-colors" href="#">Инсайты</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-300 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-300 hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="Jury Member Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDbNLK8ssNNGJ_kUd-IzzrUD3SMYmDw-2Rqmb3luCtsSbsTk4Jyke-e9Fb4ElXHcuk0kede47SQlwbP7adEbuwWunJEcFt_wNYoqAnZN8bQ86orm-A9A2yv-1D8l9GCYoPjCLO4fHi0AhKiWihEDyhcFmlTQZU6Y1Q4DLRoBfCFnswbQuqZtdjDWbYBv5TzR-vkIUDJLZInkrRLC9os8mMYAZpDSNkACdpbGJlYr92NvIzQImwzFEHU0xucXFF3PjgWV62x0I2iFg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-8 max-w-7xl mx-auto">
+<!-- Project Tabs -->
+<div class="flex items-end gap-1 px-4 mb-[-1px] relative z-10 overflow-x-auto no-scrollbar">
+<!-- Active tab color matches the glass-panel background exactly -->
+<div class="folder-tab-active bg-[#0d2b21]/75 backdrop-blur-2xl px-10 py-3 text-[#a4e3ff] font-bold whitespace-nowrap cursor-default border-t border-l border-r border-white/15">
+                Project Alpha
+            </div>
+<div class="folder-tab-inactive bg-black/40 hover:bg-black/60 px-8 py-2 text-slate-300 backdrop-blur-md transition-all cursor-pointer whitespace-nowrap border-t border-l border-r border-white/10">
+                Beta Grid
+            </div>
+<div class="folder-tab-inactive bg-black/40 hover:bg-black/60 px-8 py-2 text-slate-300 backdrop-blur-md transition-all cursor-pointer whitespace-nowrap border-t border-l border-r border-white/10">
+                Gamma Core
+            </div>
+<div class="folder-tab-inactive bg-black/40 hover:bg-black/60 px-8 py-2 text-slate-300 backdrop-blur-md transition-all cursor-pointer whitespace-nowrap border-t border-l border-r border-white/10">
+                Delta Flow
+            </div>
+<div class="folder-tab-inactive bg-black/40 hover:bg-black/60 px-8 py-2 text-slate-300 backdrop-blur-md transition-all cursor-pointer whitespace-nowrap border-t border-l border-r border-white/10">
+                Epsilon Lab
+            </div>
+<div class="folder-tab-inactive bg-black/40 hover:bg-black/60 px-8 py-2 text-slate-300 backdrop-blur-md transition-all cursor-pointer whitespace-nowrap border-t border-l border-r border-white/10">
+                Zeta Node
+            </div>
+</div>
+<!-- Project Description Block -->
+<section class="glass-panel rounded-b-xl rounded-tr-xl p-10 mb-12 relative">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8">
+<div class="flex-1 space-y-4">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-white uppercase italic">
+                        Project Alpha: <span class="text-secondary">EcoFlow Systems</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-3xl leading-relaxed font-medium">
+                        Инновационная система интеллектуального управления водными ресурсами на промышленных предприятиях. 
+                        Решение использует нейронные сети для прогнозирования потребления и минимизации углеродного следа через оптимизацию циклов охлаждения.
+                    </p>
+</div>
+<div class="flex flex-col gap-3 min-w-[240px]">
+<button class="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-secondary/15 border border-secondary/30 text-secondary hover:bg-secondary hover:text-on-secondary transition-all font-semibold active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+                        Команда
+                    </button>
+<button class="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-secondary/15 border border-secondary/30 text-secondary hover:bg-secondary hover:text-on-secondary transition-all font-semibold active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+                        Материалы проекта
+                    </button>
+</div>
+</div>
+</section>
+<!-- Evaluation Grid -->
+<div class="grid grid-cols-1 gap-8">
+<!-- 1. Problem Block -->
+<div class="glass-panel rounded-xl p-8 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6">
+<div class="w-full md:w-1/3 flex flex-col gap-4">
+<label class="text-xs uppercase tracking-widest text-secondary font-bold">Актуальность проблемы</label>
+<div class="flex gap-3">
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">0</button>
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">1</button>
+<button class="w-14 h-14 rounded-lg bg-primary-container border border-primary-container flex items-center justify-center text-on-primary-container font-bold shadow-lg scale-105">2</button>
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-secondary/40 flex items-center justify-center text-secondary hover:bg-secondary hover:text-on-secondary transition-all hover:scale-110 neon-glow">3</button>
+</div>
+</div>
+<div class="flex-1 bg-white/5 rounded-xl p-6 border-l-4 border-primary">
+<h3 class="text-white font-bold mb-2">Критерии оценки</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-medium">
+                            Оцените, насколько четко сформулирована проблема, ее масштаб и влияние на индустрию. Проект должен демонстрировать глубокое понимание текущих рыночных ограничений.
+                        </p>
+</div>
+</div>
+<div class="w-full">
+<textarea class="w-full bg-black/50 border border-white/10 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-xl p-4 text-white placeholder:text-slate-500 min-h-[100px] transition-all" placeholder="Комментарий и пояснение к оценке..."></textarea>
+</div>
+</div>
+<!-- 2. Technology Block -->
+<div class="glass-panel rounded-xl p-8 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6">
+<div class="w-full md:w-1/3 flex flex-col gap-4">
+<label class="text-xs uppercase tracking-widest text-secondary font-bold">Технологическая новизна</label>
+<div class="flex gap-3">
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">0</button>
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">1</button>
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">2</button>
+<button class="w-14 h-14 rounded-lg bg-secondary-container border border-secondary-container flex items-center justify-center text-on-secondary-container font-bold shadow-lg scale-105 neon-glow">3</button>
+</div>
+</div>
+<div class="flex-1 bg-white/5 rounded-xl p-6 border-l-4 border-secondary">
+<h3 class="text-white font-bold mb-2">Критерии оценки</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-medium">
+                            Уровень инновационности предлагаемого решения. Преимущество отдается проектам, использующим прорывные технологии или уникальные комбинации существующих методов.
+                        </p>
+</div>
+</div>
+<div class="w-full">
+<textarea class="w-full bg-black/50 border border-white/10 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-xl p-4 text-white placeholder:text-slate-500 min-h-[100px] transition-all" placeholder="Комментарий и пояснение к оценке..."></textarea>
+</div>
+</div>
+<!-- 3. Economy Block -->
+<div class="glass-panel rounded-xl p-8 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6">
+<div class="w-full md:w-1/3 flex flex-col gap-4">
+<label class="text-xs uppercase tracking-widest text-secondary font-bold">Экономическая модель</label>
+<div class="flex gap-3">
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">0</button>
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">1</button>
+<button class="w-14 h-14 rounded-lg bg-primary-container border border-primary-container flex items-center justify-center text-on-primary-container font-bold shadow-lg scale-105">2</button>
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">3</button>
+</div>
+</div>
+<div class="flex-1 bg-white/5 rounded-xl p-6 border-l-4 border-primary">
+<h3 class="text-white font-bold mb-2">Критерии оценки</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-medium">
+                            Устойчивость бизнес-модели, потенциал масштабирования и сроки окупаемости. Оцените реалистичность финансовых прогнозов и стратегию выхода на рынок.
+                        </p>
+</div>
+</div>
+<div class="w-full">
+<textarea class="w-full bg-black/50 border border-white/10 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-xl p-4 text-white placeholder:text-slate-500 min-h-[100px] transition-all" placeholder="Комментарий и пояснение к оценке..."></textarea>
+</div>
+</div>
+<!-- 4. Pitch Block -->
+<div class="glass-panel rounded-xl p-8 flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6">
+<div class="w-full md:w-1/3 flex flex-col gap-4">
+<label class="text-xs uppercase tracking-widest text-secondary font-bold">Качество презентации</label>
+<div class="flex gap-3">
+<button class="w-14 h-14 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-slate-300 hover:border-secondary transition-all hover:scale-110">0</button>
+<button class="w-14 h-14 rounded-lg bg-secondary-container border border-secondary-container flex items-center justify-center text-on-secondary-container font-bold shadow-lg scale-105 neon-glow">1</button>
+</div>
+</div>
+<div class="flex-1 bg-white/5 rounded-xl p-6 border-l-4 border-secondary">
+<h3 class="text-white font-bold mb-2">Критерии оценки</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-medium">
+                            Убедительность выступления, ответы на вопросы, качество визуальных материалов. Способность команды "продать" свою идею экспертной комиссии.
+                        </p>
+</div>
+</div>
+<div class="w-full">
+<textarea class="w-full bg-black/50 border border-white/10 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-xl p-4 text-white placeholder:text-slate-500 min-h-[100px] transition-all" placeholder="Комментарий и пояснение к оценке..."></textarea>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Action -->
+<footer class="fixed bottom-0 left-0 w-full p-6 bg-black/40 backdrop-blur-3xl border-t border-white/15 z-40">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex gap-8 items-center">
+<div class="flex flex-col">
+<span class="text-xs text-slate-300 uppercase tracking-tighter font-bold">Текущий балл</span>
+<span class="text-2xl font-black text-white italic">08 <span class="text-secondary">/ 10</span></span>
+</div>
+<div class="w-48 h-2 bg-white/15 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[80%]"></div>
+</div>
+</div>
+<button class="bg-gradient-to-br from-secondary to-secondary-container text-on-secondary px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 hover:shadow-[0_0_30px_rgba(70,250,156,0.4)] transition-all active:scale-95 flex items-center gap-3">
+                Завершить оценку
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</button>
+</div>
+</footer>
+</body></html>
