@@ -48,1538 +48,1437 @@ main{padding-top:var(--hh)}
 .flbl{display:block;font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.7px;color:var(--txm);margin-bottom:6px}
 .finp{width:100%;padding:9px 13px;background:var(--s2);border:1.5px solid var(--br);border-radius:var(--r12);color:var(--tx);font:14px/1.4 var(--fn);outline:none;transition:border .2s,box-shadow .2s}
 .finp:focus{border-color:var(--grn);box-shadow:0 0 0 3px var(--grnd)}.finp::placeholder{color:var(--txs)}
-51: textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size:12px;border-radius:var(--r8)}
-52: .fgrp{margin-bottom:12px}.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-53: .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:var(--r12);font:600 13px/1 var(--fn);cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;padding:9px 17px}
-54: .btn:disabled{opacity:.45;pointer-events:none}
-55: .btn-p{background:linear-gradient(135deg,#21A038,#18882C);color:#fff;box-shadow:0 4px 14px rgba(33,160,56,0.3);font-weight:700;letter-spacing:0.3px;}
-56: .btn-p:hover{filter:brightness(1.1);transform:translateY(-1px)}
-57: .btn-s{background:var(--s2);border:1px solid var(--br2);color:var(--tx)}.btn-s:hover{background:var(--s3)}
-58: .btn-d{background:transparent;border:1px solid var(--red);color:var(--red)}.btn-d:hover{background:var(--redd)}
-59: .btn-g{background:transparent;border:none;color:var(--txm);font:600 12px/1 var(--fn);padding:4px 6px}.btn-g:hover{color:var(--tx)}
-60: .btn-lg{padding:13px 26px;font-size:15px;border-radius:var(--r16)}
-61: .btn-sm{padding:5px 12px;font-size:12px;border-radius:var(--r8)}
-62: .btn-xs{padding:3px 8px;font-size:11px;border-radius:6px}
-63: .btn-ic{width:32px;height:32px;padding:0;border-radius:var(--r8);font-size:14px}
-64: .badd{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r12);border:1.5px dashed var(--br2);background:transparent;color:var(--txm);font:600 12px/1 var(--fn);cursor:pointer;transition:all .2s}
-65: .badd:hover{border-color:var(--grn);color:var(--grn);background:var(--grnd)}
-66: .div{height:1px;background:var(--br);margin:14px 0}
-67: .alrt{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:var(--r12);font-size:13px;margin-bottom:12px;line-height:1.5}
-68: .alrt-i{background:var(--blud);border:1px solid rgba(59,130,246,.25);color:var(--blu)}
-69: .alrt-w{background:var(--yeld);border:1px solid rgba(240,168,51,.3);color:var(--yel)}
-70: .alrt-e{background:var(--redd);border:1px solid rgba(232,69,69,.3);color:var(--red)}
-71: .shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
-72: .shd-t{font:700 13px/1 var(--fn)}
-73: /* Firebase setup */
-74: .fbwrap{max-width:640px;margin:0 auto;padding:32px 0}
-75: .fbwrap-icon{font-size:52px;text-align:center;margin-bottom:16px}
-76: .fbwrap h2{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;text-align:center;margin-bottom:6px}
-77: .fbwrap-sub{text-align:center;color:var(--txm);font-size:13px;margin-bottom:28px}
-78: .fbsteps{display:flex;flex-direction:column;gap:0;margin-bottom:20px}
-79: .fbstep{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--br)}
-80: .fbstep:last-child{border-bottom:none}
-81: .fbstep-n{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--grn),#168028);color:#fff;font:800 13px/1 var(--fn);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px var(--grng)}
-82: .fbstep-t{font:700 13px/1 var(--fn);margin-bottom:3px}
-83: .fbstep-s{font:400 12px/1.5 var(--fn);color:var(--txm)}.fbstep-s a{color:var(--blu);text-decoration:none}.fbstep-s a:hover{text-decoration:underline}
-84: /* Setup grid */
-85: .setup-grid{display:grid;grid-template-columns:1fr 350px;gap:18px;align-items:start}
-86: @media(max-width:800px){.setup-grid{grid-template-columns:1fr}}
-87: .pjcard{background:var(--s);border:1.5px solid var(--br);border-radius:var(--r16);overflow:hidden;margin-bottom:10px;transition:border-color .2s}
-88: .pjcard:hover{border-color:var(--br2)}.pjcard.open{border-color:rgba(33,160,56,.35)}
-89: .pjcard-hd{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;user-select:none}
-90: .pjcard-num{width:30px;height:30px;border-radius:var(--r8);background:var(--s3);color:var(--txm);font:700 13px/1 var(--fn);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
-91: .pjcard.open .pjcard-num{background:var(--grnd);color:var(--grn)}
-92: .pjcard-info{flex:1;min-width:0}.pjcard-name{font:700 13px/1.2 var(--fn);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-93: .pjcard-sub{font:400 11px/1 var(--fn);color:var(--txm);margin-top:3px}
-94: .pjcard-arr{color:var(--txm);font-size:11px;transition:transform .2s}.pjcard.open .pjcard-arr{transform:rotate(180deg)}
-95: .pjcard-body{display:none;padding:14px 16px 16px;border-top:1px solid var(--br)}.pjcard.open .pjcard-body{display:block}
-96: .mtable{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}.td-c{text-align:center;width:80px}
-97: th{background:var(--s2);color:var(--txm);font:700 10px/1.3 var(--fn);text-transform:uppercase;letter-spacing:.3px;padding:10px 6px;text-align:center;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--br);white-space:normal;max-width:90px;word-wrap:break-word}
-98: .mtable td{padding:5px 8px;border-bottom:1px solid var(--br)}.mtable tr:last-child td{border-bottom:none}
-99: .exp-panel{position:sticky;top:calc(var(--hh) + 16px)}
-100: .exp-item{background:var(--s2);border:1px solid var(--br);border-radius:var(--r12);padding:12px 14px;margin-bottom:8px}
-101: .exp-item-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
-102: .exp-link{font:500 11px/1.4 var(--fn);color:var(--blu);word-break:break-all;margin:5px 0;cursor:pointer}.exp-link:hover{text-decoration:underline}
-103: /* Expert screen */
-104: .tabs-bar{display:flex;overflow-x:auto;gap:0;padding:12px 20px 0;background:#050a12;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:var(--hh);z-index:100;scrollbar-width:none}
-105: .tabs-bar::-webkit-scrollbar{display:none}
-106: .ptab{padding:12px 20px;border-radius:12px 12px 0 0;border:1px solid rgba(255,255,255,0.1);background:#111;color:var(--txm);font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0;position:relative;top:0;opacity:0.6}
-107: .ptab:hover{background:#1a1a1a;opacity:1}
-108: .ptab.active{background:#0a0f18 !important;color:var(--tx);opacity:1;z-index:110;font-weight:900;border:1px solid rgba(255,255,255,0.2) !important;border-bottom:1px solid #0a0f18 !important;padding:12px 20px 13px;margin-bottom:-1px;box-shadow:none;transform:none}
-109: .ptab.active:not(.done):not(.partial){border-top:2px solid var(--blu) !important}
-110: .ptab.active.done{border-top:2px solid var(--grn) !important}
-111: .ptab.active.partial{border-top:2px solid #f59e0b !important}
-112: /* Color overrides for status tabs - ensuring border matches */
-113: .ptab.partial{background:#1a1408;color:#f59e0b;border:1px solid rgba(245,158,11,0.3) !important}
-114: .ptab.done{background:#061b15;color:var(--grn);border:1px solid rgba(16,185,129,0.3) !important}
-115: .ptab-chk{color:var(--grn);font-size:11px;font-weight:900;margin-left:5px}
-116: .ptab-warn{color:#f59e0b;font-size:11px;font-weight:900;margin-left:5px}
-117: /* Centralized Timer Styles */
-118: .gtimer { position: sticky; top: 132px; z-index: 90; display: flex; align-items: center; gap: 16px; background: rgba(10, 15, 24, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--br); border-radius: var(--r16); padding: 12px 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: all .3s; }
-119: .gtimer-info { display: flex; align-items: center; gap: 12px; }
-120: .gtimer-lbl { font: 700 10px/1 var(--fn); text-transform: uppercase; letter-spacing: 1.2px; color: var(--txm); }
-121: .gtimer-status { font: 800 13px/1 var(--fn); padding: 5px 12px; border-radius: 100px; background: rgba(16,185,129,0.1); color: var(--grn); border: 1px solid rgba(16,185,129,0.2); }
-122: .gtimer-status.discussion { color: #3B82F6; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); }
-123: .gtimer-status.overtime { color: var(--red); background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); animation: tpulse 1s ease infinite; }
-124: .gtimer-val { font: 900 38px/1 var(--fn); font-variant-numeric: tabular-nums; margin-left: auto; letter-spacing: -1px; }
-125: .gtimer-val.red { color: var(--red); }
-126: .timer-ctrl-card { border: 2px solid var(--grn) !important; background: rgba(16,185,129,0.03); }
-127: .exp-body{padding:20px 22px 90px;background:#0a0f18;min-height:calc(100vh - var(--hh) - 60px)}
-128: .pi{background:var(--s);border:1px solid var(--br);border-radius:var(--r20);padding:22px 24px;margin-bottom:14px}
-129: .pi-team{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.7px;color:var(--txm);margin-bottom:5px}
-130: .pi-name{font:900 32px/1.1 var(--fn);letter-spacing:-1px;margin-bottom:16px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-131: .pi-speaker{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:var(--grad-glass);border:1px solid rgba(16,185,129,0.3);border-radius:100px;color:var(--grn);font:700 18px/1 var(--fn);margin-bottom:20px;box-shadow: 0 8px 20px rgba(16,185,129,0.15)}
-132: .pi-speaker::before{content:'';width:10px;height:10px;background:var(--grn);border-radius:50%;box-shadow: 0 0 10px var(--grn);animation:blink 2s infinite}
-133: .pi-desc{font:400 15px/1.65 var(--fn);color:var(--txm);margin-bottom:16px}
-134: .pi-desc.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-135: .pi-links{display:flex;gap:8px;flex-wrap:wrap}
-136: .twrap{background:var(--s);border:1px solid var(--br);border-radius:var(--r16);padding:14px 20px;margin-bottom:14px}
-137: .twrap-hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
-138: .twrap-lbl{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.6px;color:var(--txm)}
-139: .tmini{font:700 14px/1 var(--fn)}.twrap-body{margin-top:14px}
-140: .tdig{font:900 52px/1 var(--fn);letter-spacing:-3px;font-variant-numeric:tabular-nums;transition:color .3s}
-141: .tdig.danger{color:var(--red);animation:tpulse 1s ease infinite}
-142: @keyframes tpulse{0%,100%{opacity:1}50%{opacity:.6}}
-143: .tprog{height:5px;background:var(--s3);border-radius:100px;overflow:hidden;margin:10px 0}
-144: .tprog-f{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--grn),#5BD97A);transition:width 1s linear,background .4s}
-145: .tprog-f.danger{background:linear-gradient(90deg,var(--red),#FF7373)}
-146: .tctrl{display:flex;justify-content:center;gap:8px;margin-top:10px}
-147: .bcard{background:var(--s);border:1px solid var(--br);border-top:1px solid rgba(255,255,255,0.15);border-radius:var(--r16);padding:18px 20px;margin-bottom:12px;transition:all .3s var(--ease);backdrop-filter:blur(16px);position:relative;overflow:hidden;box-shadow:var(--sh2)}
-148: .bcard::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);transition:all .5s}
-149: .bcard:hover::before{left:200%}
-150: .bcard.scored{border-color:var(--grn);box-shadow:0 0 20px rgba(33,160,56,0.1)}
-151: .btop{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-152: .btop-t{display:flex;flex-direction:column;gap:2px}
-153: .btop-t .bnm{font:800 15px/1.2 var(--fn);color:var(--tx);text-transform:uppercase;letter-spacing:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-154: .btop-w{font:800 13px/1 var(--fn);color:var(--tx);background:rgba(255,255,255,0.08);padding:5px 10px;border-radius:20px;letter-spacing:0.5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1)}
-155: .bmain{display:flex;gap:12px;align-items:stretch;margin-bottom:20px;height:180px}
-156: .srow{display:flex;flex-direction:column;gap:8px;width:110px;flex-shrink:0}
-157: .sopt{flex:1;display:flex}
-158: .sopt input{display:none}
-159: .slbl{flex:1;display:flex;align-items:center;justify-content:center;border-radius:var(--r12);background:rgba(255,255,255,0.03);border:1px solid var(--br);cursor:pointer;transition:all .2s var(--ease);user-select:none;font:700 14px/1 var(--fn);color:var(--tx)}
-160: .slbl:hover{background:rgba(255,255,255,0.08);border-color:var(--br2)}
-161: .sopt input:checked+.slbl{background:var(--grad);color:#fff;border:none;box-shadow:0 4px 15px rgba(59,130,246,0.3);transform:scale(1.05);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
-162: .bhint{flex:1;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);padding:14px 18px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px;transition:all .3s var(--ease);opacity:0.4}
-163: .bhint.active{opacity:1;background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
-164: .bhint-txt{font:400 17px/1.5 var(--fn);color:var(--tx);transition:all .2s}
-165: .bsw{width:100px;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
-166: .bsw.active{background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
-167: .bdig{font:900 64px/1 var(--fn);letter-spacing:-3px;color:rgba(255,255,255,0.04);transition:all .3s}
-168: .bdig.active{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.1);filter:drop-shadow(0 0 15px rgba(59,130,246,0.4));text-shadow: 0 0 2px rgba(255,255,255,0.1)}
-169: .bfield{display:flex;flex-direction:column;gap:10px}
-170: .bfield-lbl{font:700 10px/1 var(--fn);text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.6);margin:0}
-171: .bfield-f{width:100%;background:var(--bg);border:none;border-radius:var(--r12);padding:14px;color:var(--tx);font:400 13px/1.5 var(--fn);outline:none;resize:vertical;min-height:75px;transition:all .2s;box-shadow:none}
-172: .bfield-f:focus{background:#131a22}
-173: @media(max-width:640px){
-174:   .bmain{flex-direction:column;height:auto}.srow{width:100%;flex-direction:row}
-175: }
-176: 
-177: .subm-bar{position:fixed;bottom:0;left:0;right:0;background:var(--s);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);padding:14px 24px;display:none;align-items:center;gap:30px;z-index:200;box-shadow:0 -10px 40px rgba(0,0,0,0.5)}
-178: .subm-bar.vis{display:flex}
-179: .subm-prog-wrap{flex:1;display:flex;flex-direction:column;gap:6px}
-180: .subm-prog-hdr{display:flex;justify-content:space-between;align-items:center}
-181: .subm-prog-t{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:0.5px;color:var(--txm)}
-182: .subm-prog-v{font:800 13px/1 var(--fn);color:var(--grn)}
-183: .subm-prog-bar{height:8px;background:rgba(255,255,255,0.05);border-radius:10px;overflow:hidden;border:1px solid var(--br)}
-184: .subm-prog-fill{height:100%;background:var(--grad);width:0%;transition:width 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 0 15px rgba(16,185,129,0.3)}
-185: .subm-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:var(--r16);padding:14px 28px;font:800 14px/1 var(--fn);cursor:pointer;transition:all .3s var(--ease);box-shadow:0 8px 25px rgba(16,185,129,0.3);white-space:nowrap;animation:pulse-subm 3s infinite}
-186: @keyframes pulse-subm{0%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}70%{box-shadow:0 0 0 12px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
-187: .subm-btn:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 12px 30px rgba(16,185,129,0.4)}
-188: .subm-btn span{font-size:16px}
-189: .done-scr{text-align:center;padding:72px 24px}
-190: .done-ico{font-size:60px;margin-bottom:18px}.done-t{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;margin-bottom:8px}
-191: .done-s{font:400 14px/1.6 var(--fn);color:var(--txm);margin-bottom:24px}
-192: /* Loading screen */
-193: #scr-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;text-align:center}
-194: .l-ico{font-size:48px;margin-bottom:20px;animation:lspin 1.5s linear infinite}
-195: @keyframes lspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-196: /* Dashboard */
-197: .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-198: .echip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:var(--r12);font:600 12px/1 var(--fn);border:1px solid;transition:all .3s}
-199: .echip.sub{background:var(--grnd);border-color:rgba(33,160,56,.3);color:var(--grn)}
-200: .echip.pend{background:var(--s2);border-color:var(--br2);color:var(--txm)}
-201: .echip-dot{width:7px;height:7px;border-radius:50%}
-202: .echip.sub .echip-dot{background:var(--grn)}.echip.pend .echip-dot{background:var(--txs)}
-203: .twrap-outer{overflow-x:auto;border:1px solid var(--br);border-radius:var(--r16)}
-204: table{width:100%;border-collapse:collapse;font-size:13px}
-205: thead th{background:var(--s2);padding:10px 14px;font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.5px;color:var(--txm);text-align:left;border-bottom:1px solid var(--br);white-space:nowrap}
-206: tbody tr:hover td{background:var(--s2)}tbody tr:last-child td{border-bottom:none}
-207: td{padding:8px 10px;border-bottom:1px solid var(--br);vertical-align:middle}
-208: .td-r{width:36px;font:700 12px/1 var(--fn);color:var(--txm)}.td-r.r1{color:#F5C400}.td-r.r2{color:#A8B0C0}.td-r.r3{color:#BB8540}
-209: .td-nm{font:400 11px/1.2 var(--fn);color:var(--txm);margin-top:2px}.td-sub{font:700 13px/1.2 var(--fn);color:var(--tx)}
-210: .td-c{text-align:center}
-211: .sc{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;border-radius:var(--r8);font:700 12px/1 var(--fn);padding:0 5px}
-212: .sc-n{background:var(--s2);color:var(--txs)}.sc-L{background:var(--redd);color:var(--red)}.sc-M{background:var(--yeld);color:var(--yel)}.sc-H{background:var(--grnd);color:var(--grn)}
-213: .av{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:28px;border-radius:var(--r12);font:800 14px/1 var(--fn);padding:0 8px;border:1px solid}
-214: .av-n{background:var(--s2);border-color:var(--br);color:var(--txs)}.av-L{background:var(--redd);border-color:rgba(232,69,69,.25);color:var(--red)}
-215: .av-M{background:var(--yeld);border-color:rgba(240,168,51,.25);color:var(--yel)}.av-H{background:var(--grnd);border-color:rgba(33,160,56,.25);color:var(--grn)}
-216: .tbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
-217: .tbar-info{font:400 13px/1 var(--fn);color:var(--txm)}.tbar-acts{display:flex;gap:8px}
-218: /* Modals */
-219: .overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:400;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(5px)}
-220: .overlay.vis{display:flex}
-221: .mbox{background:var(--s);border:1px solid var(--br2);border-radius:var(--r20);padding:26px;max-width:580px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:var(--sh3);animation:mshow .3s var(--ease)}
-222: @keyframes mshow{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
-223: .mhd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
-224: .mhd h3{font:800 18px/1.1 var(--fn);letter-spacing:-.3px}
-225: .mclose{width:32px;height:32px;border-radius:var(--r8);border:1px solid var(--br);background:var(--s2);color:var(--txm);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-226: .mclose:hover{background:var(--s3);color:var(--tx)}.macts{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
-227: .toast{position:fixed;bottom:80px;right:22px;background:var(--s);border:1px solid var(--br2);color:var(--tx);padding:10px 16px;border-radius:var(--r12);font:600 13px/1 var(--fn);box-shadow:var(--sh3);z-index:9999;display:flex;align-items:center;gap:8px;animation:si .3s var(--ease);pointer-events:none}
-228: @keyframes si{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-229: @media print {
-230:   @page { size: A4 landscape; margin: 10mm; }
-231:   #hdr,.tabs-bar,.subm-bar,.np,.tbar-acts,.hfb,.thbtn,.ntab,.hnav,.hfb,.hgap,#bg-parallax,.overlay{display:none!important}
-232:   main{padding-top:0!important;background:none!important}
-233:   .scr{display:none!important}
-234:   .scr.active{display:block!important;padding:0!important;max-width:100%!important;margin:0!important}
-235:   body{background:#fff!important;color:#000!important;font-size:10pt;min-height:auto!important}
-236:   .card{border:none!important;box-shadow:none!important;padding:0!important;background:transparent!important}
-237:   .pghd{margin-bottom:10px}.pghd h2{font-size:18pt}
-238:   table{width:100%!important;font-size:9pt!important;border:1px solid #ddd}
-239:   th,td{padding:4px 6px!important;border:1px solid #eee!important}
-240:   .sc,.av{border:1px solid #ccc!important;background:transparent!important;color:#000!important}
-241:   .td-r{width:25px!important}
-242: }
-243: @media(max-width:768px){.exp-body,.scr{padding-left:14px;padding-right:14px}.fg2{grid-template-columns:1fr}}
-244: .mbox-glass { background: rgba(255, 255, 255, 0.94) !important; backdrop-filter: blur(28px) saturate(190%) !important; -webkit-backdrop-filter: blur(28px) saturate(190%) !important; border: 1px solid rgba(255, 255, 255, 0.8) !important; color: #000 !important; box-shadow: 0 25px 80px -15px rgba(0,0,0,0.2) !important; border-radius: 28px !important; }
-245: .mbox-glass .mhd h3 { color: #000 !important; font-size: 22px !important; font-weight: 800 !important; }
-246: .mc-label { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 12px; display: block; }
-247: .mc-item { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #1a1a1a !important; font-weight: 500; line-height: 1.4; }
-248: .mc-item:last-child { border-bottom: none; }
-249: .mc-hint { font-size: 13px; color: #666 !important; margin-top: 16px; line-height: 1.5; }
-250: .btn-glass-cancel { background: rgba(0,0,0,0.05); color: #000; border: 1px solid rgba(0,0,0,0.1); }
-251: .btn-glass-cancel:hover { background: rgba(0,0,0,0.1); }
-252: 
-253: /* Printing & Comment Sheets */
-254: .print-only-container{margin-top:40px}
-255: .print-sheet{background:var(--s2);color:var(--tx);padding:40px;margin-bottom:20px;border:1px solid var(--br);border-radius:var(--r12);box-shadow:var(--sh2);break-after:page}
-256: .print-sheet h2{font-size:22px;border-bottom:2px solid var(--grn);padding-bottom:10px;margin-bottom:14px;text-transform:uppercase}
-257: .ps-expert{margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--br)}
-258: .ps-expert:last-child{border-bottom:none}
-259: .ps-h{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--grn);display:flex;align-items:center;gap:8px}
-260: .ps-crit{margin-bottom:4px;font-size:12px; color:var(--txm)}
-261: .ps-crit strong{color:var(--tx);font-size:10px;text-transform:uppercase;margin-right:5px}
-262: .ps-sum{margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-left:3px solid var(--grn);font-style:italic;font-size:13px;color:var(--tx)}
-263: 
-264: @media print {
-265:   body { background: white !important; color: black !important; padding: 0 !important; margin: 0 !important; }
-266:   .scr-dashboard { background: white !important; display: block !important; padding: 0 !important; margin: 0 !important; }
-267:   .pghd, .chips, .tbar, .tbar-acts, .hnav, header, .nav, .subm-bar, .modal, .btn { display: none !important; }
-268:   
-269:   .twrap-outer { 
-270:     display: block !important; 
-271:     width: 100% !important; 
-272:     border: 1px solid #000 !important; 
-273:     page-break-after: always !important; 
-274:     break-after: page !important;
-275:     margin-bottom: 50px !important;
-276:   }
-277:   table { color: black !important; border-collapse: collapse !important; }
-278:   th, td { border: 1px solid #ddd !important; color: black !important; padding: 6px !important; }
-279:   .sc, .av { background: none !important; border: 1px solid #ccc !important; color: black !important; }
-280: 
-281:   .print-only-container { display: block !important; margin: 0 !important; position: static !important; }
-282:   .print-sheet { 
-283:     background: white !important; 
-284:     color: black !important; 
-285:     margin: 0 !important; 
-286:     border: none !important; 
-287:     box-shadow: none !important; 
-288:     padding: 10px 0 !important; 
-289:     break-after: page !important; 
-290:     page-break-after: always !important; 
-291:   }
-292:   .print-sheet h2 { border-bottom: 2px solid #000 !important; color: black !important; font-size: 18px !important; }
-293:   .ps-h { color: #000 !important; border-bottom: 1px solid #eee !important; font-size: 13px !important; margin-bottom: 4px !important; }
-294:   .ps-crit { color: #333 !important; font-size: 11px !important; }
-295:   .ps-crit strong { color: #000 !important; }
-296:   .ps-sum { background: #f5f5f5 !important; border-left: 3px solid #000 !important; color: #000 !important; font-size: 12px !important; padding: 6px 10px !important; }
-297:   
-298:   .scr:not(.active) { display: none !important; }
-299: }
-300: </style>
-301: </head>
-302: <body>
-303: <input type="file" id="fi-xls" accept=".xlsx,.xls,.csv" style="display:none" onchange="onXLSBulkImport(event)">
-304: 
-305: <header id="hdr">
-306:   <div class="logo" onclick="goHome()">
-307:     <div class="logo-chip">СП'26</div>
-308:     <div>
-309:       <div class="logo-title">Современное предприятие 2026</div>
-310:       <div class="logo-sub">Финальная защита проектов</div>
-311:     </div>
-312:   </div>
-313:   <div class="hgap"></div>
-314:   <div id="hbadge" class="hbadge" style="display:none"><div class="hbdot"></div><span id="hbadge-txt"></span></div>
-315:   <nav id="hnav" class="hnav" style="display:none">
-316:     <button class="ntab" id="nt-setup" onclick="goSetup()">⚙️ Настройка</button>
-317:     <button class="ntab" id="nt-dash" onclick="goDash()">📊 Дашборд</button>
-318:   </nav>
-319:   <div class="hfb" id="hfb" onclick="showFBModal()">
-320:     <div class="hfb-dot loading" id="hfb-dot"></div>
-321:     <span id="hfb-txt">Firebase…</span>
-322:   </div>
-323:   <button class="thbtn" id="thbtn" onclick="toggleTheme()">🌙</button>
-324: </header>
-325: 
-326: <main>
-327: <!-- SCREEN: Loading -->
-328: <div class="scr active" id="scr-loading">
-329:   <div class="l-ico">⚙️</div>
-330:   <div style="font:800 18px var(--fn);margin-bottom:6px">Загрузка системы…</div>
-331:   <div style="font-size:13px;color:var(--txm)">Пожалуйста, подождите</div>
-332: </div>
-333: 
-334: <!-- SCREEN: Welcome -->
-335: <div class="scr" id="scr-welcome">
-336:   <div class="pghd">
-337:     <h2>👋 Добро пожаловать</h2>
-338:     <p>Система защит проектов · Апрель 2026</p>
-339:   </div>
-340:   <div style="max-width:480px; margin:0 auto">
-341:     <div class="card" style="text-align:center">
-342:       <div style="font-size:48px; margin-bottom:20px">🔐</div>
-343:       <div class="fgrp">
-344:         <label class="flbl">Введите PIN организатора</label>
-345:         <input type="password" id="pin-inp" class="finp" placeholder="••••" style="text-align:center; font-size:24px; letter-spacing:8px">
-346:       </div>
-347:       <button class="btn btn-p btn-lg" style="width:100%" onclick="checkPin()">Войти в управление</button>
-348:       <p style="font-size:12px; color:var(--txm); margin-top:16px">Для экспертов используйте прямые ссылки</p>
-349:     </div>
-350:   </div>
-351: </div>
-352: 
-353: <!-- SCREEN: Firebase Setup -->
-354: <div class="scr" id="scr-firebase">
-355:   <div class="fbwrap">
-356:     <div class="fbwrap-icon">🔥</div>
-357:     <h2>Подключение Firebase</h2>
-358:     <p class="fbwrap-sub">Для синхронизации оценок между устройствами нужна база данных Firebase. Это бесплатно.</p>
-359:     <div class="card card-sm" style="margin-bottom:18px">
-360:       <div class="fbsteps">
-361:         <div class="fbstep"><div class="fbstep-n">1</div><div><div class="fbstep-t">Создайте Firebase-проект</div><div class="fbstep-s">Перейдите на <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a> → «Добавить проект» → название → отключите Analytics → «Создать»</div></div></div>
-362:         <div class="fbstep"><div class="fbstep-n">2</div><div><div class="fbstep-t">Создайте Realtime Database</div><div class="fbstep-s">Левое меню: «Сборка» → «Realtime Database» → «Создать базу данных» → выберите регион → <strong>«Начать в тестовом режиме»</strong> → «Включить»</div></div></div>
-363:         <div class="fbstep"><div class="fbstep-n">3</div><div><div class="fbstep-t">Скопируйте конфигурацию</div><div class="fbstep-s">Шестерёнка → «Настройки проекта» → «Ваши приложения» → «Добавить приложение» → Веб (</>) → придумайте псевдоним → «Зарегистрировать» → вкладка «JSON» → скопируйте объект <code>firebaseConfig</code></div></div></div>
-364:         <div class="fbstep"><div class="fbstep-n">4</div><div><div class="fbstep-t">Вставьте конфигурацию ниже</div><div class="fbstep-s">Нажмите «Подключить» — конфигурация сохранится в браузере</div></div></div>
-365:       </div>
-366:     </div>
-367:     <div class="card card-sm">
-368:       <div class="fgrp"><label class="flbl">Firebase Config (JSON)</label>
-369:         <textarea class="finp" id="fb-inp" rows="9" placeholder='{
-370:   "apiKey": "AIza...",
-371:   "authDomain": "my-project.firebaseapp.com",
-372:   "databaseURL": "https://my-project-default-rtdb.firebaseio.com",
-373:   "projectId": "my-project",
-374:   "storageBucket": "my-project.appspot.com",
-375:   "messagingSenderId": "123456",
-376:   "appId": "1:123..."
-377: }'></textarea></div>
-378:       <div id="fb-err" class="alrt alrt-e" style="display:none"></div>
-379:       <button class="btn btn-p btn-lg" style="width:100%" onclick="connectFirebase()">🔥 Подключить Firebase</button>
-380:     </div>
-381:   </div>
-382: </div>
-383: 
-384: <!-- SCREEN: Setup (Coordinator) -->
-385: <div class="scr" id="scr-setup">
-386:   <div class="pghd"><h2>⚙️ Настройка сессии</h2><p>Защита проектов 16.04.2026 · Заполните данные и сгенерируйте ссылки для экспертов</p></div>
-387:   <div class="card card-sm" style="margin-bottom:18px">
-388:     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-389:       <div>
-390:         <div style="font:700 13px/1 var(--fn);margin-bottom:3px">📊 Импорт всех участников из XLS/Excel</div>
-391:         <div style="font:400 11px/1.4 var(--fn);color:var(--txm)">Формат: <strong>Группа №</strong> | ФИО | Организация | Должность · «Группа №» должна совпадать с полем в карточке проекта</div>
-392:       </div>
-393:       <div style="display:flex;gap:8px">
-394:         <button class="btn btn-s btn-sm" onclick="dlXLSTemplate()">📥 Шаблон XLS</button>
-395:         <button class="btn btn-p btn-sm" onclick="G('fi-xls').click()">📊 Импорт XLS</button>
-396:       </div>
-397:     </div>
-398:   </div>
-399:   <div class="setup-grid">
-400:     <div>
-401:       <div class="shd"><div class="shd-t">🏢 Проекты и команды</div><button class="btn btn-p btn-sm" onclick="addProject()">＋ Добавить проект</button></div>
-402:       <div id="proj-list"><div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div></div>
-403:     </div>
-404:     <div class="exp-panel">
-405:       <div class="card card-sm timer-ctrl-card" style="margin-bottom: 18px;">
-406:         <div class="shd" style="margin-bottom:12px"><div class="shd-t">⏱ Управление таймером</div></div>
-407:         <div id="c-timer-display" style="text-align:center; padding:10px 0;">
-408:           <div id="c-timer-val" style="font:900 42px/1 var(--fn); margin-bottom:4px;">12:00</div>
-409:           <div id="c-timer-status" style="font:700 12px var(--fn); color:var(--txm); text-transform:uppercase;">Таймер остановлен</div>
-410:         </div>
-411:         <div style="display:flex; gap:8px; margin-top:10px;">
-412:           <button class="btn btn-p btn-sm" id="btn-c-start" style="flex:1" onclick="remoteTimerStart()">▶ Запустить для всех</button>
-413:           <button class="btn btn-d btn-sm" id="btn-c-stop" style="flex:1; display:none" onclick="remoteTimerStop()">🛑 Стоп</button>
-414:           <button class="btn btn-s btn-sm" onclick="remoteTimerReset()">↺ Сброс</button>
-415:         </div>
-416:       </div>
-417:       <div class="card card-sm" style="margin-bottom: 18px;">
-418:         <div class="shd" style="margin-bottom:12px"><div class="shd-t">⚙️ Настройки отображения</div></div>
-419:         <label style="display:flex; align-items:center; gap:12px; cursor:pointer; user-select:none;">
-420:           <input type="checkbox" id="set-show-members" style="width:20px; height:20px; cursor:pointer" onchange="saveCfgToFB()">
-421:           <span style="font:600 13px var(--fn); color:var(--tx)">Показывать экспертам состав команд</span>
-422:         </label>
-423:       </div>
-424:       <div class="card card-sm">
-425:         <div class="shd" style="margin-bottom:14px"><div class="shd-t">👥 Эксперты</div><button class="badd" onclick="addExpert()">＋ Добавить</button></div>
-426:         <div id="experts-list"><div style="font:400 12px/1 var(--fn);color:var(--txm);padding:8px 0">Нет экспертов</div></div>
-427:         <div class="div"></div>
-428:         <div style="display:flex;gap:8px;flex-wrap:wrap">
-429:           <button class="btn btn-s btn-sm" onclick="saveCfgToFB()">☁️ Сохранить в Firebase</button>
-430:           <button class="btn btn-s btn-sm" onclick="saveCfgLocal()">💾 Локально</button>
-431:           <button class="btn btn-d btn-sm" onclick="resetAllScores()" style="margin-left:auto">🧹 Сбросить всё</button>
-432:         </div>
-433:         <div id="save-hint" style="font-size:11px;color:var(--txm);margin-top:8px"></div>
-434:       </div>
-435:     </div>
-436:   </div>
-437: </div>
-438: 
-439: <!-- SCREEN: Expert Scoring -->
-440: <div class="scr" id="scr-expert">
-441:   <div class="tabs-bar np" id="ptabs"></div>
-442:   <div class="exp-body" id="exp-body">
-443:     <div class="gtimer" id="gtimer">
-444:       <div class="gtimer-info">
-445:         <div class="gtimer-lbl" id="gt-lbl">Общий таймер</div>
-446:         <div class="gtimer-status" id="gtimer-status">Ожидание…</div>
-447:       </div>
-448:       <div class="gtimer-val" id="gtimer-val">12:00</div>
-449:     </div>
-450:     <div class="pi" id="pi">
-451:       <div class="pi-team" id="pi-team"></div>
-452:       <div class="pi-name" id="pi-name"></div>
-453:       <div style="margin-bottom: 14px; font: 700 16px/1 var(--fn); color: var(--txm);">Выступает: <span id="pi-speaker-plain" style="color: var(--grn);"></span></div>
-454:       <div class="pi-desc clamp" id="pi-desc"></div>
-455:       <button class="btn-g" id="pi-expand" onclick="expandDesc()" style="font-size:12px;margin:4px 0 10px;display:none">▼ Показать полностью</button>
-456:       <div class="pi-links" id="pi-links"></div>
-457:     </div>
-458:     <div class="bcard" id="bc-b1">
-459:       <div class="btop">
-460:         <div class="btop-t"><div class="bnm" style="color:var(--grn)">1. ПРОБЛЕМА</div></div>
-461:         <div class="btop-w">ВЕС: 25%</div>
-462:       </div>
-463:       <div class="bmain">
-464:         <div class="srow" id="row-b1"></div>
-465:         <div class="bhint" id="hint-b1"><div class="bhint-txt" id="htxt-b1">Выберите балл слева для отображения критерия...</div></div>
-466:         <div class="bsw" id="sw-b1"><div class="bdig" id="ds-b1">—</div></div>
-467:       </div>
-468:       <div class="bfield">
-469:         <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
-470:         <textarea class="bfield-f" id="comm-b1" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b1')"></textarea>
-471:       </div>
-472:     </div>
-473:     <div class="bcard" id="bc-b2">
-474:       <div class="btop">
-475:         <div class="btop-t"><div class="bnm">2. ТЕХНОЛОГИИ</div></div>
-476:         <div class="btop-w">ВЕС: 30%</div>
-477:       </div>
-478:       <div class="bmain">
-479:         <div class="srow" id="row-b2"></div>
-480:         <div class="bhint" id="hint-b2"><div class="bhint-txt" id="htxt-b2">Выберите балл слева...</div></div>
-481:         <div class="bsw" id="sw-b2"><div class="bdig" id="ds-b2">—</div></div>
-482:       </div>
-483:       <div class="bfield">
-484:         <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
-485:         <textarea class="bfield-f" id="comm-b2" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b2')"></textarea>
-486:       </div>
-487:     </div>
-488:     <div class="bcard" id="bc-b3">
-489:       <div class="btop">
-490:         <div class="btop-t"><div class="bnm">3. ЭКОНОМИКА</div></div>
-491:         <div class="btop-w">ВЕС: 25%</div>
-492:       </div>
-493:       <div class="bmain">
-494:         <div class="srow" id="row-b3"></div>
-495:         <div class="bhint" id="hint-b3"><div class="bhint-txt" id="htxt-b3">Выберите балл слева...</div></div>
-496:         <div class="bsw" id="sw-b3"><div class="bdig" id="ds-b3">—</div></div>
-497:       </div>
-498:       <div class="bfield">
-499:         <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
-500:         <textarea class="bfield-f" id="comm-b3" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b3')"></textarea>
-501:       </div>
-502:     </div>
-503:     <div class="bcard" id="bc-b4">
-504:       <div class="btop">
-505:         <div class="btop-t"><div class="bnm" style="color:var(--red)">4. ПИТЧ</div></div>
-506:         <div class="btop-w">ВЕС: 20%</div>
-507:       </div>
-508:       <div class="bmain">
-509:         <div class="srow" id="row-b4"></div>
-510:         <div class="bhint" id="hint-b4"><div class="bhint-txt" id="htxt-b4">Выберите балл слева...</div></div>
-511:         <div class="bsw" id="sw-b4"><div class="bdig" id="ds-b4">—</div></div>
-512:       </div>
-513:       <div class="bfield">
-514:         <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
-515:         <textarea class="bfield-f" id="comm-b4" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b4')"></textarea>
-516:       </div>
-517:     </div>
-518:     <div class="bcard">
-519:       <div class="btop" style="margin-bottom:12px">
-520:         <div>
-521:           <div class="bey" style="background:var(--grn); color:#000; padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:8px">ВАША ОБРАТНАЯ СВЯЗЬ</div>
-522:           <div class="bnm" style="font-size:18px; line-height:1.3; color:var(--grn); font-weight:800; text-shadow: 0 0 20px rgba(0,255,153,0.3)">Ваши комментарии очень ценны и важны для группы, поддержите участников содержательной обратной связью</div>
-523:         </div>
-524:       </div>
-525:       <textarea class="finp" id="comment-f" placeholder="Общее мнение по проекту в целом..." rows="3" oninput="saveComment()"></textarea>
-526:     </div>
-527:   </div>
-528:   <div class="done-scr" id="done-scr" style="display:none">
-529:     <div class="done-ico">✅</div>
-530:     <div class="done-t">Оценки отправлены!</div>
-531:     <div class="done-s" id="done-s">Спасибо за работу</div>
-532:     <div style="margin-top:20px; display:flex; gap:10px; justify-content:center">
-533:       <button class="btn btn-p" onclick="continueWork()">▶ Продолжить работу</button>
-534:       <button class="btn btn-s" onclick="undoSubmit()">↩ Изменить оценки</button>
-535:     </div>
-536:   </div>
-537: </div>
-538: 
-539: <!-- SCREEN: Dashboard -->
-540: <div class="scr" id="scr-dashboard">
-541:   <div class="pghd"><h2>📊 Дашборд организатора</h2><p>Результаты обновляются в реальном времени через Firebase</p></div>
-542:   <div class="gtimer" id="gtimer-dash" style="margin-bottom: 24px; cursor: pointer" onclick="goSetup()">
-543:       <div class="gtimer-info">
-544:         <div class="gtimer-lbl">Общий таймер</div>
-545:         <div class="gtimer-status" id="gtimer-status-dash">Ожидание…</div>
-546:       </div>
-547:       <div class="gtimer-val" id="gtimer-val-dash">12:00</div>
-548:     </div>
-549:   <div class="chips" id="exp-status"></div>
-550:   <div class="tbar np">
-551:     <div class="tbar-info" id="t-info">Ожидание данных…</div>
-552:     <div class="tbar-acts"><button class="btn btn-s btn-sm" onclick="window.print()">🖨️</button><button class="btn btn-s btn-sm" onclick="exportCSV()">📄 CSV</button></div>
-553:   </div>
-554:   <div class="twrap-outer"><table><thead id="t-head"></thead><tbody id="t-body"></tbody></table></div>
-555:   <div id="dash-comments" class="print-only-container"></div>
-556: </div>
-557: </main>
-558: 
-559: <div class="subm-bar np" id="subm-bar">
-560:   <div class="subm-prog-wrap">
-561:     <div class="subm-prog-hdr">
-562:       <div class="subm-prog-t">Прогресс оценки проектов:</div>
-563:       <div class="subm-prog-v" id="subm-cnt">0/0</div>
-564:     </div>
-565:     <div class="subm-prog-bar">
-566:       <div class="subm-prog-fill" id="subm-fill"></div>
-567:     </div>
-568:   </div>
-569:   <button class="subm-btn" onclick="submitScores()"><span>✓</span> Отправить оценки</button>
-570: </div>
-571: 
-572: <!-- Modal: Members -->
-573: <div class="overlay" id="modal-members">
-574:   <div class="mbox">
-575:     <div class="mhd"><h3 id="mm-title">Состав команды</h3><button class="mclose" onclick="closeModal('modal-members')">✕</button></div>
-576:     <div id="mm-content"></div>
-577:   </div>
-578: </div>
-579: 
-580: <!-- Modal: Confirm Actions -->
-581: <div class="overlay" id="modal-confirm">
-582:   <div class="mbox mbox-glass">
-583:     <div class="mhd"><h3 id="mc-title">Подтверждение</h3><button class="mclose" onclick="closeModal('modal-confirm')">✕</button></div>
-584:     <div id="mc-label" class="mc-label"></div>
-585:     <div id="mc-list" style="margin-bottom:8px; max-height: 250px; overflow-y: auto;"></div>
-586:     <p id="mc-hint" class="mc-hint"></p>
-587:     <div class="macts">
-588:       <button id="mc-btn-cancel" class="btn btn-glass-cancel" onclick="closeModal('modal-confirm')">← Вернуться</button>
-589:       <button id="mc-btn-confirm" class="btn btn-p" onclick="doSubmit()">Отправить всё равно</button>
-590:     </div>
-591:   </div>
-592: </div>
-593: 
-594: <!-- Modal: Firebase config quick edit -->
-595: <div class="overlay" id="modal-fb">
-596:   <div class="mbox" style="max-width:500px">
-597:     <div class="mhd"><h3>🔥 Firebase конфигурация</h3><button class="mclose" onclick="closeModal('modal-fb')">✕</button></div>
-598:     <div class="fgrp"><label class="flbl">Firebase Config JSON</label><textarea class="finp" id="fb-modal-inp" rows="8"></textarea></div>
-599:     <div class="macts"><button class="btn btn-s" onclick="closeModal('modal-fb')">Отмена</button><button class="btn btn-p" onclick="reconnectFB()">🔥 Переподключить</button></div>
-600:   </div>
-601: </div>
-602: 
-603: <div class="overlay" id="modal-edit-score">
-604:   <div class="mbox mbox-glass" style="max-width:400px">
-605:     <div class="mhd"><h3>Редактировать баллы</h3><button class="mclose" onclick="closeModal('modal-edit-score')">✕</button></div>
-606:     <div style="margin-bottom:15px; font-size:13px; color:#555">Эксперт: <strong id="mes-ename" style="color:#1a1a1a"></strong><br>Проект: <strong id="mes-pname" style="color:#1a1a1a"></strong></div>
-607:     <input type="hidden" id="mes-eid"><input type="hidden" id="mes-pid">
-608:     <div class="fg2">
-609:       <div class="fgrp"><label class="flbl" style="color:#111">1. Проблема (0-3)</label><input id="mes-b1" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
-610:       <div class="fgrp"><label class="flbl" style="color:#111">2. Технологии (0-3)</label><input id="mes-b2" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
-611:     </div>
-612:     <div class="fg2">
-613:       <div class="fgrp"><label class="flbl" style="color:#111">3. Экономика (0-3)</label><input id="mes-b3" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
-614:       <div class="fgrp"><label class="flbl" style="color:#111">4. Питч (0-1)</label><input id="mes-b4" class="finp" type="number" min="0" max="1" oninput="if(this.value>1)this.value=1;if(this.value<0)this.value=0"></div>
-615:     </div>
-616:     <div class="macts">
-617:       <button class="btn btn-s btn-glass-cancel" onclick="closeModal('modal-edit-score')">Отмена</button>
-618:       <button class="btn btn-p" onclick="saveCoordScore()">💾 Сохранить</button>
-619:     </div>
-620:   </div>
-621: </div>
-622: 
-623: <script>
-624: 'use strict';
-625: window.onerror = function(msg, url, lineNo, columnNo, error) {
-626:   console.log('[GLOBAL ERROR]', msg, 'at', lineNo + ':' + columnNo);
-627:   // Ignore generic cross-origin script errors that offer no info (often caused by extensions/Telegram)
-628:   if (msg.toLowerCase().indexOf('script error') > -1) return false;
-629:   alert('Проблема: ' + msg + '\nЛиния: ' + lineNo);
-630:   return false;
-631: };
-632: console.log('--- SCRIPT START v1.1.5 ---');
-633: // ── КОНФИГУРАЦИЯ FIREBASE (вшита в файл) ──────────────
-634: const BAKED_FB = {
-635:   apiKey: "AIzaSyCGnae1nfCk_DfTqgc67H-BVvnIjwmHneU",
-636:   authDomain: "sp26-6602a.firebaseapp.com",
-637:   databaseURL: "https://sp26-6602a-default-rtdb.europe-west1.firebasedatabase.app",
-638:   projectId: "sp26-6602a",
-639:   storageBucket: "sp26-6602a.firebasestorage.app",
-640:   messagingSenderId: "1071347166487",
-641:   appId: "1:1071347166487:web:91947b490d1a160748db52"
-642: };
-643: // ── END CONFIG ─────────────────────────────────────────
-644: let db=null,dashRef=null,dashCb=null;
-645: let AUTH_SETUP = false;
-646: const CFG={projects:{},experts:{},_pid:1,_eid:1,showMembers:true};
-647: const EXP={id:null,name:null,scores:{},submitted:false,activePid:null};
-648: const DASH={data:null};
-649: const TIMER={total:720,left:720,running:false,iv:null,open:false};
-650: const BMAX={b1:3,b2:3,b3:3,b4:1};
-651: const BCRIT={
-652:   b1:[
-653:     "Проблема не сформулирована, или решение с ней не связано",
-654:     "Проблема обозначена, но не подкреплена данными. Решение выбрано без анализа альтернатив",
-655:     "Проблема подтверждена исследованием (CJM, JTBD, опросы, статистика, внутренние данные компании). Показаны последствия бездействия. Обоснован выбор конкретного решения",
-656:     "Всё из уровня 2, плюс: явно показана связь проекта со стратегическими целями компании; проанализированы ≥ 2 альтернативных варианта решения с обоснованием финального выбора"
-657:   ],
-658:   b2:[
-659:     "Технология не описана или упомянута декларативно - без схемы и обоснования",
-660:     "Технология названа, общая логика работы показана, но архитектура не проработана",
-661:     "Представлена верхнеуровневая архитектура (схема принципа работы), обоснован выбор технологического стека, проведён бенчмарк ≥ 2 аналогичных решений",
-662:     "Всё из уровня 2, плюс: описаны ключевые интеграции и зависимости; представлен реалистичный детализированный план реализации (roadmap с этапами и ответственными)"
-663:   ],
-664:   b3:[
-665:     "Финансовая модель отсутствует или содержит внутренние противоречия",
-666:     "Объём инвестиций (CAPEX/OPEX) оценён, но ключевые показатели эффективности (NPV / IRR / ROI) не рассчитаны или не обоснованы",
-667:     "Рассчитаны NPV, IRR, ROI / PP; направления инвестиций (статьи расходов) и источники экономического эффекта явно разделены и описаны",
-668:     "Всё из уровня 2, плюс: представлены ≥ 2 сценария (реалистичный / оптимистичный / негативный) или анализ чувствительности; риски оценены"
-669:   ],
-670:   b4:[
-671:     "Структура выступления не прослеживается ИЛИ спикер не смог ответить на вопросы",
-672:     "Выступление построено по логике «проблема → решение → экономика → внедрение». Ключевые тезисы считываются на слайдах. Спикер уверенно отвечает на вопросы"
-673:   ]
-674: };
-675: const BTAGS={b1:['0','1','2','3'],b2:['0','1','2','3'],b3:['0','1','2','3'],b4:['0','1']};
-676: let _theme='dark';
-677: 
-678: function G(id){return document.getElementById(id);}
-679: function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-680: function pad(n){return String(n).padStart(2,'0');}
-681: function parseHash(){const h=location.hash.replace(/^#/,'');const p={};h.split('&').forEach(x=>{const i=x.indexOf('=');if(i>-1)try{p[x.slice(0,i)]=decodeURIComponent(x.slice(i+1));}catch(e){p[x.slice(0,i)]=x.slice(i+1);}else if(x)p.screen=x;});return p;}
-682: function objVals(o){return Object.values(o||{});}
-683: function objSize(o){return Object.keys(o||{}).length;}
-684: function scCls(n){if(n===null||n===undefined)return'sc-n';if(n<=4)return'sc-L';if(n<=7)return'sc-M';return'sc-H';}
-685: function avCls(n){if(n===null||n===undefined)return'av-n';if(n<=4)return'av-L';if(n<=7)return'av-M';return'av-H';}
-686: function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>{t.style.transition='opacity .3s';t.style.opacity='0';setTimeout(()=>t.remove(),330);},2800);}
-687: function copyTxt(txt,msg){navigator.clipboard?.writeText(txt).then(()=>toast(msg)).catch(()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast(msg);});}
-688: 
-689: /* ── THEME ── */
-690: function toggleTheme(){applyTheme(_theme==='dark'?'light':'dark');}
-691: function applyTheme(t){
-692:   _theme=t;document.documentElement.setAttribute('data-theme',t);
-693:   const b = G('thbtn'); if(b) b.textContent=t==='dark'?'☀️':'🌙';
-694:   localStorage.setItem('sp26v3-theme',t);
-695: }
-696: 
-697: /* ── FIREBASE ── */
-698: function setFBStatus(state,txt){
-699:   const dot = G('hfb-dot'), t = G('hfb-txt');
-700:   console.log(`[FB Status] ${state}: ${txt}`);
-701:   if(dot) dot.className='hfb-dot '+state;
-702:   if(t) t.textContent=txt;
-703: }
-704: 
-705: function initFirebase(cfg){
-706:   console.log('[Init] Start with:', cfg ? cfg.projectId : 'null');
-707:   try{
-708:     if(!cfg || !cfg.apiKey) throw new Error('Invalid config');
-709:     if(!cfg.databaseURL && cfg.projectId) cfg.databaseURL=`https://${cfg.projectId}-default-rtdb.firebaseio.com`;
-710:     
-711:     if(typeof firebase === 'undefined') {
-712:       throw new Error('Firebase library not loaded');
-713:     }
-714: 
-715:     if(firebase.apps.length===0) {
-716:       console.log('[Init] Initializing app...');
-717:       firebase.initializeApp(cfg);
-718:     }
-719:     
-720:     db=firebase.database();
-721:     console.log('[Init] Database ready');
-722:     startTimerSync();
-723:     
-724:     db.ref('.info/connected').on('value',s=>{
-725:       const connected = !!s.val();
-726:       console.log('[Init] Connection listener:', connected);
-727:       setFBStatus(connected ? 'ok' : 'err', connected ? 'Firebase ✓' : 'Офлайн');
-728:     });
-729:     
-730:     try { localStorage.setItem('sp26v3-fb',JSON.stringify(cfg)); } catch(e) { console.warn('localStorage save failed'); }
-731:     return true;
-732:   }catch(e){
-733:     console.error('[Init] Fatal error:', e);
-734:     setFBStatus('err','Ошибка инициализации');
-735:     return false;
-736:   }
-737: }
-738: 
-739: function connectFirebase(){
-740:   const raw=G('fb-inp').value.trim();
-741:   try{
-742:     const m=raw.match(/\{[\s\S]*\}/);
-743:     if(!m)throw new Error('JSON не найден');
-744:     const cfg=JSON.parse(m[0]);
-745:     G('fb-err').style.display='none';
-746:     if(!initFirebase(cfg)){G('fb-err').textContent='❌ Не удалось подключиться. Проверьте databaseURL.';G('fb-err').style.display='';return;}
-747:     routeHash();
-748:   }catch(e){G('fb-err').textContent='❌ Ошибка JSON: '+e.message;G('fb-err').style.display='';}
-749: }
-750: function showFBModal(){const raw=localStorage.getItem('sp26v3-fb')||'{}';G('fb-modal-inp').value=raw;openModal('modal-fb');}
-751: function reconnectFB(){
-752:   try{const cfg=JSON.parse(G('fb-modal-inp').value);if(initFirebase(cfg)){closeModal('modal-fb');toast('Firebase переподключён');}}catch(e){alert('Ошибка: '+e.message);}
-753: }
-754: function cleanupListeners(){if(dashRef&&dashCb){try{dashRef.off('value',dashCb);}catch(e){}dashRef=null;dashCb=null;}}
-755: 
-756: function boot(){
-757:   console.log('[BOOT] v1.1.5 init');
-758:   if (document.readyState === 'loading') {
-759:     document.addEventListener('DOMContentLoaded', doBoot);
-760:   } else {
-761:     doBoot();
-762:   }
-763: }
-764: 
-765: function doBoot(){
-766:   console.log('[BOOT] doBoot executing...');
-767:   if (G('scr-loading')) G('scr-loading').style.display = 'none'; // Ensure loading screen is hidden
-768:   try {
-769:     try {
-770:       var theme = localStorage.getItem('sp26v3-theme') || 'dark';
-771:       applyTheme(theme);
-772:     } catch(e) { console.warn('Theme apply error:', e); }
-773: 
-774:     var params = parseHash();
-775:     var ok = false;
-776:     
-777:     // 1. Hardcoded Config (Highest priority)
-778:     if(typeof BAKED_FB !== 'undefined' && BAKED_FB && BAKED_FB.apiKey) {
-779:       console.log('[BOOT] Using BAKED_FB:', BAKED_FB.projectId);
-780:       ok = initFirebase(BAKED_FB);
-781:     }
-782:     
-783:     // 2. URL Parameters
-784:     if(!ok && params.fb) {
-785:       try {
-786:         console.log('[BOOT] Using URL config');
-787:         ok = initFirebase(JSON.parse(atob(params.fb)));
-788:       } catch(e) { console.warn('[BOOT] URL config error', e); }
-789:     }
-790:     
-791:     // 3. Local Storage fallback
-792:     if(!ok) {
-793:       try {
-794:         var raw = localStorage.getItem('sp26v3-fb');
-795:         if(raw) {
-796:           console.log('[BOOT] Using localStorage config');
-797:           ok = initFirebase(JSON.parse(raw));
-798:         }
-799:       } catch(e) { console.warn('[BOOT] localStorage error', e); }
-800:     }
-801:     
-802:     if(!ok) {
-803:       console.log('[BOOT] No config found -> setup');
-804:       show('firebase');
-805:       setFBStatus('err','Нужна настройка');
-806:       return;
-807:     }
-808:     
-809:     console.log('[BOOT] Success, routing...');
-810:     routeHash();
-811:   } catch(e) {
-812:     console.error('[BOOT] CRASH:', e);
-813:     show('firebase');
-814:     setFBStatus('err', 'Сбой системы');
-815:   }
-816: }
-817: window.addEventListener('hashchange',()=>{cleanupListeners();routeHash();});
-818: /* ── AUTH ── */
-819: const PIN = "5555";
-820: function checkPin() {
-821:   const v = G('pin-inp').value;
-822:   if(v === PIN) {
-823:     AUTH_SETUP = true;
-824:     localStorage.setItem('sp26v3-auth', '1');
-825:     toast('✅ Доступ разрешен');
-826:     goHome();
-827:   } else {
-828:     toast('❌ Неверный пин-код');
-829:   }
-830: }
-831: 
-832: function routeHash(){
-833:   const p=parseHash();
-834:   console.log('[Route] Hash:', location.hash);
-835:   if(p.expert) {
-836:     // If expert link is used, ensure we are NOT in coordinator mode
-837:     // even if previously logged in on this browser.
-838:     goExpertMode(p.expert);
-839:   } else if(localStorage.getItem('sp26v3-auth') === '1') {
-840:     if(p.screen==='dashboard') { goCoordMode(); goDash(); }
-841:     else { goCoordMode(); goSetup(); }
-842:   } else {
-843:     show('welcome');
-844:   }
-845: }
-846: 
-847: /* ── NAVIGATION ── */
-848: function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('active'));const e=G('scr-'+id);if(e)e.classList.add('active');window.scrollTo(0,0);}
-849: function goHome(){
-850:   cleanupListeners();
-851:   const p = parseHash();
-852:   // Protection: if we are in expert mode, the logo should just refresh/stay in expert mode
-853:   if(p.expert) { goExpertMode(p.expert); return; }
-854:   
-855:   if(localStorage.getItem('sp26v3-auth') !== '1') { show('welcome'); return; }
-856:   goCoordMode(); goDash();
-857: }
-858: function goSetup(){
-859:   if(localStorage.getItem('sp26v3-auth') !== '1') { show('welcome'); return; }
-860:   loadCfgFromFB();show('setup');setNavAct('setup');
-861: }
-862: function goDash(){
-863:   // Double check auth here too for manual hash changes
-864:   if(localStorage.getItem('sp26v3-auth') !== '1') { show('welcome'); return; }
-865:   startDashListener();show('dashboard');setNavAct('dash');
-866: }
-867: function setNavAct(id){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));const e=G('nt-'+id);if(e)e.classList.add('active');}
-868: function goCoordMode(){
-869:   G('hnav').style.display='flex';
-870:   G('hfb').style.display='flex';
-871:   const b=G('hbadge');b.className='hbadge coord';b.style.display='flex';G('hbadge-txt').textContent='Организатор';
-872:   G('subm-bar').classList.remove('vis');
-873: }
-874: 
-875: /* ── EXPERT MODE ── */
-876: function goExpertMode(eid){
-877:   // Security: Clear coordinator auth if an expert link is opened
-878:   // This prevents accidental access to admin panel if the coordinator previously used this browser.
-879:   localStorage.removeItem('sp26v3-auth'); 
-880:   
-881:   G('hnav').style.display='none';
-882:   G('hfb').style.display='none';
-883:   setFBStatus('loading','Загрузка…');
-884:   db.ref('sp26/config').once('value').then(snap=>{
-885:     const d=snap.val();
-886:     if(!d||!d.experts||!d.experts[eid]){showExpertErr(eid);return;}
-887:     CFG.projects=d.projects||{};
-888:     CFG.experts=d.experts||{};
-889:     CFG.showMembers=d.showMembers!==undefined?d.showMembers:true;
-890:     const expert=CFG.experts[eid];
-891:     EXP.id=eid;EXP.name=expert.name;
-892:     const b=G('hbadge');b.className='hbadge exp';b.style.display='flex';G('hbadge-txt').textContent=EXP.name;
-893:     setFBStatus('ok','Firebase ✓');
-894:     db.ref(`sp26/scores/${eid}`).once('value').then(ss=>{
-895:       const sd=ss.val()||{};
-896:       EXP.scores=sd.scores||{};EXP.submitted=sd.submitted||false;
-897:       if(EXP.submitted){showSubmitted();show('expert');return;}
-898:       G('subm-bar').classList.add('vis');
-899:       renderExpert();show('expert');
-900:     });
-901:   }).catch(()=>{setFBStatus('err','Ошибка');showExpertErr(eid);});
-902: }
-903: function showExpertErr(eid){
-904:   G('exp-body').innerHTML=`<div style="text-align:center;padding:60px 20px"><div style="font-size:44px;margin-bottom:16px">⚠️</div><div style="font:800 20px/1.1 var(--fn);margin-bottom:8px">Не найдено</div><p style="font-size:13px;color:var(--txm)">Эксперт «${esc(eid)}» не найден. Проверьте ссылку у организатора.</p></div>`;
-905:   G('subm-bar').classList.remove('vis');G('ptabs').innerHTML='';show('expert');
-906: }
-907: 
-908: /* ── CONFIG ── */
-909: function collectSetupInputs(){
-910:   Object.keys(CFG.projects).forEach(pid=>{
-911:     const p=CFG.projects[pid];
-912:     const gn=G('pin-grp-'+pid);if(gn)p.groupNum=parseInt(gn.value)||0;
-913:     const tn=G('pin-team-'+pid);if(tn)p.teamName=tn.value;
-914:     const pn=G('pin-name-'+pid);if(pn)p.projName=pn.value;
-915:     const ps=G('pin-speaker-'+pid);if(ps)p.speaker=ps.value;
-916:     const pd=G('pin-desc-'+pid);if(pd)p.desc=pd.value;
-917:     const mu=G('pin-murl-'+pid);if(mu)p.materialsUrl=mu.value;
-918:   });
-919:   Object.keys(CFG.experts).forEach(eid=>{
-920:     const e=CFG.experts[eid];
-921:     const ni=G('ein-'+eid);if(ni)e.name=ni.value;
-922:     const oi=G('eorg-'+eid);if(oi)e.org=oi.value;
-923:   });
-924:   const sm=G('set-show-members');if(sm)CFG.showMembers=sm.checked;
-925: }
-926: function loadCfgFromFB(){
-927:   if(!db)return;
-928:   db.ref('sp26/config').once('value').then(s=>{
-929:     const d=s.val();
-930:     if(d){
-931:       CFG.projects=d.projects||{};
-932:       CFG.experts=d.experts||{};
-933:       CFG._pid=d._pid||objSize(CFG.projects)+1;
-934:       CFG._eid=d._eid||objSize(CFG.experts)+1;
-935:       CFG.showMembers=d.showMembers!==undefined?d.showMembers:true;
-936:     }
-937:     const sm=G('set-show-members');if(sm)sm.checked=CFG.showMembers;
-938:     renderSetup();
-939:   });
-940: }
-941: function saveCfgToFB(){
-942:   if(!db){toast('Firebase не подключён');return;}
-943:   collectSetupInputs();
-944:   db.ref('sp26/config').set({
-945:     projects:CFG.projects,
-946:     experts:CFG.experts,
-947:     _pid:CFG._pid,
-948:     _eid:CFG._eid,
-949:     showMembers:CFG.showMembers,
-950:     updatedAt:Date.now()
-951:   })
-952:     .then(()=>{G('save-hint').textContent='☁️ Сохранено: '+new Date().toLocaleTimeString('ru');toast('Сохранено в Firebase');})
-953:     .catch(e=>toast('Ошибка: '+e.message));
-954: }
-955: function saveCfgLocal(){
-956:   collectSetupInputs();
-957:   localStorage.setItem('sp26v3-cfg',JSON.stringify({
-958:     projects:CFG.projects,
-959:     experts:CFG.experts,
-960:     _pid:CFG._pid,
-961:     _eid:CFG._eid,
-962:     showMembers:CFG.showMembers
-963:   }));
-964:   G('save-hint').textContent='💾 Сохранено локально: '+new Date().toLocaleTimeString('ru');toast('Сохранено локально');
-965: }
-966: 
-967: /* ── SETUP RENDER ── */
-968: function addProject(){
-969:   collectSetupInputs();
-970:   const pid='p'+CFG._pid++;
-971:   CFG.projects[pid]={id:pid,groupNum:objSize(CFG.projects)+1,teamName:'',projName:'',speaker:'',desc:'',materialsUrl:'',members:[]};
-972:   renderSetup();setTimeout(()=>{toggleCard(pid,true);G('pin-team-'+pid)?.focus();},40);
-973: }
-974: function removeProject(pid){collectSetupInputs();delete CFG.projects[pid];renderSetup();}
-975: function addExpert(){
-976:   collectSetupInputs();
-977:   const eid='e'+CFG._eid++;
-978:   CFG.experts[eid]={id:eid,name:'',org:''};
-979:   renderSetup();setTimeout(()=>G('ein-'+eid)?.focus(),40);
-980: }
-981: function removeExpert(eid){collectSetupInputs();delete CFG.experts[eid];renderSetup();}
-982: function toggleCard(pid,force){const c=G('pc-'+pid);if(!c)return;const open=force!==undefined?force:!c.classList.contains('open');c.classList.toggle('open',open);}
-983: function addMember(pid){const p=CFG.projects[pid];if(!p)return;if(!p.members)p.members=[];p.members.push({name:'',org:'',role:''});renderMembersTable(pid);}
-984: function removeMember(pid,i){const p=CFG.projects[pid];if(!p||!p.members)return;p.members.splice(i,1);renderMembersTable(pid);}
-985: function setMember(pid,i,f,v){const p=CFG.projects[pid];if(p&&p.members&&p.members[i])p.members[i][f]=v;}
-986: function renderMembersTable(pid){
-987:   const p=CFG.projects[pid];const tb=G('mtb-'+pid);if(!p||!tb)return;
-988:   const m=p.members||[];
-989:   if(!m.length){tb.innerHTML='<div style="font-size:12px;color:var(--txm);padding:6px 0">Нет участников · Добавьте вручную или импортируйте XLS</div>';return;}
-990:   tb.innerHTML=`<table class="mtable"><thead><tr><th>ФИО</th><th>Организация</th><th>Должность</th><th></th></tr></thead><tbody>${
-991:     m.map((r,i)=>`<tr><td><input class="finp finp-sm" value="${esc(r.name)}" placeholder="Имя Фамилия" oninput="setMember('${pid}',${i},'name',this.value)"></td><td><input class="finp finp-sm" value="${esc(r.org)}" placeholder="Организация" oninput="setMember('${pid}',${i},'org',this.value)"></td><td><input class="finp finp-sm" value="${esc(r.role)}" placeholder="Должность" oninput="setMember('${pid}',${i},'role',this.value)"></td><td><button class="btn btn-xs btn-d" onclick="removeMember('${pid}',${i})">✕</button></td></tr>`).join('')
-992:   }</tbody></table>`;
-993: }
-994: function getBaseUrl(){return location.href.split('#')[0];}
-995: function genLink(eid){
-996:   const fb=localStorage.getItem('sp26v3-fb')||'{}';
-997:   try{
-998:     const fbEnc=encodeURIComponent(btoa(fb));
-999:     return `${getBaseUrl()}#expert=${eid}&fb=${fbEnc}`;
-1000:   }catch(e){
-1001:     return `${getBaseUrl()}#expert=${eid}`;
-1002:   }
-1003: }
-1004: function saveCfgLocal(){const s=JSON.stringify(CFG);const b=new Blob([s],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`sp26-cfg-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
-1005: 
-1006: async function resetAllScores() {
-1007:   if(!db) { toast('❌ Firebase не подключен'); return; }
-1008:   const c1 = confirm('⚠️ ВНИМАНИЕ! Это действие УДАЛИТ ВСЕ оценки всех экспертов из базы данных Firebase.\n\nВы действительно хотите обнулить систему для начала новой сессии?');
-1009:   if(!c1) return;
-1010:   const c2 = confirm('ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ: Все результаты будут безвозвратно удалены. Продолжить?');
-1011:   if(!c2) return;
-1012: 
-1013:   try {
-1014:     await db.ref('sp26/scores').remove();
-1015:     toast('✅ Все оценки успешно удалены из Firebase');
-1016:   } catch (e) {
-1017:     console.error(e);
-1018:     alert('Ошибка при сбросе: ' + e.message);
-1019:   }
-1020: }
-1021: function renderSetup(){
-1022:   const pids=Object.keys(CFG.projects);
-1023:   const pl=G('proj-list');
-1024:   if(!pids.length){pl.innerHTML='<div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div>';}
-1025:   else{
-1026:     pl.innerHTML=pids.map((pid,i)=>{const p=CFG.projects[pid];return`<div class="pjcard" id="pc-${pid}"><div class="pjcard-hd" onclick="toggleCard('${pid}')"><div class="pjcard-num">${i+1}</div><div class="pjcard-info"><div class="pjcard-name">${esc(p.projName||p.teamName||'Проект '+(i+1))}</div><div class="pjcard-sub">Группа ${p.groupNum||'?'} · ${esc(p.teamName||'—')} · ${(p.members||[]).length} участн.</div></div><span class="pjcard-arr">▾</span><button class="btn btn-xs btn-d" onclick="event.stopPropagation();removeProject('${pid}')">✕</button></div><div class="pjcard-body"><div class="fg2" style="margin-bottom:10px"><div class="fgrp"><label class="flbl">Группа №</label><input id="pin-grp-${pid}" class="finp" type="number" value="${p.groupNum||''}" style="width:80px" min="1" oninput="CFG.projects['${pid}'].groupNum=parseInt(this.value)||0"></div><div class="fgrp"><label class="flbl">Название команды</label><input id="pin-team-${pid}" class="finp" type="text" value="${esc(p.teamName)}" placeholder="Команда А" oninput="CFG.projects['${pid}'].teamName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=G('pin-name-${pid}').value||this.value"></div></div><div class="fgrp"><label class="flbl">Название проектной работы</label><input id="pin-name-${pid}" class="finp" type="text" value="${esc(p.projName)}" placeholder="Цифровая трансформация…" oninput="CFG.projects['${pid}'].projName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=this.value"></div><div class="fgrp"><label class="flbl">ФИО Спикера (будет КРУПНО на экране жюри)</label><input id="pin-speaker-${pid}" class="finp" type="text" value="${esc(p.speaker)}" placeholder="Иванов Иван Иванович" oninput="CFG.projects['${pid}'].speaker=this.value" style="border-color:var(--grn); background:rgba(16,185,129,0.05)"></div><div class="fgrp"><label class="flbl">Описание проектной работы</label><textarea id="pin-desc-${pid}" class="finp" rows="3" placeholder="Цель, решение, ожидаемый эффект…" oninput="CFG.projects['${pid}'].desc=this.value">${esc(p.desc)}</textarea></div><div class="fgrp"><label class="flbl">Ссылка на материалы проекта</label><input id="pin-murl-${pid}" class="finp" type="url" value="${esc(p.materialsUrl)}" placeholder="https://drive.google.com/…" oninput="CFG.projects['${pid}'].materialsUrl=this.value"></div><div class="div"></div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div style="font:700 12px/1 var(--fn);color:var(--txm)">👤 Участники команды</div><button class="btn btn-sm btn-s" onclick="addMember('${pid}')">＋ Строку</button></div><div id="mtb-${pid}"></div></div></div>`;}).join('');
-1027:     pids.forEach(pid=>renderMembersTable(pid));
-1028:   }
-1029:   const eids=Object.keys(CFG.experts);
-1030:   const el=G('experts-list');
-1031:   if(!eids.length){el.innerHTML='<div style="font:400 12px/1 var(--fn);color:var(--txm);padding:8px 0">Нет экспертов</div>';return;}
-1032:   el.innerHTML=eids.map((eid,i)=>{const e=CFG.experts[eid];const link=genLink(eid);return`<div class="exp-item"><div class="exp-item-hd"><span style="font:700 13px/1 var(--fn)">${i+1}. <input id="ein-${eid}" class="finp finp-sm" style="width:auto;display:inline" type="text" value="${esc(e.name)}" placeholder="Имя Фамилия" oninput="CFG.experts['${eid}'].name=this.value"></span><button class="btn btn-xs btn-d" onclick="removeExpert('${eid}')">✕</button></div><input id="eorg-${eid}" class="finp finp-sm" type="text" value="${esc(e.org)}" placeholder="Организация" style="margin:5px 0" oninput="CFG.experts['${eid}'].org=this.value"><div class="exp-link" onclick="copyTxt('${link}','Ссылка скопирована')" title="${link}">🔗 ${esc(e.name||('Эксперт '+(i+1)))}</div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn btn-sm btn-s" onclick="copyTxt(genLink('${eid}'),'Ссылка скопирована')">📋 Скопировать</button><button class="btn btn-sm btn-s" onclick="window.open(genLink('${eid}'),'_blank')">↗ Открыть</button></div></div>`;}).join('');
-1033: }
-1034: 
-1035: /* ── XLS BULK IMPORT ── */
-1036: function onXLSBulkImport(ev){
-1037:   const file=ev.target.files[0];if(!file)return;ev.target.value='';
-1038:   const reader=new FileReader();
-1039:   reader.onload=e=>{
-1040:     let rows=[];
-1041:     if(typeof XLSX!=='undefined'){
-1042:       const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
-1043:       const ws=wb.Sheets[wb.SheetNames[0]];
-1044:       const raw=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
-1045:       let start=0;
-1046:       for(let r=0;r<Math.min(3,raw.length);r++){const s=raw[r].join('').toLowerCase();if(s.includes('группа')||s.includes('фио')||s.includes('имя')){start=r+1;break;}}
-1047:       rows=raw.slice(start).filter(r=>r[0]&&String(r[0]).trim()).map(r=>({groupNum:parseInt(String(r[0]||'').trim())||0,name:String(r[1]||'').trim(),org:String(r[2]||'').trim(),role:String(r[3]||'').trim()}));
-1048:     }else{
-1049:       const text=new TextDecoder().decode(e.target.result);
-1050:       rows=text.split('\n').slice(1).filter(l=>l.trim()).map(l=>l.split(/[,;]/).map(c=>c.replace(/^"|"$/g,'').trim())).filter(r=>r[0]).map(r=>({groupNum:parseInt(r[0])||0,name:r[1]||'',org:r[2]||'',role:r[3]||''}));
-1051:     }
-1052:     const grouped={};rows.forEach(r=>{if(!grouped[r.groupNum])grouped[r.groupNum]=[];grouped[r.groupNum].push({name:r.name,org:r.org,role:r.role});});
-1053:     let matched=0,missed=[];
-1054:     Object.keys(grouped).forEach(gn=>{const pid=Object.keys(CFG.projects).find(k=>String(CFG.projects[k].groupNum)===String(gn));if(pid){CFG.projects[pid].members=grouped[gn];matched++;}else missed.push(gn);});
-1055:     renderSetup();
-1056:     let msg=`Импортировано: ${rows.length} участников в ${matched} группах.`;
-1057:     if(missed.length)msg+=` Группы не найдены: ${missed.join(', ')}`;
-1058:     toast(msg.length>80?msg.slice(0,77)+'…':msg);if(missed.length)alert(msg);
-1059:   };
-1060:   reader.readAsArrayBuffer(file);
-1061: }
-1062: function dlXLSTemplate(){
-1063:   if(typeof XLSX!=='undefined'){
-1064:     const wb=XLSX.utils.book_new();
-1065:     const ws=XLSX.utils.aoa_to_sheet([['Группа №','ФИО','Организация (место работы)','Должность'],[1,'Иванов Иван Иванович','ПАО Сбер','Руководитель проекта'],[1,'Петрова Мария','ПАО Сбер','Аналитик'],[2,'Сидоров Алексей','ВТБ','PM']]);
-1066:     ws['!cols']=[{wch:10},{wch:28},{wch:28},{wch:22}];
-1067:     XLSX.utils.book_append_sheet(wb,ws,'Участники');XLSX.writeFile(wb,'sp26-participants-template.xlsx');
-1068:   }else{
-1069:     const csv='\uFEFFГруппа №;ФИО;Организация;Должность\n1;Иванов Иван;ПАО Сбер;Руководитель\n2;Петрова Мария;ВТБ;Аналитик\n';
-1070:     const b=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');
-1071:     a.href=u;a.download='sp26-template.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
-1072:   }
-1073: }
-1074: 
-1075: /* ── EXPERT SCORING ── */
-1076: function renderExpert(){
-1077:   const pids=Object.keys(CFG.projects);
-1078:   EXP.activePid=EXP.activePid||pids[0];
-1079:   renderTabs();if(EXP.activePid)renderProjView(EXP.activePid);updateSubmitBar();
-1080: }
-1081: function isScored(pid){const s=EXP.scores[pid];return s&&['b1','b2','b3','b4'].every(b=>s[b]!==null&&s[b]!==undefined);}
-1082: function isFullyDone(pid){
-1083:   const s=EXP.scores[pid];
-1084:   if(!s) return false;
-1085:   const scoresOk = ['b1','b2','b3','b4'].every(b=>s[b]!==null&&s[b]!==undefined);
-1086:   if(!scoresOk) return false;
-1087:   
-1088:   const mainCommentOk = s.comment && s.comment.trim().length > 0;
-1089:   if(!mainCommentOk) return false;
-1090: 
-1091:   // Check block comments for non-max scores
-1092:   for(const b of ['b1','b2','b3','b4']){
-1093:     if(s[b] < BMAX[b]){
-1094:       if(!s[b+'_comment'] || !s[b+'_comment'].trim()) return false;
-1095:     }
-1096:   }
-1097:   return true;
-1098: }
-1099: function renderTabs(){
-1100:   const pids = Object.keys(CFG.projects).filter(id => CFG.projects[id]);
-1101:   G('ptabs').innerHTML=pids.map(pid=>{
-1102:     const p=CFG.projects[pid];
-1103:     const isFull=isFullyDone(pid);
-1104:     const isPart=isScored(pid) && !isFull;
-1105:     let cls = `ptab ${pid===EXP.activePid?'active':''}`;
-1106:     if(isFull) cls += ' done';
-1107:     else if(isPart) cls += ' partial';
-1108: 
-1109:     return `<div class="${cls}" onclick="switchProj('${pid}')">
-1110:       ${esc(p.teamName||p.projName||pid)}
-1111:       ${isFull?'<span class="ptab-chk">✓</span>':''}
-1112:       ${isPart?'<span class="ptab-warn">✎</span>':''}
-1113:     </div>`;
-1114:   }).join('');
-1115: }
-1116: function switchProj(pid){EXP.activePid=pid;renderTabs();renderProjView(pid);window.scrollTo({top:0,behavior:'smooth'});}
-1117: function renderProjView(pid){
-1118:   const p=CFG.projects[pid]; if(!p) return;
-1119:   const teamEl = G('pi-team'); if(teamEl) teamEl.textContent=p.teamName||'';
-1120:   const nameEl = G('pi-name'); if(nameEl) nameEl.textContent=p.projName||'Без названия';
-1121:   const spkEl = G('pi-speaker-plain'); if(spkEl) spkEl.textContent=p.speaker||'—';
-1122:   
-1123:   const descEl=G('pi-desc');
-1124:   if(descEl) {
-1125:     descEl.textContent=p.desc||'';
-1126:     const long=p.desc&&p.desc.length>200;
-1127:     descEl.className='pi-desc'+(long?' clamp':'');
-1128:     const expEl = G('pi-expand'); if(expEl) expEl.style.display=long?'':'none';
-1129:   }
-1130:   
-1131:   let links=[];
-1132:   if(CFG.showMembers && p.members && p.members.length) links.push(`<button class="btn btn-s btn-sm" onclick="showMembers('${pid}')">👥 Состав команды (${p.members.length})</button>`);
-1133:   if(p.materialsUrl) links.push(`<a href="${esc(p.materialsUrl)}" target="_blank" class="btn btn-s btn-sm">📁 Материалы проекта</a>`);
-1134:   const lBox = G('pi-links'); if(lBox) lBox.innerHTML=links.join('');
-1135:   
-1136:   ['b1','b2','b3','b4'].forEach(b=>{
-1137:     buildRow(b,pid);
-1138:     const cel = G('comm-'+b); if(cel) cel.value = (EXP.scores[pid]||{})[b+'_comment']||'';
-1139:   });
-1140:   
-1141:   const cfEl = G('comment-f'); if(cfEl) cfEl.value=(EXP.scores[pid]||{}).comment||'';
-1142:   updateDisp(pid);
-1143: }
-1144: function buildRow(b,pid){
-1145:   const row=G('row-'+b);if(!row)return;
-1146:   const cur=(EXP.scores[pid]||{})[b];const max=BMAX[b];const tags=BTAGS[b];
-1147:   row.innerHTML='';
-1148:   for(let i=0;i<=max;i++){
-1149:     const uid=`${b}-${pid}-${i}`;
-1150:     const d=document.createElement('div');
-1151:     d.className='sopt';
-1152:     d.innerHTML=`<input type="radio" name="${b}-${pid}" id="${uid}" value="${i}" ${cur===i?'checked':''} onchange="setScore('${b}','${pid}',${i})">
-1153:     <label class="slbl" for="${uid}" onmouseover="showHint('${b}',${i})" onmouseout="restoreHint('${b}','${pid}')">
-1154:       <span class="sn">${i}</span>
-1155:     </label>`;
-1156:     row.appendChild(d);
-1157:   }
-1158: }
-1159: function showHint(b,val){
-1160:   const h=G('hint-'+b),t=G('htxt-'+b);
-1161:   if(!h||!t)return;
-1162:   t.textContent=BCRIT[b][val]||'—';
-1163:   h.classList.add('active');
-1164: }
-1165: function restoreHint(b,pid){
-1166:   const h=G('hint-'+b),t=G('htxt-'+b);
-1167:   if(!h||!t)return;
-1168:   const cur=(EXP.scores[pid]||{})[b];
-1169:   if(cur!==null && cur!==undefined){
-1170:     t.textContent=BCRIT[b][cur]||'—';
-1171:     h.classList.add('active');
-1172:   } else {
-1173:     t.textContent='Выберите балл, чтобы увидеть критерий';
-1174:     h.classList.remove('active');
-1175:   }
-1176: }
-1177: function setScore(b,pid,val){
-1178:   if(!EXP.scores[pid])EXP.scores[pid]={b1:null,b2:null,b3:null,b4:null,comment:''};
-1179:   EXP.scores[pid][b]=val;
-1180:   updateDisp(pid);renderTabs();updateSubmitBar();
-1181:   showHint(b,val);
-1182:   if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/scores/${pid}`).update({[b]:val,updatedAt:Date.now()});
-1183: }
-1184: function saveBlockComment(b){
-1185:   const pid=EXP.activePid;if(!pid)return;
-1186:   if(!EXP.scores[pid])EXP.scores[pid]={b1:null,b2:null,b3:null,b4:null,comment:''};
-1187:   const c=G('comm-'+b).value;EXP.scores[pid][b+'_comment']=c;
-1188:   if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/scores/${pid}`).update({[b+'_comment']:c,updatedAt:Date.now()});
-1189: }
-1190: function saveComment(){
-1191:   const pid=EXP.activePid;if(!pid)return;
-1192:   if(!EXP.scores[pid])EXP.scores[pid]={b1:null,b2:null,b3:null,b4:null,comment:''};
-1193:   const c=G('comment-f').value;EXP.scores[pid].comment=c;
-1194:   if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/scores/${pid}`).update({comment:c,updatedAt:Date.now()});
-1195: }
-1196: function updateDisp(pid){
-1197:   const sc=EXP.scores[pid]||{};
-1198:   ['b1','b2','b3','b4'].forEach(b=>{
-1199:     const bc=G('bc-'+b), ds=G('ds-'+b), sw=G('sw-'+b);
-1200:     if(sc[b]!==null&&sc[b]!==undefined){
-1201:       bc.classList.add('scored');
-1202:       if(ds){ ds.textContent=sc[b]; ds.classList.add('active'); }
-1203:       if(sw){ sw.classList.add('active'); }
-1204:     }else{
-1205:       bc.classList.remove('scored');
-1206:       if(ds){ ds.textContent='—'; ds.classList.remove('active'); }
-1207:       if(sw){ sw.classList.remove('active'); }
-1208:     }
-1209:   });
-1210: }
-1211: function getScoredCnt(){return Object.keys(CFG.projects).filter(pid=>isFullyDone(pid)).length;}
-1212: function updateSubmitBar(){
-1213:   const pids = Object.keys(CFG.projects).filter(id => CFG.projects[id]);
-1214:   const t = pids.length;
-1215:   const c = pids.filter(id => isFullyDone(id)).length;
-1216:   const cnt=G('subm-cnt');
-1217:   const fill=G('subm-fill');
-1218:   if(cnt) cnt.innerText=`${c}/${t}`;
-1219:   if(fill) {
-1220:     const p = t > 0 ? (c/t)*100 : 0;
-1221:     fill.style.width = p + '%';
-1222:   }
-1223: }
-1224: function expandDesc(){G('pi-desc').classList.remove('clamp');G('pi-expand').style.display='none';}
-1225: function togCrit(id,btn){G(id).classList.toggle('open');btn.classList.toggle('open');}
-1226: 
-1227: /* ── SUBMIT ── */
-1228: function submitScores(){
-1229:   const pids=Object.keys(CFG.projects);
-1230:   const incomplete = []; // Starred but missing some scores
-1231:   const noBlockComment = []; // Non-max scores but no justification
-1232:   const noMainComment = [];  // All scores present but no summary comment
-1233: 
-1234:   pids.forEach(pid => {
-1235:     const s = EXP.scores[pid] || {};
-1236:     const hasAny = (s.b1 != null || s.b2 != null || s.b3 != null || s.b4 != null || (s.comment && s.comment.trim()));
-1237:     if (!hasAny) return;
-1238: 
-1239:     const scoresDone = s.b1 != null && s.b2 != null && s.b3 != null && s.b4 != null;
-1240:     if (!scoresDone) { incomplete.push(pid); return; }
-1241: 
-1242:     const missingBlocks = [];
-1243:     const BN = {b1:'Проблема', b2:'Технологии', b3:'Экономика', b4:'Питч'};
-1244:     ['b1','b2','b3','b4'].forEach(b=>{
-1245:       if(s[b] < BMAX[b] && (!s[b+'_comment'] || !s[b+'_comment'].trim())){
-1246:         missingBlocks.push(BN[b]);
-1247:       }
-1248:     });
-1249:     if(missingBlocks.length) noBlockComment.push({pid, blocks: missingBlocks});
-1250: 
-1251:     if (!s.comment || !s.comment.trim()) noMainComment.push(pid);
-1252:   });
-1253: 
-1254:   if (incomplete.length || noBlockComment.length || noMainComment.length) {
-1255:     G('mc-title').textContent = "Внимание";
-1256:     G('mc-label').textContent = "Обнаружены неточности в активных группах:";
-1257:     
-1258:     let html = '';
-1259:     if (incomplete.length) {
-1260:       html += `<div style="margin-top:12px; font-weight:700; color:#1a1a1a; font-size:13px">⚠ Пропущены баллы:</div>`;
-1261:       html += incomplete.map(pid => `<div class="mc-item" style="color:#444">• ${esc(CFG.projects[pid].projName || CFG.projects[pid].teamName || pid)}</div>`).join('');
-1262:     }
-1263:     
-1264:     if (noBlockComment.length) {
-1265:       html += `<div style="margin-top:12px; font-weight:700; color:#1a1a1a; font-size:13px">💡 Чего не хватило до максимума?</div>`;
-1266:       html += `<div style="font-size:11px; color:#666; margin-bottom:5px">Если балл не максимальный, напишите пару слов в комментарии по данному критерию:</div>`;
-1267:       noBlockComment.forEach(item => {
-1268:         const p = CFG.projects[item.pid];
-1269:         html += `<div class="mc-item" style="color:#444; margin-bottom:4px">
-1270:           <strong>• ${esc(p.projName || p.teamName)}</strong>: <span style="font-style:italic; color:#c53030">${item.blocks.join(', ')}</span>
-1271:         </div>`;
-1272:       });
-1273:     }
-1274: 
-1275:     if (noMainComment.length) {
-1276:       html += `<div style="margin-top:12px; font-weight:700; color:#1a1a1a; font-size:13px">📝 Нет итогового резюме:</div>`;
-1277:       html += noMainComment.map(pid => `<div class="mc-item" style="color:#444">• ${esc(CFG.projects[pid].projName || CFG.projects[pid].teamName || pid)}</div>`).join('');
-1278:     }
-1279: 
-1280:     G('mc-list').innerHTML = html;
-1281:     G('mc-hint').textContent = "Пожалуйста, дополните оценки комментариями.";
-1282:     G('mc-hint').style.color = "#555";
-1283:     G('mc-btn-confirm').style.display = 'inline-flex';
-1284:     G('mc-btn-confirm').textContent = "Отправить как есть";
-1285:     G('mc-btn-cancel').textContent = "← Дополнить";
-1286:     openModal('modal-confirm');
-1287:     return;
-1288:   }
-1289: 
-1290:   doSubmit();
-1291: }
-1292: function doSubmit(){
-1293:   closeModal('modal-confirm');EXP.submitted=true;
-1294:   if(db&&EXP.id){
-1295:     db.ref(`sp26/scores/${EXP.id}`).set({scores:EXP.scores,submitted:true,expertName:EXP.name,submittedAt:new Date().toISOString()})
-1296:       .then(()=>{showSubmitted();toast('✅ Оценки отправлены в Firebase');})
-1297:       .catch(e=>{alert('Ошибка: '+e.message);EXP.submitted=false;});
-1298:   }else showSubmitted();
-1299: }
-1300: function showSubmitted(){
-1301:   G('done-s').innerHTML=`<strong>${esc(EXP.name)}</strong><br>Оценено: ${getScoredCnt()} из ${objSize(CFG.projects)} проектов`;
-1302:   G('exp-body').style.display='none';G('done-scr').style.display='';
-1303:   G('subm-bar').classList.remove('vis');G('ptabs').innerHTML='';
-1304: }
-1305: function undoSubmit(){
-1306:   EXP.submitted=false;
-1307:   if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/submitted`).set(false);
-1308:   G('exp-body').style.display='';G('done-scr').style.display='none';
-1309:   G('subm-bar').classList.add('vis');renderExpert();
-1310: }
-1311: function continueWork(){
-1312:   EXP.submitted=false;
-1313:   if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/submitted`).set(false);
-1314:   G('exp-body').style.display='';G('done-scr').style.display='none';
-1315:   G('subm-bar').classList.add('vis');
-1316:   
-1317:   const pids = Object.keys(CFG.projects);
-1318:   const next = pids.find(pid => !isFullyDone(pid)) || pids[0];
-1319:   switchProj(next);
-1320: }
-1321: 
-1322: /* ── MEMBERS MODAL ── */
-1323: function showMembers(pid){
-1324:   const p=CFG.projects[pid];if(!p)return;
-1325:   G('mm-title').textContent='Команда: '+(p.teamName||p.projName||'');
-1326:   const m=p.members||[];
-1327:   G('mm-content').innerHTML=m.length?`<table class="mtable"><thead><tr><th>ФИО</th><th>Организация</th><th>Должность</th></tr></thead><tbody>${m.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.org)}</td><td>${esc(r.role)}</td></tr>`).join('')}</tbody></table>`:'<div style="color:var(--txm);font-size:13px;padding:12px 0">Список участников не заполнен</div>';
-1328:   openModal('modal-members');
-1329: }
-1330: 
-1331: /* ── DASHBOARD ── */
-1332: function startDashListener(){
-1333:   if(!db){renderDash(null);return;}
-1334:   cleanupListeners();
-1335:   dashRef=db.ref('sp26');
-1336:   dashCb=snap=>{DASH.data=snap.val();renderDash(DASH.data);};
-1337:   dashRef.on('value',dashCb);
-1338: }
-1339: function renderDash(data){
-1340:   const cfg=data?.config||{};const sc=data?.scores||{};
-1341:   const projects=objVals(cfg.projects||{});const experts=objVals(cfg.experts||{});
-1342:   if(!projects.length||!experts.length){
-1343:     G('exp-status').innerHTML='<div style="color:var(--txm);font-size:13px">Нет данных. Создайте конфигурацию в разделе «Настройка».</div>';
-1344:     G('t-head').innerHTML='<tr><th>Нет данных</th></tr>';
-1345:     G('t-body').innerHTML='<tr><td style="color:var(--txm);text-align:center;padding:32px" colspan="10">Добавьте проекты и экспертов</td></tr>';
-1346:     G('t-info').textContent='';return;
-1347:   }
-1348:   G('exp-status').innerHTML=experts.map(e=>{const sub=sc[e.id]?.submitted||false;return`<div class="echip ${sub?'sub':'pend'}"><div class="echip-dot"></div>${esc(e.name)} ${sub?'✓':'— ожидание'}</div>`;}).join('');
-1349:   const getT=(eid,pid)=>{const d=sc[eid]?.scores?.[pid];if(!d||d.b1==null||d.b2==null||d.b3==null||d.b4==null)return null;return d.b1+d.b2+d.b3+d.b4;};
-1350:   const rows=projects.map(p=>{const ts=experts.map(e=>getT(e.id,p.id));const vs=ts.filter(t=>t!==null);const avg=vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;return{p,ts,avg};});
-1351:   rows.sort((a,b) => (parseInt(a.p.groupNum)||0) - (parseInt(b.p.groupNum)||0));
-1352:   const hCols = experts.map(e => {
-1353:     const p = e.name.trim().split(/\s+/);
-1354:     let nHtml = esc(e.name);
-1355:     if (p.length >= 2) {
-1356:       // Пытаемся определить имя и фамилию. Если в данных "Фамилия Имя", меняем местами для порядка "Имя <br> Фамилия"
-1357:       // Если же там уже "Имя Фамилия", просто ставим перенос.
-1358:       nHtml = `${esc(p[1] || '')}<br>${esc(p[0] || '')}`;
-1359:     }
-1360:     return `<th style="text-align:center">${nHtml}</th>`;
-1361:   }).join('');
-1362:   G('t-head').innerHTML=`<tr><th>#</th><th style="text-align:left">Группа / Проект</th>${hCols}<th style="text-align:center">Среднее</th></tr>`;
-1363:   G('t-body').innerHTML=rows.map((r,i)=>{
-1364:     const p=r.p;
-1365:     const gNum = p.groupNum || '?';
-1366:     const tName = p.teamName || '';
-1367:     const gLabel = `Группа ${gNum}`;
-1368:     const displayGroup = (tName && tName !== gLabel && !tName.includes(gLabel)) ? `${tName} · ${gLabel}` : (tName || gLabel);
-1369:     
-1370:     return `<tr>
-1371:       <td class="td-r ${i<3?'r'+(i+1):''}">${i<3?['🥇','🥈','🥉'][i]:i+1}</td>
-1372:       <td>
-1373:         <div class="td-sub">${esc(displayGroup)}</div>
-1374:         <div class="td-nm">${esc(p.projName||'—')}</div>
-1375:       </td>
-1376:       ${r.ts.map((t,idx)=>{
-1377:         const eid=experts[idx].id;
-1378:         return `<td class="td-c" onclick="editScoreModal('${eid}','${p.id}')" title="Нажмите, чтобы изменить" style="cursor:pointer">
-1379:           ${t!==null?`<span class="sc ${scCls(t)}">${t}</span>`:`<span class="sc sc-n">—</span>`}
-1380:         </td>`;
-1381:       }).join('')}
-1382:       ${r.avg!==null?`<td class="td-c"><span class="av ${avCls(Math.round(r.avg))}">${r.avg.toFixed(1)}</span></td>`:`<td class="td-c"><span class="av av-n">—</span></td>`}
-1383:     </tr>`;
-1384:   }).join('');
-1385:   const sub=experts.filter(e=>sc[e.id]?.submitted).length;
-1386:   G('t-info').textContent=`${projects.length} проектов · ${sub}/${experts.length} экспертов сдали оценки`;
-1387: 
-1388:   // --- Render Comment Sheets for Printing ---
-1389:   let chtml = '';
-1390:   projects.forEach(p => {
-1391:     let pCommentsHtml = '';
-1392:     experts.forEach(e => {
-1393:       const s = sc[e.id]?.scores?.[p.id];
-1394:       if (!s) return;
-1395:       
-1396:       const hasBlockComments = ['b1','b2','b3','b4'].some(b => s[b+'_comment'] && s[b+'_comment'].trim());
-1397:       const hasMainComment = s.comment && s.comment.trim();
-1398:       
-1399:       if (!hasBlockComments && !hasMainComment) return;
-1400: 
-1401:       pCommentsHtml += `<div class="ps-expert">
-1402:         <div class="ps-h">👤 ${esc(e.name)} ${esc(e.surname || '')}</div>`;
-1403:       
-1404:       const BN = {b1:'Проблема', b2:'Технологии', b3:'Экономика', b4:'Питч'};
-1405:       ['b1','b2','b3','b4'].forEach(b => {
-1406:         if (s[b+'_comment'] && s[b+'_comment'].trim()) {
-1407:           pCommentsHtml += `<div class="ps-crit"><strong>${BN[b]}:</strong> ${esc(s[b+'_comment'])}</div>`;
-1408:         }
-1409:       });
-1410: 
-1411:       if (hasMainComment) {
-1412:         pCommentsHtml += `<div class="ps-sum"><strong>Итоговое резюме:</strong><br>${esc(s.comment)}</div>`;
-1413:       }
-1414:       pCommentsHtml += `</div>`;
-1415:     });
-1416: 
-1417:     if (pCommentsHtml) {
-1418:       chtml += `<div class="print-sheet">
-1419:         <h2>Отзывы жюри: ${esc(p.projName || p.teamName)}</h2>
-1420:         ${pCommentsHtml}
-1421:       </div>`;
-1422:     }
-1423:   });
-1424: 
-1425:   const dc = G('dash-comments');
-1426:   if (dc) dc.innerHTML = chtml || '<div style="text-align:center; padding:40px; color:var(--txm)">Отзывы экспертов появятся здесь после начала оценки</div>';
-1427: }
-1428: 
-1429: function editScoreModal(eid, pid){
-1430:   if(!db)return;
-1431:   const e=CFG.experts[eid]; const p=CFG.projects[pid]; if(!e||!p)return;
-1432:   const sc=(DASH.data.scores||{})[eid]?.scores?.[pid]||{};
-1433:   G('mes-ename').textContent=e.name; G('mes-pname').textContent=p.projName||p.teamName;
-1434:   G('mes-eid').value=eid; G('mes-pid').value=pid;
-1435:   G('mes-b1').value=sc.b1===null||sc.b1===undefined?'':sc.b1;
-1436:   G('mes-b2').value=sc.b2===null||sc.b2===undefined?'':sc.b2;
-1437:   G('mes-b3').value=sc.b3===null||sc.b3===undefined?'':sc.b3;
-1438:   G('mes-b4').value=sc.b4===null||sc.b4===undefined?'':sc.b4;
-1439:   openModal('modal-edit-score');
-1440: }
-1441: 
-1442: function saveCoordScore(){
-1443:   const eid=G('mes-eid').value, pid=G('mes-pid').value;
-1444:   if(!eid || !pid) return;
-1445:   const s={
-1446:     b1: Math.max(0, Math.min(3, parseInt(G('mes-b1').value)||0)),
-1447:     b2: Math.max(0, Math.min(3, parseInt(G('mes-b2').value)||0)),
-1448:     b3: Math.max(0, Math.min(3, parseInt(G('mes-b3').value)||0)),
-1449:     b4: Math.max(0, Math.min(1, parseInt(G('mes-b4').value)||0)),
-1450:     updatedAt: Date.now(),
-1451:     overridden: true
-1452:   };
-1453:   db.ref(`sp26/scores/${eid}/scores/${pid}`).update(s).then(()=>{
-1454:     toast('✅ Сохранено');
-1455:     closeModal('modal-edit-score');
-1456:   }).catch(e=>alert('Ошибка: '+e.message));
-1457: }
-1458: function exportCSV(){
-1459:   const data=DASH.data;if(!data?.config){toast('Нет данных');return;}
-1460:   const projects=objVals(data.config.projects||{});const experts=objVals(data.config.experts||{});const sc=data.scores||{};
-1461:   const getT=(eid,pid)=>{const d=sc[eid]?.scores?.[pid];if(!d||d.b1==null||d.b2==null||d.b3==null||d.b4==null)return'';return d.b1+d.b2+d.b3+d.b4;};
-1462:   const rows=projects.map(p=>{const ts=experts.map(e=>getT(e.id,p.id));const vs=ts.filter(t=>t!=='').map(Number);const avg=vs.length?(vs.reduce((a,b)=>a+b,0)/vs.length).toFixed(2):'';return[`"${p.projName}"`,`"${p.teamName}"`,`${p.groupNum||''}`,...ts,avg].join(';');});
-1463:   const hdr=['"Проект"','"Команда"','"Группа"',...experts.map(e=>`"${e.name}"`),'"Среднее"'].join(';');
-1464:   const blob=new Blob(['\uFEFF'+hdr+'\n'+rows.join('\n')],{type:'text/csv;charset=utf-8'});
-1465:   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='sp26-results.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('CSV экспортирован');
-1466: }
-1467: 
-1468: /* ── TIMER (CENTRALIZED) ── */
-1469: const TIMER_PRESENTATION = 12 * 60; // 720s
-1470: const TIMER_DISCUSSION = 8 * 60;    // 480s
-1471: const TIMER_TOTAL = TIMER_PRESENTATION + TIMER_DISCUSSION; // 1200s
-1472: let remoteTimer = { startTime: 0, status: 'stopped', offset: 0 };
-1473: let timerIv = null;
-1474: 
-1475: function startTimerSync() {
-1476:   if (!db) return;
-1477:   db.ref('sp26/timer').on('value', snap => {
-1478:     const data = snap.val();
-1479:     remoteTimer = data || { startTime: 0, status: 'stopped' };
-1480:     updateTimerUI();
-1481:   });
-1482: }
-1483: 
-1484: function updateTimerUI() {
-1485:   if (remoteTimer.status === 'running') {
-1486:     if (!timerIv) timerIv = setInterval(tickTimer, 200);
-1487:     G('btn-c-start') && (G('btn-c-start').style.display = 'none');
-1488:     G('btn-c-stop') && (G('btn-c-stop').style.display = 'inline-flex');
-1489:   } else {
-1490:     if (timerIv) { clearInterval(timerIv); timerIv = null; }
-1491:     renderTimerView(0, 'stopped');
-1492:     G('btn-c-start') && (G('btn-c-start').style.display = 'inline-flex');
-1493:     G('btn-c-stop') && (G('btn-c-stop').style.display = 'none');
-1494:   }
-1495: }
-1496: 
-1497: function tickTimer() {
-1498:   if (remoteTimer.status !== 'running') return;
-1499:   const now = Date.now();
-1500:   const elapsed = Math.floor((now - remoteTimer.startTime) / 1000);
-1501:   renderTimerView(elapsed, 'running');
-1502: }
-1503: 
-1504: function renderTimerView(elapsed, status) {
-1505:   const instances = [
-1506:     { val: 'gtimer-val', st: 'gtimer-status' },
-1507:     { val: 'c-timer-val', st: 'c-timer-status' },
-1508:     { val: 'gtimer-val-dash', st: 'gtimer-status-dash' }
-1509:   ];
-1510:   
-1511:   instances.forEach(ins => {
-1512:     const el = G(ins.val);
-1513:     const st = G(ins.st);
-1514:     if (!el || !st) return;
-1515: 
-1516:     if (status === 'stopped') {
-1517:       el.textContent = "12:00";
-1518:       el.classList.remove('red');
-1519:       st.textContent = ins.val === 'c-timer-val' ? "Таймер остановлен" : (ins.val === 'gtimer-val' ? "Ожидание старта" : "Ожидание…");
-1520:       st.className = ins.val.startsWith('gtimer') ? "gtimer-status" : "";
-1521:       return;
-1522:     }
-1523: 
-1524:     let timeLeft = 0;
-1525:     let label = "";
-1526:     let isOvertime = false;
-1527:     let statusClass = ins.val.startsWith('gtimer') ? "gtimer-status" : "";
-1528: 
-1529:     if (elapsed < TIMER_PRESENTATION) {
-1530:       timeLeft = TIMER_PRESENTATION - elapsed;
-1531:       label = "Выступление";
-1532:     } else if (elapsed < TIMER_TOTAL) {
-1533:       timeLeft = TIMER_TOTAL - elapsed;
-1534:       label = "Обсуждение";
-1535:       statusClass += " discussion";
-1536:     } else {
-1537:       timeLeft = elapsed - TIMER_TOTAL;
-1538:       label = "ПРЕВЫШЕНИЕ";
-1539:       statusClass += " overtime";
-1540:       isOvertime = true;
-1541:     }
-1542: 
-1543:     const m = Math.floor(timeLeft / 60);
-1544:     const s = timeLeft % 60;
-1545:     const displayStr = (isOvertime ? "-" : "") + m + ":" + pad(s);
-1546:     
-1547:     el.textContent = displayStr;
-1548:     el.classList.toggle('red', isOvertime);
-1549:     st.textContent = label;
-1550:     if (ins.val.startsWith('gtimer')) st.className = statusClass;
-1551:   });
-1552: }
-1553: 
-1554: function remoteTimerStart() {
-1555:   if (!db) return;
-1556:   // Use a small buffer for sync
-1557:   db.ref('sp26/timer').set({ startTime: Date.now(), status: 'running', updatedAt: Date.now() });
-1558: }
-1559: 
-1560: function remoteTimerStop() {
-1561:   if (!db) return;
-1562:   db.ref('sp26/timer/status').set('stopped');
-1563: }
-1564: 
-1565: function remoteTimerReset() {
-1566:   if (!db) return;
-1567:   db.ref('sp26/timer').set({ startTime: 0, status: 'stopped', updatedAt: Date.now() });
-1568: }
-1569: 
-1570: function toggleTimer(){ /* Legacy placeholder */ }
-1571: function timerStart(){ /* Legacy placeholder */ }
-1572: function timerPause(){ /* Legacy placeholder */ }
-1573: function timerReset(){ /* Legacy placeholder */ }
-1574: function renderTimer(){ /* Legacy placeholder */ }
-1575: function playBeep(){ /* Legacy placeholder */ }
-1576: 
-1577: /* ── MODALS ── */
-1578: function openModal(id){G(id).classList.add('vis');}
-1579: function closeModal(id){G(id).classList.remove('vis');}
-1580: document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('vis');}));
-1581: 
-1582: boot();
-1583: </script>
-1584: </body>
-1585: </html>
+textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size:12px;border-radius:var(--r8)}
+.fgrp{margin-bottom:12px}.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:var(--r12);font:600 13px/1 var(--fn);cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;padding:9px 17px}
+.btn:disabled{opacity:.45;pointer-events:none}
+.btn-p{background:linear-gradient(135deg,#21A038,#18882C);color:#fff;box-shadow:0 4px 14px rgba(33,160,56,0.3);font-weight:700;letter-spacing:0.3px;}
+.btn-p:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-s{background:var(--s2);border:1px solid var(--br2);color:var(--tx)}.btn-s:hover{background:var(--s3)}
+.btn-d{background:transparent;border:1px solid var(--red);color:var(--red)}.btn-d:hover{background:var(--redd)}
+.btn-g{background:transparent;border:none;color:var(--txm);font:600 12px/1 var(--fn);padding:4px 6px}.btn-g:hover{color:var(--tx)}
+.btn-lg{padding:13px 26px;font-size:15px;border-radius:var(--r16)}
+.btn-sm{padding:5px 12px;font-size:12px;border-radius:var(--r8)}
+.btn-xs{padding:3px 8px;font-size:11px;border-radius:6px}
+.btn-ic{width:32px;height:32px;padding:0;border-radius:var(--r8);font-size:14px}
+.badd{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r12);border:1.5px dashed var(--br2);background:transparent;color:var(--txm);font:600 12px/1 var(--fn);cursor:pointer;transition:all .2s}
+.badd:hover{border-color:var(--grn);color:var(--grn);background:var(--grnd)}
+.div{height:1px;background:var(--br);margin:14px 0}
+.alrt{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:var(--r12);font-size:13px;margin-bottom:12px;line-height:1.5}
+.alrt-i{background:var(--blud);border:1px solid rgba(59,130,246,.25);color:var(--blu)}
+.alrt-w{background:var(--yeld);border:1px solid rgba(240,168,51,.3);color:var(--yel)}
+.alrt-e{background:var(--redd);border:1px solid rgba(232,69,69,.3);color:var(--red)}
+.shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.shd-t{font:700 13px/1 var(--fn)}
+/* Firebase setup */
+.fbwrap{max-width:640px;margin:0 auto;padding:32px 0}
+.fbwrap-icon{font-size:52px;text-align:center;margin-bottom:16px}
+.fbwrap h2{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;text-align:center;margin-bottom:6px}
+.fbwrap-sub{text-align:center;color:var(--txm);font-size:13px;margin-bottom:28px}
+.fbsteps{display:flex;flex-direction:column;gap:0;margin-bottom:20px}
+.fbstep{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--br)}
+.fbstep:last-child{border-bottom:none}
+.fbstep-n{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--grn),#168028);color:#fff;font:800 13px/1 var(--fn);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px var(--grng)}
+.fbstep-t{font:700 13px/1 var(--fn);margin-bottom:3px}
+.fbstep-s{font:400 12px/1.5 var(--fn);color:var(--txm)}.fbstep-s a{color:var(--blu);text-decoration:none}.fbstep-s a:hover{text-decoration:underline}
+/* Setup grid */
+.setup-grid{display:grid;grid-template-columns:1fr 350px;gap:18px;align-items:start}
+@media(max-width:800px){.setup-grid{grid-template-columns:1fr}}
+.pjcard{background:var(--s);border:1.5px solid var(--br);border-radius:var(--r16);overflow:hidden;margin-bottom:10px;transition:border-color .2s}
+.pjcard:hover{border-color:var(--br2)}.pjcard.open{border-color:rgba(33,160,56,.35)}
+.pjcard-hd{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;user-select:none}
+.pjcard-num{width:30px;height:30px;border-radius:var(--r8);background:var(--s3);color:var(--txm);font:700 13px/1 var(--fn);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.pjcard.open .pjcard-num{background:var(--grnd);color:var(--grn)}
+.pjcard-info{flex:1;min-width:0}.pjcard-name{font:700 13px/1.2 var(--fn);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pjcard-sub{font:400 11px/1 var(--fn);color:var(--txm);margin-top:3px}
+.pjcard-arr{color:var(--txm);font-size:11px;transition:transform .2s}.pjcard.open .pjcard-arr{transform:rotate(180deg)}
+.pjcard-body{display:none;padding:14px 16px 16px;border-top:1px solid var(--br)}.pjcard.open .pjcard-body{display:block}
+.mtable{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}.td-c{text-align:center;width:80px}
+th{background:var(--s2);color:var(--txm);font:700 10px/1.3 var(--fn);text-transform:uppercase;letter-spacing:.3px;padding:10px 6px;text-align:center;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--br);white-space:normal;max-width:90px;word-wrap:break-word}
+.mtable td{padding:5px 8px;border-bottom:1px solid var(--br)}.mtable tr:last-child td{border-bottom:none}
+.exp-panel{position:sticky;top:calc(var(--hh) + 16px)}
+.exp-item{background:var(--s2);border:1px solid var(--br);border-radius:var(--r12);padding:12px 14px;margin-bottom:8px}
+.exp-item-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.exp-link{font:500 11px/1.4 var(--fn);color:var(--blu);word-break:break-all;margin:5px 0;cursor:pointer}.exp-link:hover{text-decoration:underline}
+/* Expert screen */
+.tabs-bar{display:flex;overflow-x:auto;gap:0;padding:12px 20px 0;background:#050a12;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:var(--hh);z-index:100;scrollbar-width:none}
+.tabs-bar::-webkit-scrollbar{display:none}
+.ptab{padding:12px 20px;border-radius:12px 12px 0 0;border:1px solid rgba(255,255,255,0.1);background:#111;color:var(--txm);font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0;position:relative;top:0;opacity:0.6}
+.ptab:hover{background:#1a1a1a;opacity:1}
+.ptab.active{background:#0a0f18 !important;color:var(--tx);opacity:1;z-index:110;font-weight:900;border:1px solid rgba(255,255,255,0.2) !important;border-bottom:1px solid #0a0f18 !important;padding:12px 20px 13px;margin-bottom:-1px;box-shadow:none;transform:none}
+.ptab.active:not(.done):not(.partial){border-top:2px solid var(--blu) !important}
+.ptab.active.done{border-top:2px solid var(--grn) !important}
+.ptab.active.partial{border-top:2px solid #f59e0b !important}
+/* Color overrides for status tabs - ensuring border matches */
+.ptab.partial{background:#1a1408;color:#f59e0b;border:1px solid rgba(245,158,11,0.3) !important}
+.ptab.done{background:#061b15;color:var(--grn);border:1px solid rgba(16,185,129,0.3) !important}
+.ptab-chk{color:var(--grn);font-size:11px;font-weight:900;margin-left:5px}
+.ptab-warn{color:#f59e0b;font-size:11px;font-weight:900;margin-left:5px}
+/* Centralized Timer Styles */
+.gtimer { position: sticky; top: 132px; z-index: 90; display: flex; align-items: center; gap: 16px; background: rgba(10, 15, 24, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--br); border-radius: var(--r16); padding: 12px 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: all .3s; }
+.gtimer-info { display: flex; align-items: center; gap: 12px; }
+.gtimer-lbl { font: 700 10px/1 var(--fn); text-transform: uppercase; letter-spacing: 1.2px; color: var(--txm); }
+.gtimer-status { font: 800 13px/1 var(--fn); padding: 5px 12px; border-radius: 100px; background: rgba(16,185,129,0.1); color: var(--grn); border: 1px solid rgba(16,185,129,0.2); }
+.gtimer-status.discussion { color: #3B82F6; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); }
+.gtimer-status.overtime { color: var(--red); background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); animation: tpulse 1s ease infinite; }
+.gtimer-val { font: 900 38px/1 var(--fn); font-variant-numeric: tabular-nums; margin-left: auto; letter-spacing: -1px; }
+.gtimer-val.red { color: var(--red); }
+.timer-ctrl-card { border: 2px solid var(--grn) !important; background: rgba(16,185,129,0.03); }
+.exp-body{padding:20px 22px 90px;background:#0a0f18;min-height:calc(100vh - var(--hh) - 60px)}
+.pi{background:var(--s);border:1px solid var(--br);border-radius:var(--r20);padding:22px 24px;margin-bottom:14px}
+.pi-team{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.7px;color:var(--txm);margin-bottom:5px}
+.pi-name{font:900 32px/1.1 var(--fn);letter-spacing:-1px;margin-bottom:16px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.pi-speaker{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:var(--grad-glass);border:1px solid rgba(16,185,129,0.3);border-radius:100px;color:var(--grn);font:700 18px/1 var(--fn);margin-bottom:20px;box-shadow: 0 8px 20px rgba(16,185,129,0.15)}
+.pi-speaker::before{content:'';width:10px;height:10px;background:var(--grn);border-radius:50%;box-shadow: 0 0 10px var(--grn);animation:blink 2s infinite}
+.pi-desc{font:400 15px/1.65 var(--fn);color:var(--txm);margin-bottom:16px}
+.pi-desc.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pi-links{display:flex;gap:8px;flex-wrap:wrap}
+.twrap{background:var(--s);border:1px solid var(--br);border-radius:var(--r16);padding:14px 20px;margin-bottom:14px}
+.twrap-hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.twrap-lbl{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.6px;color:var(--txm)}
+.tmini{font:700 14px/1 var(--fn)}.twrap-body{margin-top:14px}
+.tdig{font:900 52px/1 var(--fn);letter-spacing:-3px;font-variant-numeric:tabular-nums;transition:color .3s}
+.tdig.danger{color:var(--red);animation:tpulse 1s ease infinite}
+@keyframes tpulse{0%,100%{opacity:1}50%{opacity:.6}}
+.tprog{height:5px;background:var(--s3);border-radius:100px;overflow:hidden;margin:10px 0}
+.tprog-f{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--grn),#5BD97A);transition:width 1s linear,background .4s}
+.tprog-f.danger{background:linear-gradient(90deg,var(--red),#FF7373)}
+.tctrl{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.bcard{background:var(--s);border:1px solid var(--br);border-top:1px solid rgba(255,255,255,0.15);border-radius:var(--r16);padding:18px 20px;margin-bottom:12px;transition:all .3s var(--ease);backdrop-filter:blur(16px);position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.bcard::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);transition:all .5s}
+.bcard:hover::before{left:200%}
+.bcard.scored{border-color:var(--grn);box-shadow:0 0 20px rgba(33,160,56,0.1)}
+.btop{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.btop-t{display:flex;flex-direction:column;gap:2px}
+.btop-t .bnm{font:800 15px/1.2 var(--fn);color:var(--tx);text-transform:uppercase;letter-spacing:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btop-w{font:800 13px/1 var(--fn);color:var(--tx);background:rgba(255,255,255,0.08);padding:5px 10px;border-radius:20px;letter-spacing:0.5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1)}
+.bmain{display:flex;gap:12px;align-items:stretch;margin-bottom:20px;height:180px}
+.srow{display:flex;flex-direction:column;gap:8px;width:110px;flex-shrink:0}
+.sopt{flex:1;display:flex}
+.sopt input{display:none}
+.slbl{flex:1;display:flex;align-items:center;justify-content:center;border-radius:var(--r12);background:rgba(255,255,255,0.03);border:1px solid var(--br);cursor:pointer;transition:all .2s var(--ease);user-select:none;font:700 14px/1 var(--fn);color:var(--tx)}
+.slbl:hover{background:rgba(255,255,255,0.08);border-color:var(--br2)}
+.sopt input:checked+.slbl{background:var(--grad);color:#fff;border:none;box-shadow:0 4px 15px rgba(59,130,246,0.3);transform:scale(1.05);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
+.bhint{flex:1;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);padding:14px 18px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px;transition:all .3s var(--ease);opacity:0.4}
+.bhint.active{opacity:1;background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
+.bhint-txt{font:400 17px/1.5 var(--fn);color:var(--tx);transition:all .2s}
+.bsw{width:100px;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.bsw.active{background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
+.bdig{font:900 64px/1 var(--fn);letter-spacing:-3px;color:rgba(255,255,255,0.04);transition:all .3s}
+.bdig.active{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;transform:scale(1.1);filter:drop-shadow(0 0 15px rgba(59,130,246,0.4));text-shadow: 0 0 2px rgba(255,255,255,0.1)}
+.bfield{display:flex;flex-direction:column;gap:10px}
+.bfield-lbl{font:700 10px/1 var(--fn);text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.6);margin:0}
+.bfield-f{width:100%;background:var(--bg);border:none;border-radius:var(--r12);padding:14px;color:var(--tx);font:400 13px/1.5 var(--fn);outline:none;resize:vertical;min-height:75px;transition:all .2s;box-shadow:none}
+.bfield-f:focus{background:#131a22}
+@media(max-width:640px){
+  .bmain{flex-direction:column;height:auto}.srow{width:100%;flex-direction:row}
+}
+
+.subm-bar{position:fixed;bottom:0;left:0;right:0;background:var(--s);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);padding:14px 24px;display:none;align-items:center;gap:30px;z-index:200;box-shadow:0 -10px 40px rgba(0,0,0,0.5)}
+.subm-bar.vis{display:flex}
+.subm-prog-wrap{flex:1;display:flex;flex-direction:column;gap:6px}
+.subm-prog-hdr{display:flex;justify-content:space-between;align-items:center}
+.subm-prog-t{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:0.5px;color:var(--txm)}
+.subm-prog-v{font:800 13px/1 var(--fn);color:var(--grn)}
+.subm-prog-bar{height:8px;background:rgba(255,255,255,0.05);border-radius:10px;overflow:hidden;border:1px solid var(--br)}
+.subm-prog-fill{height:100%;background:var(--grad);width:0%;transition:width 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 0 15px rgba(16,185,129,0.3)}
+.subm-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:var(--r16);padding:14px 28px;font:800 14px/1 var(--fn);cursor:pointer;transition:all .3s var(--ease);box-shadow:0 8px 25px rgba(16,185,129,0.3);white-space:nowrap;animation:pulse-subm 3s infinite}
+@keyframes pulse-subm{0%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}70%{box-shadow:0 0 0 12px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.subm-btn:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 12px 30px rgba(16,185,129,0.4)}
+.subm-btn span{font-size:16px}
+.done-scr{text-align:center;padding:72px 24px}
+.done-ico{font-size:60px;margin-bottom:18px}.done-t{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;margin-bottom:8px}
+.done-s{font:400 14px/1.6 var(--fn);color:var(--txm);margin-bottom:24px}
+/* Loading screen */
+#scr-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;text-align:center}
+.l-ico{font-size:48px;margin-bottom:20px;animation:lspin 1.5s linear infinite}
+@keyframes lspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+/* Dashboard */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.echip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:var(--r12);font:600 12px/1 var(--fn);border:1px solid;transition:all .3s}
+.echip.sub{background:var(--grnd);border-color:rgba(33,160,56,.3);color:var(--grn)}
+.echip.pend{background:var(--s2);border-color:var(--br2);color:var(--txm)}
+.echip-dot{width:7px;height:7px;border-radius:50%}
+.echip.sub .echip-dot{background:var(--grn)}.echip.pend .echip-dot{background:var(--txs)}
+.twrap-outer{overflow-x:auto;border:1px solid var(--br);border-radius:var(--r16)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--s2);padding:10px 14px;font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.5px;color:var(--txm);text-align:left;border-bottom:1px solid var(--br);white-space:nowrap}
+tbody tr:hover td{background:var(--s2)}tbody tr:last-child td{border-bottom:none}
+td{padding:8px 10px;border-bottom:1px solid var(--br);vertical-align:middle}
+.td-r{width:36px;font:700 12px/1 var(--fn);color:var(--txm)}.td-r.r1{color:#F5C400}.td-r.r2{color:#A8B0C0}.td-r.r3{color:#BB8540}
+.td-nm{font:400 11px/1.2 var(--fn);color:var(--txm);margin-top:2px}.td-sub{font:700 13px/1.2 var(--fn);color:var(--tx)}
+.td-c{text-align:center}
+.sc{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;border-radius:var(--r8);font:700 12px/1 var(--fn);padding:0 5px}
+.sc-n{background:var(--s2);color:var(--txs)}.sc-L{background:var(--redd);color:var(--red)}.sc-M{background:var(--yeld);color:var(--yel)}.sc-H{background:var(--grnd);color:var(--grn)}
+.av{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:28px;border-radius:var(--r12);font:800 14px/1 var(--fn);padding:0 8px;border:1px solid}
+.av-n{background:var(--s2);border-color:var(--br);color:var(--txs)}.av-L{background:var(--redd);border-color:rgba(232,69,69,.25);color:var(--red)}
+.av-M{background:var(--yeld);border-color:rgba(240,168,51,.25);color:var(--yel)}.av-H{background:var(--grnd);border-color:rgba(33,160,56,.25);color:var(--grn)}
+.tbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.tbar-info{font:400 13px/1 var(--fn);color:var(--txm)}.tbar-acts{display:flex;gap:8px}
+/* Modals */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:400;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(5px)}
+.overlay.vis{display:flex}
+.mbox{background:var(--s);border:1px solid var(--br2);border-radius:var(--r20);padding:26px;max-width:580px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:var(--sh3);animation:mshow .3s var(--ease)}
+@keyframes mshow{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.mhd{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
+.mhd h3{font:800 18px/1.1 var(--fn);letter-spacing:-.3px}
+.mclose{width:32px;height:32px;border-radius:var(--r8);border:1px solid var(--br);background:var(--s2);color:var(--txm);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.mclose:hover{background:var(--s3);color:var(--tx)}.macts{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.toast{position:fixed;bottom:80px;right:22px;background:var(--s);border:1px solid var(--br2);color:var(--tx);padding:10px 16px;border-radius:var(--r12);font:600 13px/1 var(--fn);box-shadow:var(--sh3);z-index:9999;display:flex;align-items:center;gap:8px;animation:si .3s var(--ease);pointer-events:none}
+@keyframes si{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  #hdr,.tabs-bar,.subm-bar,.np,.tbar-acts,.hfb,.thbtn,.ntab,.hnav,.hfb,.hgap,#bg-parallax,.overlay{display:none!important}
+  main{padding-top:0!important;background:none!important}
+  .scr{display:none!important}
+  .scr.active{display:block!important;padding:0!important;max-width:100%!important;margin:0!important}
+  body{background:#fff!important;color:#000!important;font-size:10pt;min-height:auto!important}
+  .card{border:none!important;box-shadow:none!important;padding:0!important;background:transparent!important}
+  .pghd{margin-bottom:10px}.pghd h2{font-size:18pt}
+  table{width:100%!important;font-size:9pt!important;border:1px solid #ddd}
+  th,td{padding:4px 6px!important;border:1px solid #eee!important}
+  .sc,.av{border:1px solid #ccc!important;background:transparent!important;color:#000!important}
+  .td-r{width:25px!important}
+}
+@media(max-width:768px){.exp-body,.scr{padding-left:14px;padding-right:14px}.fg2{grid-template-columns:1fr}}
+.mbox-glass { background: rgba(255, 255, 255, 0.94) !important; backdrop-filter: blur(28px) saturate(190%) !important; -webkit-backdrop-filter: blur(28px) saturate(190%) !important; border: 1px solid rgba(255, 255, 255, 0.8) !important; color: #000 !important; box-shadow: 0 25px 80px -15px rgba(0,0,0,0.2) !important; border-radius: 28px !important; }
+.mbox-glass .mhd h3 { color: #000 !important; font-size: 22px !important; font-weight: 800 !important; }
+.mc-label { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 12px; display: block; }
+.mc-item { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #1a1a1a !important; font-weight: 500; line-height: 1.4; }
+.mc-item:last-child { border-bottom: none; }
+.mc-hint { font-size: 13px; color: #666 !important; margin-top: 16px; line-height: 1.5; }
+.btn-glass-cancel { background: rgba(0,0,0,0.05); color: #000; border: 1px solid rgba(0,0,0,0.1); }
+.btn-glass-cancel:hover { background: rgba(0,0,0,0.1); }
+
+/* Printing & Comment Sheets */
+.print-only-container{margin-top:40px}
+.print-sheet{background:var(--s2);color:var(--tx);padding:40px;margin-bottom:20px;border:1px solid var(--br);border-radius:var(--r12);box-shadow:var(--sh2);break-after:page}
+.print-sheet h2{font-size:22px;border-bottom:2px solid var(--grn);padding-bottom:10px;margin-bottom:14px;text-transform:uppercase}
+.ps-expert{margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--br)}
+.ps-expert:last-child{border-bottom:none}
+.ps-h{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--grn);display:flex;align-items:center;gap:8px}
+.ps-crit{margin-bottom:4px;font-size:12px; color:var(--txm)}
+.ps-crit strong{color:var(--tx);font-size:10px;text-transform:uppercase;margin-right:5px}
+.ps-sum{margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-left:3px solid var(--grn);font-style:italic;font-size:13px;color:var(--tx)}
+
+@media print {
+  body { background: white !important; color: black !important; padding: 0 !important; margin: 0 !important; }
+  .scr-dashboard { background: white !important; display: block !important; padding: 0 !important; margin: 0 !important; }
+  .pghd, .chips, .tbar, .tbar-acts, .hnav, header, .nav, .subm-bar, .modal, .btn { display: none !important; }
+  
+  .twrap-outer { 
+    display: block !important; 
+    width: 100% !important; 
+    border: 1px solid #000 !important; 
+    page-break-after: always !important; 
+    break-after: page !important;
+    margin-bottom: 50px !important;
+  }
+  table { color: black !important; border-collapse: collapse !important; }
+  th, td { border: 1px solid #ddd !important; color: black !important; padding: 6px !important; }
+  .sc, .av { background: none !important; border: 1px solid #ccc !important; color: black !important; }
+
+  .print-only-container { display: block !important; margin: 0 !important; position: static !important; }
+  .print-sheet { 
+    background: white !important; 
+    color: black !important; 
+    margin: 0 !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    padding: 10px 0 !important; 
+    break-after: page !important; 
+    page-break-after: always !important; 
+  }
+  .print-sheet h2 { border-bottom: 2px solid #000 !important; color: black !important; font-size: 18px !important; }
+  .ps-h { color: #000 !important; border-bottom: 1px solid #eee !important; font-size: 13px !important; margin-bottom: 4px !important; }
+  .ps-crit { color: #333 !important; font-size: 11px !important; }
+  .ps-crit strong { color: #000 !important; }
+  .ps-sum { background: #f5f5f5 !important; border-left: 3px solid #000 !important; color: #000 !important; font-size: 12px !important; padding: 6px 10px !important; }
+  
+  .scr:not(.active) { display: none !important; }
+}
+</style>
+</head>
+<body>
+<input type="file" id="fi-xls" accept=".xlsx,.xls,.csv" style="display:none" onchange="onXLSBulkImport(event)">
+
+<header id="hdr">
+  <div class="logo" onclick="goHome()">
+    <div class="logo-chip">СП'26</div>
+    <div>
+      <div class="logo-title">Современное предприятие 2026</div>
+      <div class="logo-sub">Финальная защита проектов</div>
+    </div>
+  </div>
+  <div class="hgap"></div>
+  <div id="hbadge" class="hbadge" style="display:none"><div class="hbdot"></div><span id="hbadge-txt"></span></div>
+  <nav id="hnav" class="hnav" style="display:none">
+    <button class="ntab" id="nt-setup" onclick="goSetup()">⚙️ Настройка</button>
+    <button class="ntab" id="nt-dash" onclick="goDash()">📊 Дашборд</button>
+  </nav>
+  <div class="hfb" id="hfb" onclick="showFBModal()">
+    <div class="hfb-dot loading" id="hfb-dot"></div>
+    <span id="hfb-txt">Firebase…</span>
+  </div>
+  <button class="thbtn" id="thbtn" onclick="toggleTheme()">🌙</button>
+</header>
+
+<main>
+<!-- SCREEN: Loading -->
+<div class="scr active" id="scr-loading">
+  <div class="l-ico">⚙️</div>
+  <div style="font:800 18px var(--fn);margin-bottom:6px">Загрузка системы…</div>
+  <div style="font-size:13px;color:var(--txm)">Пожалуйста, подождите</div>
+</div>
+
+<!-- SCREEN: Welcome -->
+<div class="scr" id="scr-welcome">
+  <div class="pghd">
+    <h2>👋 Добро пожаловать</h2>
+    <p>Система защит проектов · Апрель 2026</p>
+  </div>
+  <div style="max-width:480px; margin:0 auto">
+    <div class="card" style="text-align:center">
+      <div style="font-size:48px; margin-bottom:20px">🔐</div>
+      <div class="fgrp">
+        <label class="flbl">Введите PIN организатора</label>
+        <input type="password" id="pin-inp" class="finp" placeholder="••••" style="text-align:center; font-size:24px; letter-spacing:8px">
+      </div>
+      <button class="btn btn-p btn-lg" style="width:100%" onclick="checkPin()">Войти в управление</button>
+      <p style="font-size:12px; color:var(--txm); margin-top:16px">Для экспертов используйте прямые ссылки</p>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Firebase Setup -->
+<div class="scr" id="scr-firebase">
+  <div class="fbwrap">
+    <div class="fbwrap-icon">🔥</div>
+    <h2>Подключение Firebase</h2>
+    <p class="fbwrap-sub">Для синхронизации оценок между устройствами нужна база данных Firebase. Это бесплатно.</p>
+    <div class="card card-sm" style="margin-bottom:18px">
+      <div class="fbsteps">
+        <div class="fbstep"><div class="fbstep-n">1</div><div><div class="fbstep-t">Создайте Firebase-проект</div><div class="fbstep-s">Перейдите на <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a> → «Добавить проект» → название → отключите Analytics → «Создать»</div></div></div>
+        <div class="fbstep"><div class="fbstep-n">2</div><div><div class="fbstep-t">Создайте Realtime Database</div><div class="fbstep-s">Левое меню: «Сборка» → «Realtime Database» → «Создать базу данных» → выберите регион → <strong>«Начать в тестовом режиме»</strong> → «Включить»</div></div></div>
+        <div class="fbstep"><div class="fbstep-n">3</div><div><div class="fbstep-t">Скопируйте конфигурацию</div><div class="fbstep-s">Шестерёнка → «Настройки проекта» → «Ваши приложения» → «Добавить приложение» → Веб (</>) → придумайте псевдоним → «Зарегистрировать» → вкладка «JSON» → скопируйте объект <code>firebaseConfig</code></div></div></div>
+        <div class="fbstep"><div class="fbstep-n">4</div><div><div class="fbstep-t">Вставьте конфигурацию ниже</div><div class="fbstep-s">Нажмите «Подключить» — конфигурация сохранится в браузере</div></div></div>
+      </div>
+    </div>
+    <div class="card card-sm">
+      <div class="fgrp"><label class="flbl">Firebase Config (JSON)</label>
+        <textarea class="finp" id="fb-inp" rows="9" placeholder='{
+  "apiKey": "AIza...",
+  "authDomain": "my-project.firebaseapp.com",
+  "databaseURL": "https://my-project-default-rtdb.firebaseio.com",
+  "projectId": "my-project",
+  "storageBucket": "my-project.appspot.com",
+  "messagingSenderId": "123456",
+  "appId": "1:123..."
+}'></textarea></div>
+      <div id="fb-err" class="alrt alrt-e" style="display:none"></div>
+      <button class="btn btn-p btn-lg" style="width:100%" onclick="connectFirebase()">🔥 Подключить Firebase</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Setup (Coordinator) -->
+<div class="scr" id="scr-setup">
+  <div class="pghd"><h2>⚙️ Настройка сессии</h2><p>Защита проектов 16.04.2026 · Заполните данные и сгенерируйте ссылки для экспертов</p></div>
+  <div class="card card-sm" style="margin-bottom:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div>
+        <div style="font:700 13px/1 var(--fn);margin-bottom:3px">📊 Импорт всех участников из XLS/Excel</div>
+        <div style="font:400 11px/1.4 var(--fn);color:var(--txm)">Формат: <strong>Группа №</strong> | ФИО | Организация | Должность · «Группа №» должна совпадать с полем в карточке проекта</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-s btn-sm" onclick="dlXLSTemplate()">📥 Шаблон XLS</button>
+        <button class="btn btn-p btn-sm" onclick="G('fi-xls').click()">📊 Импорт XLS</button>
+      </div>
+    </div>
+  </div>
+  <div class="setup-grid">
+    <div>
+      <div class="shd"><div class="shd-t">🏢 Проекты и команды</div><button class="btn btn-p btn-sm" onclick="addProject()">＋ Добавить проект</button></div>
+      <div id="proj-list"><div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div></div>
+    </div>
+    <div class="exp-panel">
+      <div class="card card-sm timer-ctrl-card" style="margin-bottom: 18px;">
+        <div class="shd" style="margin-bottom:12px"><div class="shd-t">⏱ Управление таймером</div></div>
+        <div id="c-timer-display" style="text-align:center; padding:10px 0;">
+          <div id="c-timer-val" style="font:900 42px/1 var(--fn); margin-bottom:4px;">12:00</div>
+          <div id="c-timer-status" style="font:700 12px var(--fn); color:var(--txm); text-transform:uppercase;">Таймер остановлен</div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button class="btn btn-p btn-sm" id="btn-c-start" style="flex:1" onclick="remoteTimerStart()">▶ Запустить для всех</button>
+          <button class="btn btn-d btn-sm" id="btn-c-stop" style="flex:1; display:none" onclick="remoteTimerStop()">🛑 Стоп</button>
+          <button class="btn btn-s btn-sm" onclick="remoteTimerReset()">↺ Сброс</button>
+        </div>
+      </div>
+      <div class="card card-sm" style="margin-bottom: 18px;">
+        <div class="shd" style="margin-bottom:12px"><div class="shd-t">⚙️ Настройки отображения</div></div>
+        <label style="display:flex; align-items:center; gap:12px; cursor:pointer; user-select:none;">
+          <input type="checkbox" id="set-show-members" style="width:20px; height:20px; cursor:pointer" onchange="saveCfgToFB()">
+          <span style="font:600 13px var(--fn); color:var(--tx)">Показывать экспертам состав команд</span>
+        </label>
+      </div>
+      <div class="card card-sm">
+        <div class="shd" style="margin-bottom:14px"><div class="shd-t">👥 Эксперты</div><button class="badd" onclick="addExpert()">＋ Добавить</button></div>
+        <div id="experts-list"><div style="font:400 12px/1 var(--fn);color:var(--txm);padding:8px 0">Нет экспертов</div></div>
+        <div class="div"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-s btn-sm" onclick="saveCfgToFB()">☁️ Сохранить в Firebase</button>
+          <button class="btn btn-s btn-sm" onclick="saveCfgLocal()">💾 Локально</button>
+          <button class="btn btn-d btn-sm" onclick="resetAllScores()" style="margin-left:auto">🧹 Сбросить всё</button>
+        </div>
+        <div id="save-hint" style="font-size:11px;color:var(--txm);margin-top:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Expert Scoring -->
+<div class="scr" id="scr-expert">
+  <div class="tabs-bar np" id="ptabs"></div>
+  <div class="exp-body" id="exp-body">
+    <div class="gtimer" id="gtimer">
+      <div class="gtimer-info">
+        <div class="gtimer-lbl" id="gt-lbl">Общий таймер</div>
+        <div class="gtimer-status" id="gtimer-status">Ожидание…</div>
+      </div>
+      <div class="gtimer-val" id="gtimer-val">12:00</div>
+    </div>
+    <div class="pi" id="pi">
+      <div class="pi-team" id="pi-team"></div>
+      <div class="pi-name" id="pi-name"></div>
+      <div style="margin-bottom: 14px; font: 700 16px/1 var(--fn); color: var(--txm);">Выступает: <span id="pi-speaker-plain" style="color: var(--grn);"></span></div>
+      <div class="pi-desc clamp" id="pi-desc"></div>
+      <button class="btn-g" id="pi-expand" onclick="expandDesc()" style="font-size:12px;margin:4px 0 10px;display:none">▼ Показать полностью</button>
+      <div class="pi-links" id="pi-links"></div>
+    </div>
+    <div class="bcard" id="bc-b1">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm" style="color:var(--grn)">1. ПРОБЛЕМА</div></div>
+        <div class="btop-w">ВЕС: 25%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b1"></div>
+        <div class="bhint" id="hint-b1"><div class="bhint-txt" id="htxt-b1">Выберите балл слева для отображения критерия...</div></div>
+        <div class="bsw" id="sw-b1"><div class="bdig" id="ds-b1">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b1" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b1')"></textarea>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b2">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm">2. ТЕХНОЛОГИИ</div></div>
+        <div class="btop-w">ВЕС: 30%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b2"></div>
+        <div class="bhint" id="hint-b2"><div class="bhint-txt" id="htxt-b2">Выберите балл слева...</div></div>
+        <div class="bsw" id="sw-b2"><div class="bdig" id="ds-b2">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b2" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b2')"></textarea>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b3">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm">3. ЭКОНОМИКА</div></div>
+        <div class="btop-w">ВЕС: 25%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b3"></div>
+        <div class="bhint" id="hint-b3"><div class="bhint-txt" id="htxt-b3">Выберите балл слева...</div></div>
+        <div class="bsw" id="sw-b3"><div class="bdig" id="ds-b3">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b3" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b3')"></textarea>
+      </div>
+    </div>
+    <div class="bcard" id="bc-b4">
+      <div class="btop">
+        <div class="btop-t"><div class="bnm" style="color:var(--red)">4. ПИТЧ</div></div>
+        <div class="btop-w">ВЕС: 20%</div>
+      </div>
+      <div class="bmain">
+        <div class="srow" id="row-b4"></div>
+        <div class="bhint" id="hint-b4"><div class="bhint-txt" id="htxt-b4">Выберите балл слева...</div></div>
+        <div class="bsw" id="sw-b4"><div class="bdig" id="ds-b4">—</div></div>
+      </div>
+      <div class="bfield">
+        <label class="bfield-lbl">КОММЕНТАРИЙ ПО КРИТЕРИЮ</label>
+        <textarea class="bfield-f" id="comm-b4" placeholder="Введите ваши заметки..." oninput="saveBlockComment('b4')"></textarea>
+      </div>
+    </div>
+    <div class="bcard">
+      <div class="btop" style="margin-bottom:12px">
+        <div>
+          <div class="bey" style="background:var(--grn); color:#000; padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:8px">ВАША ОБРАТНАЯ СВЯЗЬ</div>
+          <div class="bnm" style="font-size:18px; line-height:1.3; color:var(--grn); font-weight:800; text-shadow: 0 0 20px rgba(0,255,153,0.3)">Ваши комментарии очень ценны и важны для группы, поддержите участников содержательной обратной связью</div>
+        </div>
+      </div>
+      <textarea class="finp" id="comment-f" placeholder="Общее мнение по проекту в целом..." rows="3" oninput="saveComment()"></textarea>
+    </div>
+  </div>
+  <div class="done-scr" id="done-scr" style="display:none">
+    <div class="done-ico">✅</div>
+    <div class="done-t">Оценки отправлены!</div>
+    <div class="done-s" id="done-s">Спасибо за работу</div>
+    <div style="margin-top:20px; display:flex; gap:10px; justify-content:center">
+      <button class="btn btn-p" onclick="continueWork()">▶ Продолжить работу</button>
+      <button class="btn btn-s" onclick="undoSubmit()">↩ Изменить оценки</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Dashboard -->
+<div class="scr" id="scr-dashboard">
+  <div class="pghd"><h2>📊 Дашборд организатора</h2><p>Результаты обновляются в реальном времени через Firebase</p></div>
+  <div class="gtimer" id="gtimer-dash" style="margin-bottom: 24px; cursor: pointer" onclick="goSetup()">
+      <div class="gtimer-info">
+        <div class="gtimer-lbl">Общий таймер</div>
+        <div class="gtimer-status" id="gtimer-status-dash">Ожидание…</div>
+      </div>
+      <div class="gtimer-val" id="gtimer-val-dash">12:00</div>
+    </div>
+  <div class="chips" id="exp-status"></div>
+  <div class="tbar np">
+    <div class="tbar-info" id="t-info">Ожидание данных…</div>
+    <div class="tbar-acts"><button class="btn btn-s btn-sm" onclick="window.print()">🖨️</button><button class="btn btn-s btn-sm" onclick="exportCSV()">📄 CSV</button></div>
+  </div>
+  <div class="twrap-outer"><table><thead id="t-head"></thead><tbody id="t-body"></tbody></table></div>
+  <div id="dash-comments" class="print-only-container"></div>
+</div>
+</main>
+
+<div class="subm-bar np" id="subm-bar">
+  <div class="subm-prog-wrap">
+    <div class="subm-prog-hdr">
+      <div class="subm-prog-t">Прогресс оценки проектов:</div>
+      <div class="subm-prog-v" id="subm-cnt">0/0</div>
+    </div>
+    <div class="subm-prog-bar">
+      <div class="subm-prog-fill" id="subm-fill"></div>
+    </div>
+  </div>
+  <button class="subm-btn" onclick="submitScores()"><span>✓</span> Отправить оценки</button>
+</div>
+
+<!-- Modal: Members -->
+<div class="overlay" id="modal-members">
+  <div class="mbox">
+    <div class="mhd"><h3 id="mm-title">Состав команды</h3><button class="mclose" onclick="closeModal('modal-members')">✕</button></div>
+    <div id="mm-content"></div>
+  </div>
+</div>
+
+<!-- Modal: Confirm Actions -->
+<div class="overlay" id="modal-confirm">
+  <div class="mbox mbox-glass">
+    <div class="mhd"><h3 id="mc-title">Подтверждение</h3><button class="mclose" onclick="closeModal('modal-confirm')">✕</button></div>
+    <div id="mc-label" class="mc-label"></div>
+    <div id="mc-list" style="margin-bottom:8px; max-height: 250px; overflow-y: auto;"></div>
+    <p id="mc-hint" class="mc-hint"></p>
+    <div class="macts">
+      <button id="mc-btn-cancel" class="btn btn-glass-cancel" onclick="closeModal('modal-confirm')">← Вернуться</button>
+      <button id="mc-btn-confirm" class="btn btn-p" onclick="doSubmit()">Отправить всё равно</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Firebase config quick edit -->
+<div class="overlay" id="modal-fb">
+  <div class="mbox" style="max-width:500px">
+    <div class="mhd"><h3>🔥 Firebase конфигурация</h3><button class="mclose" onclick="closeModal('modal-fb')">✕</button></div>
+    <div class="fgrp"><label class="flbl">Firebase Config JSON</label><textarea class="finp" id="fb-modal-inp" rows="8"></textarea></div>
+    <div class="macts"><button class="btn btn-s" onclick="closeModal('modal-fb')">Отмена</button><button class="btn btn-p" onclick="reconnectFB()">🔥 Переподключить</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-edit-score">
+  <div class="mbox mbox-glass" style="max-width:400px">
+    <div class="mhd"><h3>Редактировать баллы</h3><button class="mclose" onclick="closeModal('modal-edit-score')">✕</button></div>
+    <div style="margin-bottom:15px; font-size:13px; color:#555">Эксперт: <strong id="mes-ename" style="color:#1a1a1a"></strong><br>Проект: <strong id="mes-pname" style="color:#1a1a1a"></strong></div>
+    <input type="hidden" id="mes-eid"><input type="hidden" id="mes-pid">
+    <div class="fg2">
+      <div class="fgrp"><label class="flbl" style="color:#111">1. Проблема (0-3)</label><input id="mes-b1" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
+      <div class="fgrp"><label class="flbl" style="color:#111">2. Технологии (0-3)</label><input id="mes-b2" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
+    </div>
+    <div class="fg2">
+      <div class="fgrp"><label class="flbl" style="color:#111">3. Экономика (0-3)</label><input id="mes-b3" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
+      <div class="fgrp"><label class="flbl" style="color:#111">4. Питч (0-1)</label><input id="mes-b4" class="finp" type="number" min="0" max="1" oninput="if(this.value>1)this.value=1;if(this.value<0)this.value=0"></div>
+    </div>
+    <div class="macts">
+      <button class="btn btn-s btn-glass-cancel" onclick="closeModal('modal-edit-score')">Отмена</button>
+      <button class="btn btn-p" onclick="saveCoordScore()">💾 Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+  console.log('[GLOBAL ERROR]', msg, 'at', lineNo + ':' + columnNo);
+  // Ignore generic cross-origin script errors that offer no info (often caused by extensions/Telegram)
+  if (msg.toLowerCase().indexOf('script error') > -1) return false;
+  alert('Проблема: ' + msg + '\nЛиния: ' + lineNo);
+  return false;
+};
+console.log('--- SCRIPT START v1.1.5 ---');
+// ── КОНФИГУРАЦИЯ FIREBASE (вшита в файл) ──────────────
+const BAKED_FB = {
+  apiKey: "AIzaSyCGnae1nfCk_DfTqgc67H-BVvnIjwmHneU",
+  authDomain: "sp26-6602a.firebaseapp.com",
+  databaseURL: "https://sp26-6602a-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "sp26-6602a",
+  storageBucket: "sp26-6602a.firebasestorage.app",
+  messagingSenderId: "1071347166487",
+  appId: "1:1071347166487:web:91947b490d1a160748db52"
+};
+// ── END CONFIG ─────────────────────────────────────────
+let db=null,dashRef=null,dashCb=null;
+let AUTH_SETUP = false;
+const CFG={projects:{},experts:{},_pid:1,_eid:1,showMembers:true};
+const EXP={id:null,name:null,scores:{},submitted:false,activePid:null};
+const DASH={data:null};
+const TIMER={total:720,left:720,running:false,iv:null,open:false};
+const BMAX={b1:3,b2:3,b3:3,b4:1};
+const BCRIT={
+  b1:[
+    "Проблема не сформулирована, или решение с ней не связано",
+    "Проблема обозначена, но не подкреплена данными. Решение выбрано без анализа альтернатив",
+    "Проблема подтверждена исследованием (CJM, JTBD, опросы, статистика, внутренние данные компании). Показаны последствия бездействия. Обоснован выбор конкретного решения",
+    "Всё из уровня 2, плюс: явно показана связь проекта со стратегическими целями компании; проанализированы ≥ 2 альтернативных варианта решения с обоснованием финального выбора"
+  ],
+  b2:[
+    "Технология не описана или упомянута декларативно - без схемы и обоснования",
+    "Технология названа, общая логика работы показана, но архитектура не проработана",
+    "Представлена верхнеуровневая архитектура (схема принципа работы), обоснован выбор технологического стека, проведён бенчмарк ≥ 2 аналогичных решений",
+    "Всё из уровня 2, плюс: описаны ключевые интеграции и зависимости; представлен реалистичный детализированный план реализации (roadmap с этапами и ответственными)"
+  ],
+  b3:[
+    "Финансовая модель отсутствует или содержит внутренние противоречия",
+    "Объём инвестиций (CAPEX/OPEX) оценён, но ключевые показатели эффективности (NPV / IRR / ROI) не рассчитаны или не обоснованы",
+    "Рассчитаны NPV, IRR, ROI / PP; направления инвестиций (статьи расходов) и источники экономического эффекта явно разделены и описаны",
+    "Всё из уровня 2, плюс: представлены ≥ 2 сценария (реалистичный / оптимистичный / негативный) или анализ чувствительности; риски оценены"
+  ],
+  b4:[
+    "Структура выступления не прослеживается ИЛИ спикер не смог ответить на вопросы",
+    "Выступление построено по логике «проблема → решение → экономика → внедрение». Ключевые тезисы считываются на слайдах. Спикер уверенно отвечает на вопросы"
+  ]
+};
+const BTAGS={b1:['0','1','2','3'],b2:['0','1','2','3'],b3:['0','1','2','3'],b4:['0','1']};
+let _theme='dark';
+
+function G(id){return document.getElementById(id);}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function pad(n){return String(n).padStart(2,'0');}
+function parseHash(){const h=location.hash.replace(/^#/,'');const p={};h.split('&').forEach(x=>{const i=x.indexOf('=');if(i>-1)try{p[x.slice(0,i)]=decodeURIComponent(x.slice(i+1));}catch(e){p[x.slice(0,i)]=x.slice(i+1);}else if(x)p.screen=x;});return p;}
+function objVals(o){return Object.values(o||{});}
+function objSize(o){return Object.keys(o||{}).length;}
+function scCls(n){if(n===null||n===undefined)return'sc-n';if(n<=4)return'sc-L';if(n<=7)return'sc-M';return'sc-H';}
+function avCls(n){if(n===null||n===undefined)return'av-n';if(n<=4)return'av-L';if(n<=7)return'av-M';return'av-H';}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>{t.style.transition='opacity .3s';t.style.opacity='0';setTimeout(()=>t.remove(),330);},2800);}
+function copyTxt(txt,msg){navigator.clipboard?.writeText(txt).then(()=>toast(msg)).catch(()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();document.execCommand('copy');document.body.removeChild(a);toast(msg);});}
+
+/* ── THEME ── */
+function toggleTheme(){applyTheme(_theme==='dark'?'light':'dark');}
+function applyTheme(t){
+  _theme=t;document.documentElement.setAttribute('data-theme',t);
+  const b = G('thbtn'); if(b) b.textContent=t==='dark'?'☀️':'🌙';
+  localStorage.setItem('sp26v3-theme',t);
+}
+
+/* ── FIREBASE ── */
+function setFBStatus(state,txt){
+  const dot = G('hfb-dot'), t = G('hfb-txt');
+  console.log(`[FB Status] ${state}: ${txt}`);
+  if(dot) dot.className='hfb-dot '+state;
+  if(t) t.textContent=txt;
+}
+
+function initFirebase(cfg){
+  console.log('[Init] Start with:', cfg ? cfg.projectId : 'null');
+  try{
+    if(!cfg || !cfg.apiKey) throw new Error('Invalid config');
+    if(!cfg.databaseURL && cfg.projectId) cfg.databaseURL=`https://${cfg.projectId}-default-rtdb.firebaseio.com`;
+    
+    if(typeof firebase === 'undefined') {
+      throw new Error('Firebase library not loaded');
+    }
+
+    if(firebase.apps.length===0) {
+      console.log('[Init] Initializing app...');
+      firebase.initializeApp(cfg);
+    }
+    
+    db=firebase.database();
+    console.log('[Init] Database ready');
+    startTimerSync();
+    
+    db.ref('.info/connected').on('value',s=>{
+      const connected = !!s.val();
+      console.log('[Init] Connection listener:', connected);
+      setFBStatus(connected ? 'ok' : 'err', connected ? 'Firebase ✓' : 'Офлайн');
+    });
+    
+    try { localStorage.setItem('sp26v3-fb',JSON.stringify(cfg)); } catch(e) { console.warn('localStorage save failed'); }
+    return true;
+  }catch(e){
+    console.error('[Init] Fatal error:', e);
+    setFBStatus('err','Ошибка инициализации');
+    return false;
+  }
+}
+
+function connectFirebase(){
+  const raw=G('fb-inp').value.trim();
+  try{
+    const m=raw.match(/\{[\s\S]*\}/);
+    if(!m)throw new Error('JSON не найден');
+    const cfg=JSON.parse(m[0]);
+    G('fb-err').style.display='none';
+    if(!initFirebase(cfg)){G('fb-err').textContent='❌ Не удалось подключиться. Проверьте databaseURL.';G('fb-err').style.display='';return;}
+    routeHash();
+  }catch(e){G('fb-err').textContent='❌ Ошибка JSON: '+e.message;G('fb-err').style.display='';}
+}
+function showFBModal(){const raw=localStorage.getItem('sp26v3-fb')||'{}';G('fb-modal-inp').value=raw;openModal('modal-fb');}
+function reconnectFB(){
+  try{const cfg=JSON.parse(G('fb-modal-inp').value);if(initFirebase(cfg)){closeModal('modal-fb');toast('Firebase переподключён');}}catch(e){alert('Ошибка: '+e.message);}
+}
+function cleanupListeners(){if(dashRef&&dashCb){try{dashRef.off('value',dashCb);}catch(e){}dashRef=null;dashCb=null;}}
+
+function boot(){
+  console.log('[BOOT] v1.1.5 init');
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', doBoot);
+  } else {
+    doBoot();
+  }
+}
+
+function doBoot(){
+  console.log('[BOOT] doBoot executing...');
+  if (G('scr-loading')) G('scr-loading').style.display = 'none'; // Ensure loading screen is hidden
+  try {
+    try {
+      var theme = localStorage.getItem('sp26v3-theme') || 'dark';
+      applyTheme(theme);
+    } catch(e) { console.warn('Theme apply error:', e); }
+
+    var params = parseHash();
+    var ok = false;
+    
+    // 1. Hardcoded Config (Highest priority)
+    if(typeof BAKED_FB !== 'undefined' && BAKED_FB && BAKED_FB.apiKey) {
+      console.log('[BOOT] Using BAKED_FB:', BAKED_FB.projectId);
+      ok = initFirebase(BAKED_FB);
+    }
+    
+    // 2. URL Parameters
+    if(!ok && params.fb) {
+      try {
+        console.log('[BOOT] Using URL config');
+        ok = initFirebase(JSON.parse(atob(params.fb)));
+      } catch(e) { console.warn('[BOOT] URL config error', e); }
+    }
+    
+    // 3. Local Storage fallback
+    if(!ok) {
+      try {
+        var raw = localStorage.getItem('sp26v3-fb');
+        if(raw) {
+          console.log('[BOOT] Using localStorage config');
+          ok = initFirebase(JSON.parse(raw));
+        }
+      } catch(e) { console.warn('[BOOT] localStorage error', e); }
+    }
+
+    if(ok) {
+      routeHash();
+    } else {
+      show('firebase');
+      setFBStatus('err','Нужна настройка');
+    }
+  } catch(e) {
+    console.error('[BOOT] Critical error:', e);
+    alert('Критическая ошибка загрузки: ' + e.message);
+  }
+}
+
+window.addEventListener('hashchange',routeHash);
+
+function routeHash(){
+  const p=parseHash();
+  console.log('[Route] Hash:', location.hash);
+  if(p.expert) {
+    // If expert link is used, ensure we are NOT in coordinator mode
+    // even if previously logged in on this browser.
+    goExpertMode(p.expert);
+  } else if(localStorage.getItem('sp26v3-auth') === '1') {
+    if(p.screen==='dashboard') { goCoordMode(); goDash(); }
+    else { goCoordMode(); goSetup(); }
+  } else {
+    show('welcome');
+  }
+}
+
+/* ── NAVIGATION ── */
+function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('active'));const e=G('scr-'+id);if(e)e.classList.add('active');window.scrollTo(0,0);}
+function goHome(){
+  cleanupListeners();
+  const p = parseHash();
+  // Protection: if we are in expert mode, the logo should just refresh/stay in expert mode
+  if(p.expert) { goExpertMode(p.expert); return; }
+  
+  if(localStorage.getItem('sp26v3-auth') !== '1') { show('welcome'); return; }
+  goCoordMode(); goDash();
+}
+function goSetup(){
+  if(localStorage.getItem('sp26v3-auth') !== '1') { show('welcome'); return; }
+  loadCfgFromFB();show('setup');setNavAct('setup');
+}
+function goDash(){
+  // Double check auth here too for manual hash changes
+  if(localStorage.getItem('sp26v3-auth') !== '1') { show('welcome'); return; }
+  startDashListener();show('dashboard');setNavAct('dash');
+}
+function setNavAct(id){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));const e=G('nt-'+id);if(e)e.classList.add('active');}
+function goCoordMode(){
+  G('hnav').style.display='flex';
+  G('hfb').style.display='flex';
+  const b=G('hbadge');b.className='hbadge coord';b.style.display='flex';G('hbadge-txt').textContent='Организатор';
+  G('subm-bar').classList.remove('vis');
+}
+
+/* ── EXPERT MODE ── */
+function goExpertMode(eid){
+  // Security: Clear coordinator auth if an expert link is opened
+  // This prevents accidental access to admin panel if the coordinator previously used this browser.
+  localStorage.removeItem('sp26v3-auth'); 
+  
+  G('hnav').style.display='none';
+  G('hfb').style.display='none';
+  setFBStatus('loading','Загрузка…');
+  db.ref('sp26/config').once('value').then(snap=>{
+    const d=snap.val();
+    if(!d||!d.experts||!d.experts[eid]){showExpertErr(eid);return;}
+    CFG.projects=d.projects||{};
+    CFG.experts=d.experts||{};
+    CFG.showMembers=d.showMembers!==undefined?d.showMembers:true;
+    const expert=CFG.experts[eid];
+    EXP.id=eid;EXP.name=expert.name;
+    const b=G('hbadge');b.className='hbadge exp';b.style.display='flex';G('hbadge-txt').textContent=EXP.name;
+    setFBStatus('ok','Firebase ✓');
+    db.ref(`sp26/scores/${eid}`).once('value').then(ss=>{
+      const sd=ss.val()||{};
+      EXP.scores=sd.scores||{};EXP.submitted=sd.submitted||false;
+      if(EXP.submitted){showSubmitted();show('expert');return;}
+      G('subm-bar').classList.add('vis');
+      renderExpert();show('expert');
+    });
+  });
+}
+function showExpertErr(eid){
+  G('hbadge').style.display='none';
+  G('exp-body').innerHTML=`<div class="alrt alrt-e">Ошибка: Эксперт с ID "${esc(eid)}" не найден в системе. Обратитесь к организатору.</div>`;
+  show('expert');
+}
+
+function renderExpert(){
+  const pids=Object.keys(CFG.projects).sort((a,b)=>parseInt(a)-parseInt(b));
+  let h='';
+  pids.forEach(pid=>{
+    const p=CFG.projects[pid];
+    const scored=EXP.scores[pid];
+    const partial=scored && Object.keys(scored).length>0 && Object.keys(scored).length<4;
+    const done=scored && Object.keys(scored).length>=4;
+    let cls='ptab';
+    if(pid===EXP.activePid)cls+=' active';
+    if(done)cls+=' done'; else if(partial)cls+=' partial';
+    h+=`<div class="${cls}" onclick="switchProject('${pid}')">${esc(p.name)}${done?'<span class="ptab-chk">✓</span>':(partial?'<span class="ptab-warn">!</span>':'')}</div>`;
+  });
+  G('ptabs').innerHTML=h;
+  if(!EXP.activePid && pids.length) switchProject(pids[0]);
+  else if(EXP.activePid) renderActiveProject();
+  updateProgress();
+}
+
+function switchProject(pid){
+  EXP.activePid=pid;
+  renderExpert();
+}
+
+function renderActiveProject(){
+  const p=CFG.projects[EXP.activePid];
+  if(!p)return;
+  G('pi-team').textContent=p.team||'';
+  G('pi-name').textContent=p.name;
+  
+  // Conditionally show speaker and members
+  if(CFG.showMembers){
+    G('pi-speaker-plain').textContent=p.speaker||'Не указан';
+    G('pi-desc').innerHTML=p.desc?esc(p.desc).replace(/\n/g,'<br>'):'';
+  } else {
+    G('pi-speaker-plain').textContent='—';
+    G('pi-desc').innerHTML='<em>Информация о составе команды скрыта организатором</em>';
+  }
+  
+  G('pi-expand').style.display=(p.desc&&p.desc.length>140)?'block':'none';
+  let lh='';
+  if(p.links) p.links.forEach(l=>{
+    lh+=`<a href="${esc(l.url)}" target="_blank" class="btn btn-s btn-xs">🔗 ${esc(l.title||'Ссылка')}</a>`;
+  });
+  G('pi-links').innerHTML=lh;
+  ['b1','b2','b3','b4'].forEach(bid=>{
+    const row=G('row-'+bid);row.innerHTML='';
+    BTAGS[bid].forEach(v=>{
+      const cur=(EXP.scores[EXP.activePid]||{})[bid];
+      row.innerHTML+=`<label class="sopt"><input type="radio" name="${bid}" value="${v}" ${cur==v?'checked':''} onchange="setScore('${bid}','${v}')"><div class="slbl">${v}</div></label>`;
+    });
+    updateBlockUI(bid);
+  });
+}
+
+function setScore(bid,val){
+  if(!EXP.scores[EXP.activePid])EXP.scores[EXP.activePid]={};
+  EXP.scores[EXP.activePid][bid]=val;
+  updateBlockUI(bid);
+  updateProgress();
+  saveScoreLocally();
+}
+function updateBlockUI(bid){
+  const val=(EXP.scores[EXP.activePid]||{})[bid];
+  const h=G('hint-'+bid), t=G('htxt-'+bid), s=G('sw-'+bid), d=G('ds-'+bid);
+  if(val!==undefined){
+    h.classList.add('active');
+    t.innerHTML=`<strong>Критерий на ${val} балл(ов):</strong><br>${BCRIT[bid][val]}`;
+    s.classList.add('active');
+    d.textContent=val;
+    d.classList.add('active');
+  }else{
+    h.classList.remove('active');
+    t.textContent='Выберите балл слева...';
+    s.classList.remove('active');
+    d.textContent='—';
+    d.classList.remove('active');
+  }
+  const comm = (EXP.scores[EXP.activePid]||{}).comments||{};
+  G('comm-'+bid).value = comm[bid]||'';
+}
+function saveBlockComment(bid){
+  if(!EXP.scores[EXP.activePid])EXP.scores[EXP.activePid]={};
+  if(!EXP.scores[EXP.activePid].comments)EXP.scores[EXP.activePid].comments={};
+  EXP.scores[EXP.activePid].comments[bid]=G('comm-'+bid).value;
+  saveScoreLocally();
+}
+function saveComment(){
+  EXP.scores.globalComment=G('comment-f').value;
+  saveScoreLocally();
+}
+function saveScoreLocally(){
+  localStorage.setItem(`sp26v3-score-${EXP.id}`,JSON.stringify(EXP.scores));
+}
+function updateProgress(){
+  const total=objSize(CFG.projects);
+  let done=0;
+  objVals(CFG.projects).forEach(p=>{
+    const s=EXP.scores[p.id];
+    if(s&&objSize(s)>=4)done++;
+  });
+  G('subm-cnt').textContent=`${done}/${total}`;
+  const pct=total?Math.round((done/total)*100):0;
+  G('subm-fill').style.width=pct+'%';
+}
+function expandDesc(){G('pi-desc').classList.remove('clamp');G('pi-expand').style.display='none';}
+
+function checkPin(){
+  const pin = G('pin-inp').value;
+  if(pin === '5555'){
+    localStorage.setItem('sp26v3-auth','1');
+    routeHash();
+  } else {
+    alert('Неверный PIN');
+  }
+}
+
+function submitScores(){
+  const unfinished = [];
+  objVals(CFG.projects).forEach(p=>{
+    const s=EXP.scores[p.id];
+    if(!s || objSize(s)<4) unfinished.push(p.name);
+  });
+  
+  if(unfinished.length > 0){
+    G('mc-title').textContent = 'Внимание: Не все проекты оценены';
+    G('mc-label').textContent = 'Следующие проекты имеют неполные оценки:';
+    G('mc-list').innerHTML = unfinished.map(n => `<div class="mc-item">⚠️ ${esc(n)}</div>`).join('');
+    G('mc-hint').textContent = 'Вы можете отправить текущие результаты, но лучше завершить оценку всех участников.';
+    G('mc-btn-confirm').textContent = 'Отправить всё равно';
+    G('mc-btn-confirm').onclick = doSubmit;
+    openModal('modal-confirm');
+  } else {
+    G('mc-title').textContent = 'Подтверждение отправки';
+    G('mc-label').textContent = 'Вы оценили все проекты. Готовы отправить финальные результаты?';
+    G('mc-list').innerHTML = '';
+    G('mc-hint').textContent = 'После отправки вы не сможете изменить баллы самостоятельно без помощи организатора.';
+    G('mc-btn-confirm').textContent = 'Да, отправить оценки';
+    G('mc-btn-confirm').onclick = doSubmit;
+    openModal('modal-confirm');
+  }
+}
+
+function doSubmit(){
+  closeModal('modal-confirm');
+  setFBStatus('loading','Отправка на сервер…');
+  db.ref(`sp26/scores/${EXP.id}`).set({
+    name: EXP.name,
+    scores: EXP.scores,
+    submitted: true,
+    ts: Date.now()
+  }).then(()=>{
+    EXP.submitted=true;
+    showSubmitted();
+    toast('✅ Оценки успешно отправлены');
+  }).catch(e=>{
+    alert('Ошибка отправки: '+e.message);
+    setFBStatus('err','Ошибка записи');
+  });
+}
+function showSubmitted(){
+  show('expert');
+  G('exp-body').style.display='none';
+  G('ptabs').style.display='none';
+  G('subm-bar').classList.remove('vis');
+  G('done-scr').style.display='block';
+  G('done-s').textContent=`Ваши оценки успешно приняты (в ${new Date().toLocaleTimeString()}). Ждём результатов!`;
+}
+function undoSubmit(){
+  if(!confirm('Вернуться к редактированию?'))return;
+  db.ref(`sp26/scores/${EXP.id}/submitted`).set(false).then(()=>{
+    EXP.submitted=false;
+    G('exp-body').style.display='block';
+    G('ptabs').style.display='flex';
+    G('subm-bar').classList.add('vis');
+    G('done-scr').style.display='none';
+    renderExpert();
+  });
+}
+function continueWork(){
+  G('exp-body').style.display='block';
+  G('ptabs').style.display='flex';
+  G('subm-bar').classList.add('vis');
+  G('done-scr').style.display='none';
+  renderExpert();
+}
+
+/* ── COORDINATOR SETUP ── */
+function addProject(){
+  const id=CFG._pid++;
+  CFG.projects[id]={id,name:'Новый проект '+id,team:'Команда '+id,speaker:'',desc:'',links:[]};
+  renderProjList();saveCfgLocal();
+}
+function renderProjList(){
+  const l=G('proj-list');l.innerHTML='';
+  objVals(CFG.projects).sort((a,b)=>a.id-b.id).forEach(p=>{
+    const div=document.createElement('div');div.className='pjcard';div.id='pj-'+p.id;
+    div.innerHTML=`<div class="pjcard-hd" onclick="toggleProj('${p.id}')"><div class="pjcard-num">${p.id}</div><div class="pjcard-info"><div class="pjcard-name">${esc(p.name)}</div><div class="pjcard-sub">${esc(p.team)}</div></div><div class="pjcard-arr">▼</div></div><div class="pjcard-body">
+      <div class="fg2"><div class="fgrp"><label class="flbl">Название проекта</label><input class="finp" value="${esc(p.name)}" oninput="updP('${p.id}','name',this.value)"></div><div class="fgrp"><label class="flbl">Группа / Команда</label><input class="finp" value="${esc(p.team)}" oninput="updP('${p.id}','team',this.value)"></div></div>
+      <div class="fgrp"><label class="flbl">Спикер</label><input class="finp" value="${esc(p.speaker)}" oninput="updP('${p.id}','speaker',this.value)"></div>
+      <div class="fgrp"><label class="flbl">Описание</label><textarea class="finp" oninput="updP('${p.id}','desc',this.value)">${esc(p.desc)}</textarea></div>
+      <div class="shd"><div class="shd-t">Ссылки (Презентация, Demo и др.)</div><button class="btn btn-s btn-xs" onclick="addL('${p.id}')">＋ Добавить ссылку</button></div>
+      <div id="pl-${p.id}"></div>
+      <div class="div"></div><button class="btn btn-d btn-sm" onclick="delP('${p.id}')">🗑️ Удалить проект</button>
+    </div>`;
+    l.appendChild(div);renderLinks(p.id);
+  });
+}
+function toggleProj(id){const e=G('pj-'+id);const open=e.classList.toggle('open');document.querySelectorAll('.pjcard').forEach(c=>{if(c.id!=='pj-'+id)c.classList.remove('open');});}
+function updP(id,k,v){CFG.projects[id][k]=v;const e=G('pj-'+id);if(k==='name')e.querySelector('.pjcard-name').textContent=v;if(k==='team')e.querySelector('.pjcard-sub').textContent=v;saveCfgLocal();}
+function delP(id){if(confirm('Удалить проект?')){delete CFG.projects[id];renderProjList();saveCfgLocal();}}
+function addL(pid){CFG.projects[pid].links.push({url:'',title:''});renderLinks(pid);saveCfgLocal();}
+function renderLinks(pid){
+  const l=G('pl-'+pid);l.innerHTML='';
+  CFG.projects[pid].links.forEach((link,i)=>{
+    l.innerHTML+=`<div style="display:flex;gap:8px;margin-bottom:6px"><input class="finp finp-sm" placeholder="URL" value="${esc(link.url)}" oninput="updL('${pid}',${i},'url',this.value)"><input class="finp finp-sm" placeholder="Название" value="${esc(link.title)}" oninput="updL('${pid}',${i},'title',this.value)"><button class="btn btn-ic btn-xs" onclick="delL('${pid}',${i})">✕</button></div>`;
+  });
+}
+function updL(pid,i,k,v){CFG.projects[pid].links[i][k]=v;saveCfgLocal();}
+function delL(pid,i){CFG.projects[pid].links[pid].splice(i,1);renderLinks(pid);saveCfgLocal();}
+
+function addExpert(){
+  const id='e'+CFG._eid++;
+  CFG.experts[id]={id,name:'Эксперт '+id};
+  renderExpList();saveCfgLocal();
+}
+function renderExpList(){
+  const l=G('experts-list');l.innerHTML='';
+  const base=location.origin+location.pathname;
+  objVals(CFG.experts).forEach(e=>{
+    const link=base+'#expert='+e.id;
+    l.innerHTML+=`<div class="exp-item"><div class="exp-item-hd"><input class="finp finp-sm" value="${esc(e.name)}" style="flex:1;font-weight:700" oninput="updE('${e.id}',this.value)"><button class="btn btn-ic btn-xs" onclick="delE('${e.id}')">✕</button></div><div class="exp-link" onclick="copyTxt('${link}','Ссылка скопирована')">🔗 ${link}</div></div>`;
+  });
+}
+function updE(id,v){CFG.experts[id].name=v;saveCfgLocal();}
+function delE(id){if(confirm('Удалить эксперта?')){delete CFG.experts[id];renderExpList();saveCfgLocal();}}
+
+function saveCfgLocal(){localStorage.setItem('sp26v3-cfg',JSON.stringify(CFG));}
+function saveCfgToFB(){
+  if(!db)return alert('Firebase не подключен');
+  const setupBtn = G('set-show-members');
+  if(setupBtn) CFG.showMembers = setupBtn.checked;
+
+  G('hfb-dot').className='hfb-dot loading';
+  db.ref('sp26/config').set(CFG).then(()=>{
+    toast('✅ Конфигурация сохранена в облаке');
+    setFBStatus('ok','Сохранено');
+  }).catch(e=>alert('Ошибка: '+e.message));
+}
+function loadCfgFromFB(){
+  if(!db)return;
+  db.ref('sp26/config').once('value').then(s=>{
+    const d=s.val();
+    if(d){
+      Object.assign(CFG,d);
+      if(!CFG._pid)CFG._pid=objSize(CFG.projects)+1;
+      if(!CFG._eid)CFG._eid=objSize(CFG.experts)+1;
+      
+      // Update toggle UI
+      const setupBtn = G('set-show-members');
+      if(setupBtn) setupBtn.checked = CFG.showMembers !== undefined ? CFG.showMembers : true;
+      
+      renderProjList();renderExpList();
+    }
+  });
+}
+
+/* ── DASHBOARD (REALTIME) ── */
+function startDashListener(){
+  if(!db)return;
+  cleanupListeners();
+  dashRef=db.ref('sp26');
+  dashCb=dashRef.on('value',snap=>{
+    const d=snap.val()||{};
+    DASH.data=d;
+    renderDash();
+  });
+}
+function renderDash(){
+  const d=DASH.data;if(!d)return;
+  const cfg=d.config||{};
+  const scores=d.scores||{};
+  const projs=objVals(cfg.projects).sort((a,b)=>a.id-b.id);
+  const exps=objVals(cfg.experts).sort((a,b)=>a.id.localeCompare(b.id));
+
+  // Expert status badges
+  let eh='';
+  exps.forEach(e=>{
+    const sub=scores[e.id]?.submitted;
+    eh+=`<div class="echip ${sub?'sub':'pend'}"><div class="echip-dot"></div>${esc(e.name)}: ${sub?'Готов':'В процессе'}</div>`;
+  });
+  G('exp-status').innerHTML=eh;
+
+  // Table header
+  let th='<tr><th style="width:40px">Место</th><th>Проект / Команда</th><th>Ср. балл</th>';
+  exps.forEach(e=>th+=`<th>${esc(e.name)}</th>`);
+  th+='</tr>';
+  G('t-head').innerHTML=th;
+
+  // Calculate averages
+  const rows=[];
+  projs.forEach(p=>{
+    let sum=0, count=0;
+    const pScores=[];
+    exps.forEach(e=>{
+      const s=scores[e.id]?.scores?.[p.id];
+      if(s){
+        const total=parseFloat(s.b1||0)*0.25+parseFloat(s.b2||0)*0.3+parseFloat(s.b3||0)*0.25+parseFloat(s.b4||0)*0.2;
+        sum+=total;count++;
+        pScores.push({eid:e.id,ename:e.name,val:total.toFixed(2),raw:s});
+      }else pScores.push(null);
+    });
+    const avg=count?(sum/count):0;
+    rows.push({p,avg,pScores});
+  });
+  rows.sort((a,b)=>b.avg-a.avg);
+
+  // Render rows
+  let tb='';
+  rows.forEach((r,i)=>{
+    tb+=`<tr><td class="td-c"><div class="td-r r${i+1}">${i+1}</div></td><td><div class="td-sub">${esc(r.p.name)}</div><div class="td-nm">${esc(r.p.team)}</div></td><td class="td-c"><div class="av ${avCls(r.avg*3)}">${(r.avg*3).toFixed(1)}</div></td>`;
+    r.pScores.forEach((s,idx)=>{
+      const e=exps[idx];
+      if(s){
+        const raw=s.raw;
+        tb+=`<td class="td-c" style="cursor:pointer" onclick="editScore('${e.id}','${r.p.id}')"><div class="sc ${scCls(s.val*3)}">${(s.val*3).toFixed(1)}</div><div style="font-size:8px;color:var(--txs);margin-top:2px">${raw.b1},${raw.b2},${raw.b3},${raw.b4}</div></td>`;
+      }else tb+='<td class="td-c"><div class="sc sc-n">—</div></td>';
+    });
+    tb+='</tr>';
+  });
+  G('t-body').innerHTML=tb;
+  G('t-info').textContent=`Всего проектов: ${projs.length} · Экспертов: ${exps.length} · Данные: ${new Date().toLocaleTimeString()}`;
+
+  // Dash comments
+  let ch='';
+  projs.forEach(p=>{
+    let ph=`<div class="print-sheet"><h2>${esc(p.name)} <small> / ${esc(p.team)}</small></h2>`;
+    let found=false;
+    exps.forEach(e=>{
+      const es=scores[e.id];
+      if(es && es.scores && es.scores[p.id]){
+        const s = es.scores[p.id];
+        const comms = s.comments||{};
+        if(comms.b1||comms.b2||comms.b3||comms.b4||es.scores.globalComment){
+          found=true;
+          ph+=`<div class="ps-expert"><div class="ps-h">👥 ${esc(e.name)}</div>`;
+          if(comms.b1) ph+=`<div class="ps-crit"><strong>БЛОК 1:</strong> ${esc(comms.b1)}</div>`;
+          if(comms.b2) ph+=`<div class="ps-crit"><strong>БЛОК 2:</strong> ${esc(comms.b2)}</div>`;
+          if(comms.b3) ph+=`<div class="ps-crit"><strong>БЛОК 3:</strong> ${esc(comms.b3)}</div>`;
+          if(comms.b4) ph+=`<div class="ps-crit"><strong>БЛОК 4:</strong> ${esc(comms.b4)}</div>`;
+          if(es.scores.globalComment) ph+=`<div class="ps-sum">"${esc(es.scores.globalComment)}"</div>`;
+          ph+='</div>';
+        }
+      }
+    });
+    if(!found) ph+='<p style="color:var(--txm);font-style:italic">Комментариев пока нет</p>';
+    ph+='</div>';
+    ch+=ph;
+  });
+  G('dash-comments').innerHTML=ch;
+}
+
+function editScore(eid,pid){
+  const d=DASH.data;if(!d)return;
+  const cfg=d.config||{};
+  const scores=d.scores||{};
+  const e=cfg.experts[eid];
+  const p=cfg.projects[pid];
+  const s=scores[eid]?.scores?.[pid]||{b1:0,b2:0,b3:0,b4:0};
+  G('mes-ename').textContent=e.name;
+  G('mes-pname').textContent=p.name;
+  G('mes-eid').value=eid;
+  G('mes-pid').value=pid;
+  G('mes-b1').value=s.b1||0;
+  G('mes-b2').value=s.b2||0;
+  G('mes-b3').value=s.b3||0;
+  G('mes-b4').value=s.b4||0;
+  openModal('modal-edit-score');
+}
+function saveCoordScore(){
+  const eid=G('mes-eid').value, pid=G('mes-pid').value;
+  const s={
+    b1:parseInt(G('mes-b1').value),
+    b2:parseInt(G('mes-b2').value),
+    b3:parseInt(G('mes-b3').value),
+    b4:parseInt(G('mes-b4').value)
+  };
+  db.ref(`sp26/scores/${eid}/scores/${pid}`).update(s).then(()=>{
+    closeModal('modal-edit-score');
+    toast('Оценки обновлены');
+  });
+}
+
+function resetAllScores(){
+  if(!confirm('ВНИМАНИЕ! Это действие удалит ВСЕ оценки всех экспертов. Удалить?'))return;
+  db.ref('sp26/scores').remove().then(()=>toast('Все оценки удалены'));
+}
+function exportCSV(){
+  const d=DASH.data;if(!d)return;
+  const cfg=d.config||{};const scores=d.scores||{};
+  const projs=objVals(cfg.projects).sort((a,b)=>a.id-b.id);
+  const exps=objVals(cfg.experts).sort((a,b)=>a.id.localeCompare(b.id));
+
+  let csv="\uFEFF"; // BOM for Excel
+  csv+="Место;Проект;Команда;Средний балл (10.0);";
+  exps.forEach(e=>csv+=`${e.name};`);
+  csv+="\n";
+
+  const rows=[];
+  projs.forEach(p=>{
+    let sum=0, count=0;
+    const pScores=[];
+    exps.forEach(e=>{
+      const s=scores[e.id]?.scores?.[p.id];
+      if(s){
+        const total=parseFloat(s.b1||0)*0.25+parseFloat(s.b2||0)*0.3+parseFloat(s.b3||0)*0.25+parseFloat(s.b4||0)*0.2;
+        sum+=total;count++;
+        pScores.push((total*3).toFixed(2));
+      }else pScores.push("");
+    });
+    const avg=count?(sum/count):0;
+    rows.push({p,avg,pScores});
+  });
+  rows.sort((a,b)=>b.avg-a.avg).forEach((r,i)=>{
+    csv+=`${i+1};"${r.p.name}";"${r.p.team}";${(r.avg*3).toFixed(2)};`;
+    r.pScores.forEach(s=>csv+=`${s};`);
+    csv+="\n";
+  });
+
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const link=document.createElement('a');
+  link.href=URL.createObjectURL(blob);link.download=`Final_Scores_${new Date().toISOString().slice(0,10)}.csv`;
+  link.click();
+}
+
+function dlXLSTemplate(){
+  const rows=[['Группа №','ФИО','Организация','Должность'],['1','Иванов Иван Иванович','ООО "Техно"','Разработчик'],['1','Петров Петр Петрович','ООО "Техно"','Аналитик']];
+  const ws=XLSX.utils.aoa_to_sheet(rows);const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Participants");
+  XLSX.writeFile(wb,"Stitch_Import_Template.xlsx");
+}
+function onXLSBulkImport(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const data=new Uint8Array(e.target.result);
+    const wb=XLSX.read(data,{type:'array'});
+    const ws=wb.Sheets[wb.SheetNames[0]];
+    const rows=XLSX.utils.sheet_to_json(ws,{header:1});
+    // Skip header
+    let count=0;
+    for(let i=1;i<rows.length;i++){
+      const r=rows[i];if(!r||r.length<2)continue;
+      const gId=String(r[0]||'').trim(), name=String(r[1]||'').trim(), org=String(r[2]||'').trim(), pos=String(r[3]||'').trim();
+      // Match group ID to existing projects
+      for(let pid in CFG.projects){
+        const p=CFG.projects[pid];
+        if(p.team && p.team.includes(gId)){
+          if(!p.desc) p.desc='';
+          const entry=`• ${name} (${org}${pos?', '+pos:''})`;
+          if(!p.desc.includes(name)) p.desc += (p.desc?'\n':'')+entry;
+          count++;
+          break;
+        }
+      }
+    }
+    toast(`Импортировано ${count} участников`);
+    renderProjList();saveCfgLocal();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+/* ── DISTRIBUTED TIMER ── */
+const TIMER_PRESENTATION = 420; // 7 mins
+const TIMER_TOTAL = 720; // 12 mins
+function startTimerSync() {
+  if(!db) return;
+  console.log('[Timer] Starting sync...');
+  db.ref('sp26/timer').on('value', snap => {
+    const data = snap.val() || { startTime: 0, status: 'stopped' };
+    console.log('[Timer] Remote sync:', data);
+    updateLocalTimer(data);
+  });
+}
+
+let localTimerIv = null;
+function updateLocalTimer(remoteTimer) {
+  if (localTimerIv) clearInterval(localTimerIv);
+  
+  const btnStart = G('btn-c-start');
+  const btnStop = G('btn-c-stop');
+
+  if (remoteTimer.status === 'running' && remoteTimer.startTime > 0) {
+    if (btnStart) btnStart.style.display = 'none';
+    if (btnStop) btnStop.style.display = 'inline-flex';
+    
+    tick(remoteTimer);
+    localTimerIv = setInterval(() => tick(remoteTimer), 1000);
+  } else {
+    if (btnStart) btnStart.style.display = 'inline-flex';
+    if (btnStop) btnStop.style.display = 'none';
+    renderTimerView(0, 'stopped');
+  }
+}
+
+function tick(remoteTimer) {
+  const now = Date.now();
+  const elapsed = Math.floor((now - remoteTimer.startTime) / 1000);
+  renderTimerView(elapsed, 'running');
+}
+
+function renderTimerView(elapsed, status) {
+  const instances = [
+    { val: 'gtimer-val', st: 'gtimer-status' },
+    { val: 'c-timer-val', st: 'c-timer-status' },
+    { val: 'gtimer-val-dash', st: 'gtimer-status-dash' }
+  ];
+  
+  instances.forEach(ins => {
+    const el = G(ins.val);
+    const st = G(ins.st);
+    if (!el || !st) return;
+
+    if (status === 'stopped') {
+      el.textContent = "12:00";
+      el.classList.remove('red');
+      st.textContent = ins.val === 'c-timer-val' ? "Таймер остановлен" : (ins.val === 'gtimer-val' ? "Ожидание старта" : "Ожидание…");
+      st.className = ins.val.startsWith('gtimer') ? "gtimer-status" : "";
+      return;
+    }
+
+    let timeLeft = 0;
+    let label = "";
+    let isOvertime = false;
+    let statusClass = ins.val.startsWith('gtimer') ? "gtimer-status" : "";
+
+    if (elapsed < TIMER_PRESENTATION) {
+      timeLeft = TIMER_PRESENTATION - elapsed;
+      label = "Выступление";
+    } else if (elapsed < TIMER_TOTAL) {
+      timeLeft = TIMER_TOTAL - elapsed;
+      label = "Обсуждение";
+      statusClass += " discussion";
+    } else {
+      timeLeft = elapsed - TIMER_TOTAL;
+      label = "ПРЕВЫШЕНИЕ";
+      statusClass += " overtime";
+      isOvertime = true;
+    }
+
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    const displayStr = (isOvertime ? "-" : "") + m + ":" + pad(s);
+    
+    el.textContent = displayStr;
+    el.classList.toggle('red', isOvertime);
+    st.textContent = label;
+    if (ins.val.startsWith('gtimer')) st.className = statusClass;
+  });
+}
+
+function remoteTimerStart() {
+  if (!db) return;
+  // Use a small buffer for sync
+  db.ref('sp26/timer').set({ startTime: Date.now(), status: 'running', updatedAt: Date.now() });
+}
+
+function remoteTimerStop() {
+  if (!db) return;
+  db.ref('sp26/timer/status').set('stopped');
+}
+
+function remoteTimerReset() {
+  if (!db) return;
+  db.ref('sp26/timer').set({ startTime: 0, status: 'stopped', updatedAt: Date.now() });
+}
+
+function toggleTimer(){ /* Legacy placeholder */ }
+function timerStart(){ /* Legacy placeholder */ }
+function timerPause(){ /* Legacy placeholder */ }
+function timerReset(){ /* Legacy placeholder */ }
+function renderTimer(){ /* Legacy placeholder */ }
+function playBeep(){ /* Legacy placeholder */ }
+
+/* ── MODALS ── */
+function openModal(id){G(id).classList.add('vis');}
+function closeModal(id){G(id).classList.remove('vis');}
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('vis');}));
+
+boot();
+</script>
+</body>
+</html>
