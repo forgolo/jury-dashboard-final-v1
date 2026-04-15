@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#050a12;--bg-grad:linear-gradient(160deg, #020617 0%, #064e3b 100%);--bg2:#0a0f18;--s:rgba(15,25,45,0.7);--s2:rgba(25,40,65,0.6);--s3:rgba(35,55,85,0.85);--br:rgba(255,255,255,0.08);--br2:rgba(255,255,255,0.15);--tx:#FFFFFF;--txm:#A0AEC0;--txs:#4A5568;--grn:#10b981;--blu:#3B82F6;--grad:linear-gradient(135deg, #059669, #10b981);--grad-glass:linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.15));--pb1:#0ea5e9;--pb2:#10b981;--pb3:#064e3b;--sh1:0 1px 4px rgba(0,0,0,0.5);--sh2:0 8px 32px rgba(0,0,0,0.6);--sh3:0 12px 48px rgba(0,0,0,0.8);--r8:8px;--r12:12px;--r16:16px;--r20:20px;--hh:64px;--fn:'Inter',system-ui,sans-serif;--ease:cubic-bezier(0.4,0,0.2,1)}
+:root{--bg:#050a12;--bg-grad:linear-gradient(160deg, #020617 0%, #064e3b 100%);--bg2:#0a0f18;--s:rgba(15,25,45,0.7);--s2:rgba(25,40,65,0.6);--s3:rgba(35,55,85,0.85);--br:rgba(255,255,255,0.08);--br2:rgba(255,255,255,0.15);--tx:#FFFFFF;--txm:#A0AEC0;--txs:#4A5568;--grn:#10b981;--blu:#3B82F6;--grad:linear-gradient(135deg, #059669, #10b981);--grad-glass:linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.15));--pb1:#0ea5e9;--pb2:#10b981;--pb3:#064e3b;--sh1:0 1px 4px rgba(0,0,0,0.5);--sh2:0 8px 32px rgba(0,0,0,0.6);--sh3:0 12px 48px rgba(0,0,0,0.8);--r8:8px;--r12:12px;--r16:16px;--r20:20px;--hh:84px;--fn:'Inter',system-ui,sans-serif;--ease:cubic-bezier(0.4,0,0.2,1)}
 [data-theme=light]{--bg:#f8fafc;--bg-grad:linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #f5f3ff 100%);--bg2:#e2e8f0;--s:rgba(255,255,255,0.65);--s2:rgba(241,245,249,0.5);--s3:rgba(226,232,240,0.75);--br:rgba(15,23,42,0.06);--br2:rgba(15,23,42,0.12);--tx:#0f172a;--txm:#475569;--txs:#94a3b8;--grn:#059669;--blu:#0284c7;--red:#ef4444;--redd:rgba(239,68,68,0.08);--yel:#f59e0b;--yeld:rgba(245,158,11,0.08);--grad:linear-gradient(135deg, #10b981, #0ea5e9);--grad-glass:linear-gradient(135deg, rgba(16,185,129,0.1), rgba(14,165,233,0.1));--pb1:#86efac;--pb2:#7dd3fc;--pb3:#2dd4bf;--sh1:0 1px 4px rgba(15,23,42,0.04);--sh2:0 8px 32px rgba(15,23,42,0.05);--sh3:0 12px 48px rgba(15,23,42,0.08)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{height:100%}body{font-family:var(--fn);color:var(--tx);min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased;background:var(--bg-grad);background-attachment:fixed;overflow-x:hidden;transition:background .4s}
@@ -20,16 +20,16 @@ html{height:100%}body{font-family:var(--fn);color:var(--tx);min-height:100vh;lin
 .pb3{background:var(--pb3);top:20%;left:15%;width:60vw;height:60vw;opacity:0.2;animation-duration:50s;animation-delay:-10s}
 @keyframes bmove{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(10%,15%) rotate(15deg)}}
 a{color:inherit}button{cursor:pointer}
-#hdr{position:fixed;top:0;left:0;right:0;height:var(--hh);background:var(--s);border-bottom:1px solid var(--br);display:flex;align-items:center;padding:0 20px;gap:12px;z-index:300;box-shadow:var(--sh1)}
+#hdr{position:fixed;top:0;left:0;right:0;height:var(--hh);background:var(--s);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--br);display:flex;align-items:center;padding:0 20px;gap:12px;z-index:300;box-shadow:var(--sh1)}
 .logo{display:flex;align-items:center;gap:10px;cursor:pointer}
-.logo-chip{background:var(--grad);color:#fff;font:800 13px/1 var(--fn);letter-spacing:-.3px;padding:6px 11px;border-radius:var(--r8);box-shadow:0 4px 12px rgba(59,130,246,0.3);flex-shrink:0}
-.logo-title{font:700 14px/1 var(--fn)}.logo-sub{font:400 11px/1 var(--fn);color:var(--txm)}
+.logo-chip{background:var(--grad);color:#fff;font:800 14px/1 var(--fn);letter-spacing:-.3px;padding:8px 12px;border-radius:var(--r8);box-shadow:0 4px 12px rgba(59,130,246,0.3);flex-shrink:0}
+.logo-title{font:800 24px/1.1 var(--fn);letter-spacing:-.5px}.logo-sub{font:600 14px/1.2 var(--fn);color:var(--txm);margin-top:1px}
 .hgap{flex:1}.hnav{display:flex;align-items:center;gap:8px;margin-right:12px}
 .ntab{padding:8px 14px;border-radius:var(--r12);border:none;background:transparent;color:var(--txm);font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
-.ntab:hover{background:var(--s2);color:var(--tx)}.ntab.active{background:var(--grad-glass);color:var(--tx);box-shadow:inset 0 0 12px rgba(59,130,246,0.15);border:1px solid rgba(255,255,255,0.05)}
-.hbadge{display:none;align-items:center;gap:7px;padding:5px 12px;border-radius:var(--r12);font:600 12px/1 var(--fn);border:1px solid}
-.hbadge.coord{background:var(--blud);border-color:rgba(59,130,246,.3);color:var(--blu)}
-.hbadge.exp{background:var(--grnd);border-color:rgba(33,160,56,.3);color:var(--grn)}
+.ntab:hover{background:var(--s2);color:var(--tx)}.ntab.active{background:var(--grad);color:#fff;box-shadow:0 4px 12px rgba(16,185,129,0.3);border:1px solid rgba(255,255,255,0.1)}
+.hbadge{display:none;align-items:center;gap:10px;padding:8px 16px;border-radius:var(--r12);font:700 15px/1 var(--fn);border:1px solid;box-shadow: 0 4px 12px rgba(0,0,0,0.2)}
+.hbadge.coord{background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,.3);color:var(--blu)}
+.hbadge.exp{background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,.4);color:var(--grn)}
 .hbdot{width:7px;height:7px;border-radius:50%;animation:blink 2s infinite}
 .coord .hbdot{background:var(--blu)}.exp .hbdot{background:var(--grn)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
@@ -93,24 +93,44 @@ textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size
 .pjcard-sub{font:400 11px/1 var(--fn);color:var(--txm);margin-top:3px}
 .pjcard-arr{color:var(--txm);font-size:11px;transition:transform .2s}.pjcard.open .pjcard-arr{transform:rotate(180deg)}
 .pjcard-body{display:none;padding:14px 16px 16px;border-top:1px solid var(--br)}.pjcard.open .pjcard-body{display:block}
-.mtable{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}
-.mtable th{background:var(--s2);padding:6px 10px;font:700 10px/1 var(--fn);text-transform:uppercase;letter-spacing:.5px;color:var(--txm);text-align:left;border-bottom:1px solid var(--br)}
+.mtable{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}.td-c{text-align:center;width:80px}
+th{background:var(--s2);color:var(--txm);font:700 10px/1.3 var(--fn);text-transform:uppercase;letter-spacing:.3px;padding:10px 6px;text-align:center;position:sticky;top:0;z-index:10;border-bottom:1px solid var(--br);white-space:normal;max-width:90px;word-wrap:break-word}
 .mtable td{padding:5px 8px;border-bottom:1px solid var(--br)}.mtable tr:last-child td{border-bottom:none}
 .exp-panel{position:sticky;top:calc(var(--hh) + 16px)}
 .exp-item{background:var(--s2);border:1px solid var(--br);border-radius:var(--r12);padding:12px 14px;margin-bottom:8px}
 .exp-item-hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
 .exp-link{font:500 11px/1.4 var(--fn);color:var(--blu);word-break:break-all;margin:5px 0;cursor:pointer}.exp-link:hover{text-decoration:underline}
 /* Expert screen */
-.tabs-bar{display:flex;overflow-x:auto;gap:3px;padding:10px 20px 0;background:var(--s);border-bottom:2px solid var(--br);position:sticky;top:var(--hh);z-index:100;scrollbar-width:none}
+.tabs-bar{display:flex;overflow-x:auto;gap:0;padding:12px 20px 0;background:#050a12;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:var(--hh);z-index:100;scrollbar-width:none}
 .tabs-bar::-webkit-scrollbar{display:none}
-.ptab{padding:9px 16px;border-radius:var(--r12) var(--r12) 0 0;border:1px solid var(--br);border-bottom:none;background:var(--s2);color:var(--txm);font:600 12px/1 var(--fn);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px;flex-shrink:0;position:relative;top:2px}
-.ptab:hover{background:var(--s3);color:var(--tx)}.ptab.active{background:var(--s);color:var(--tx);border-bottom-color:var(--s)}
-.ptab-chk{color:var(--grn);font-size:10px}
-.exp-body{padding:20px 22px 90px;max-width:880px;margin:0 auto}
+.ptab{padding:12px 20px;border-radius:12px 12px 0 0;border:1px solid rgba(255,255,255,0.1);background:#111;color:var(--txm);font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0;position:relative;top:0;opacity:0.6}
+.ptab:hover{background:#1a1a1a;opacity:1}
+.ptab.active{background:#0a0f18 !important;color:var(--tx);opacity:1;z-index:110;font-weight:900;border:1px solid rgba(255,255,255,0.2) !important;border-bottom:1px solid #0a0f18 !important;padding:12px 20px 13px;margin-bottom:-1px;box-shadow:none;transform:none}
+.ptab.active:not(.done):not(.partial){border-top:2px solid var(--blu) !important}
+.ptab.active.done{border-top:2px solid var(--grn) !important}
+.ptab.active.partial{border-top:2px solid #f59e0b !important}
+/* Color overrides for status tabs - ensuring border matches */
+.ptab.partial{background:#1a1408;color:#f59e0b;border:1px solid rgba(245,158,11,0.3) !important}
+.ptab.done{background:#061b15;color:var(--grn);border:1px solid rgba(16,185,129,0.3) !important}
+.ptab-chk{color:var(--grn);font-size:11px;font-weight:900;margin-left:5px}
+.ptab-warn{color:#f59e0b;font-size:11px;font-weight:900;margin-left:5px}
+/* Centralized Timer Styles */
+.gtimer { position: sticky; top: 132px; z-index: 90; display: flex; align-items: center; gap: 16px; background: rgba(10, 15, 24, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--br); border-radius: var(--r16); padding: 12px 20px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: all .3s; }
+.gtimer-info { display: flex; align-items: center; gap: 12px; }
+.gtimer-lbl { font: 700 10px/1 var(--fn); text-transform: uppercase; letter-spacing: 1.2px; color: var(--txm); }
+.gtimer-status { font: 800 13px/1 var(--fn); padding: 5px 12px; border-radius: 100px; background: rgba(16,185,129,0.1); color: var(--grn); border: 1px solid rgba(16,185,129,0.2); }
+.gtimer-status.discussion { color: #3B82F6; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); }
+.gtimer-status.overtime { color: var(--red); background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); animation: tpulse 1s ease infinite; }
+.gtimer-val { font: 900 38px/1 var(--fn); font-variant-numeric: tabular-nums; margin-left: auto; letter-spacing: -1px; }
+.gtimer-val.red { color: var(--red); }
+.timer-ctrl-card { border: 2px solid var(--grn) !important; background: rgba(16,185,129,0.03); }
+.exp-body{padding:20px 22px 90px;background:#0a0f18;min-height:calc(100vh - var(--hh) - 60px)}
 .pi{background:var(--s);border:1px solid var(--br);border-radius:var(--r20);padding:22px 24px;margin-bottom:14px}
 .pi-team{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.7px;color:var(--txm);margin-bottom:5px}
-.pi-name{font:900 24px/1.1 var(--fn);letter-spacing:-.5px;margin-bottom:12px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.pi-desc{font:400 13px/1.65 var(--fn);color:var(--txm);margin-bottom:12px}
+.pi-name{font:900 32px/1.1 var(--fn);letter-spacing:-1px;margin-bottom:16px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.pi-speaker{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:var(--grad-glass);border:1px solid rgba(16,185,129,0.3);border-radius:100px;color:var(--grn);font:700 18px/1 var(--fn);margin-bottom:20px;box-shadow: 0 8px 20px rgba(16,185,129,0.15)}
+.pi-speaker::before{content:'';width:10px;height:10px;background:var(--grn);border-radius:50%;box-shadow: 0 0 10px var(--grn);animation:blink 2s infinite}
+.pi-desc{font:400 15px/1.65 var(--fn);color:var(--txm);margin-bottom:16px}
 .pi-desc.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pi-links{display:flex;gap:8px;flex-wrap:wrap}
 .twrap{background:var(--s);border:1px solid var(--br);border-radius:var(--r16);padding:14px 20px;margin-bottom:14px}
@@ -131,17 +151,17 @@ textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size
 .btop{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .btop-t{display:flex;flex-direction:column;gap:2px}
 .btop-t .bnm{font:800 15px/1.2 var(--fn);color:var(--tx);text-transform:uppercase;letter-spacing:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.btop-w{font:700 10px/1 var(--fn);color:var(--txm);opacity:0.8}
-.bmain{display:flex;gap:12px;align-items:stretch;margin-bottom:20px;height:150px}
+.btop-w{font:800 13px/1 var(--fn);color:var(--tx);background:rgba(255,255,255,0.08);padding:5px 10px;border-radius:20px;letter-spacing:0.5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1)}
+.bmain{display:flex;gap:12px;align-items:stretch;margin-bottom:20px;height:180px}
 .srow{display:flex;flex-direction:column;gap:8px;width:110px;flex-shrink:0}
 .sopt{flex:1;display:flex}
 .sopt input{display:none}
 .slbl{flex:1;display:flex;align-items:center;justify-content:center;border-radius:var(--r12);background:rgba(255,255,255,0.03);border:1px solid var(--br);cursor:pointer;transition:all .2s var(--ease);user-select:none;font:700 14px/1 var(--fn);color:var(--tx)}
 .slbl:hover{background:rgba(255,255,255,0.08);border-color:var(--br2)}
 .sopt input:checked+.slbl{background:var(--grad);color:#fff;border:none;box-shadow:0 4px 15px rgba(59,130,246,0.3);transform:scale(1.05);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
-.bhint{flex:1;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;transition:all .3s var(--ease);opacity:0.4}
+.bhint{flex:1;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);padding:14px 18px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px;transition:all .3s var(--ease);opacity:0.4}
 .bhint.active{opacity:1;background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
-.bhint-txt{font:400 12.5px/1.45 var(--fn);color:var(--tx);transition:all .2s}
+.bhint-txt{font:400 17px/1.5 var(--fn);color:var(--tx);transition:all .2s}
 .bsw{width:100px;background:rgba(255,255,255,0.02);border:1px solid var(--br);border-radius:var(--r12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
 .bsw.active{background:var(--grad-glass);border-color:rgba(59,130,246,0.2)}
 .bdig{font:900 64px/1 var(--fn);letter-spacing:-3px;color:rgba(255,255,255,0.04);transition:all .3s}
@@ -154,12 +174,18 @@ textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size
   .bmain{flex-direction:column;height:auto}.srow{width:100%;flex-direction:row}
 }
 
-.subm-bar{position:fixed;bottom:0;left:0;right:0;background:var(--s);border-top:1px solid var(--br);padding:12px 24px;display:none;align-items:center;justify-content:space-between;z-index:200;box-shadow:0 -4px 30px rgba(0,0,0,.4);backdrop-filter:blur(10px)}
+.subm-bar{position:fixed;bottom:0;left:0;right:0;background:var(--s);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--br);padding:14px 24px;display:none;align-items:center;gap:30px;z-index:200;box-shadow:0 -10px 40px rgba(0,0,0,0.5)}
 .subm-bar.vis{display:flex}
-.subm-prog{font:400 13px/1 var(--fn);color:var(--txm)}
-.subm-prog strong{color:var(--tx);font-weight:700}
-.subm-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#21A038,#18882C);color:#fff;border:none;border-radius:var(--r12);padding:10px 22px;font:700 13px/1 var(--fn);cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(33,160,56,0.3);white-space:nowrap}
-.subm-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.subm-prog-wrap{flex:1;display:flex;flex-direction:column;gap:6px}
+.subm-prog-hdr{display:flex;justify-content:space-between;align-items:center}
+.subm-prog-t{font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:0.5px;color:var(--txm)}
+.subm-prog-v{font:800 13px/1 var(--fn);color:var(--grn)}
+.subm-prog-bar{height:8px;background:rgba(255,255,255,0.05);border-radius:10px;overflow:hidden;border:1px solid var(--br)}
+.subm-prog-fill{height:100%;background:var(--grad);width:0%;transition:width 0.4s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 0 15px rgba(16,185,129,0.3)}
+.subm-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:var(--r16);padding:14px 28px;font:800 14px/1 var(--fn);cursor:pointer;transition:all .3s var(--ease);box-shadow:0 8px 25px rgba(16,185,129,0.3);white-space:nowrap;animation:pulse-subm 3s infinite}
+@keyframes pulse-subm{0%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}70%{box-shadow:0 0 0 12px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.subm-btn:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 12px 30px rgba(16,185,129,0.4)}
+.subm-btn span{font-size:16px}
 .done-scr{text-align:center;padding:72px 24px}
 .done-ico{font-size:60px;margin-bottom:18px}.done-t{font:800 26px/1.1 var(--fn);letter-spacing:-.5px;margin-bottom:8px}
 .done-s{font:400 14px/1.6 var(--fn);color:var(--txm);margin-bottom:24px}
@@ -178,9 +204,9 @@ textarea.finp{resize:vertical;min-height:80px}.finp-sm{padding:5px 9px;font-size
 table{width:100%;border-collapse:collapse;font-size:13px}
 thead th{background:var(--s2);padding:10px 14px;font:700 11px/1 var(--fn);text-transform:uppercase;letter-spacing:.5px;color:var(--txm);text-align:left;border-bottom:1px solid var(--br);white-space:nowrap}
 tbody tr:hover td{background:var(--s2)}tbody tr:last-child td{border-bottom:none}
-td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
-.td-r{width:40px;font:700 13px/1 var(--fn);color:var(--txm)}.td-r.r1{color:#F5C400}.td-r.r2{color:#A8B0C0}.td-r.r3{color:#BB8540}
-.td-nm{font:700 13px/1.3 var(--fn)}.td-sub{font:400 11px/1 var(--fn);color:var(--txm)}
+td{padding:8px 10px;border-bottom:1px solid var(--br);vertical-align:middle}
+.td-r{width:36px;font:700 12px/1 var(--fn);color:var(--txm)}.td-r.r1{color:#F5C400}.td-r.r2{color:#A8B0C0}.td-r.r3{color:#BB8540}
+.td-nm{font:400 11px/1.2 var(--fn);color:var(--txm);margin-top:2px}.td-sub{font:700 13px/1.2 var(--fn);color:var(--tx)}
 .td-c{text-align:center}
 .sc{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;border-radius:var(--r8);font:700 12px/1 var(--fn);padding:0 5px}
 .sc-n{background:var(--s2);color:var(--txs)}.sc-L{background:var(--redd);color:var(--red)}.sc-M{background:var(--yeld);color:var(--yel)}.sc-H{background:var(--grnd);color:var(--grn)}
@@ -200,8 +226,77 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
 .mclose:hover{background:var(--s3);color:var(--tx)}.macts{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
 .toast{position:fixed;bottom:80px;right:22px;background:var(--s);border:1px solid var(--br2);color:var(--tx);padding:10px 16px;border-radius:var(--r12);font:600 13px/1 var(--fn);box-shadow:var(--sh3);z-index:9999;display:flex;align-items:center;gap:8px;animation:si .3s var(--ease);pointer-events:none}
 @keyframes si{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media print{#hdr,.tabs-bar,.subm-bar,.np{display:none!important}main{padding-top:0}.scr{padding:8px;max-width:100%}body{background:#fff!important;color:#000!important}}
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  #hdr,.tabs-bar,.subm-bar,.np,.tbar-acts,.hfb,.thbtn,.ntab,.hnav,.hfb,.hgap,#bg-parallax,.overlay{display:none!important}
+  main{padding-top:0!important;background:none!important}
+  .scr{display:none!important}
+  .scr.active{display:block!important;padding:0!important;max-width:100%!important;margin:0!important}
+  body{background:#fff!important;color:#000!important;font-size:10pt;min-height:auto!important}
+  .card{border:none!important;box-shadow:none!important;padding:0!important;background:transparent!important}
+  .pghd{margin-bottom:10px}.pghd h2{font-size:18pt}
+  table{width:100%!important;font-size:9pt!important;border:1px solid #ddd}
+  th,td{padding:4px 6px!important;border:1px solid #eee!important}
+  .sc,.av{border:1px solid #ccc!important;background:transparent!important;color:#000!important}
+  .td-r{width:25px!important}
+}
 @media(max-width:768px){.exp-body,.scr{padding-left:14px;padding-right:14px}.fg2{grid-template-columns:1fr}}
+.mbox-glass { background: rgba(255, 255, 255, 0.94) !important; backdrop-filter: blur(28px) saturate(190%) !important; -webkit-backdrop-filter: blur(28px) saturate(190%) !important; border: 1px solid rgba(255, 255, 255, 0.8) !important; color: #000 !important; box-shadow: 0 25px 80px -15px rgba(0,0,0,0.2) !important; border-radius: 28px !important; }
+.mbox-glass .mhd h3 { color: #000 !important; font-size: 22px !important; font-weight: 800 !important; }
+.mc-label { font-size: 15px; font-weight: 700; color: #000; margin-bottom: 12px; display: block; }
+.mc-item { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 14px; color: #1a1a1a !important; font-weight: 500; line-height: 1.4; }
+.mc-item:last-child { border-bottom: none; }
+.mc-hint { font-size: 13px; color: #666 !important; margin-top: 16px; line-height: 1.5; }
+.btn-glass-cancel { background: rgba(0,0,0,0.05); color: #000; border: 1px solid rgba(0,0,0,0.1); }
+.btn-glass-cancel:hover { background: rgba(0,0,0,0.1); }
+
+/* Printing & Comment Sheets */
+.print-only-container{margin-top:40px}
+.print-sheet{background:var(--s2);color:var(--tx);padding:40px;margin-bottom:20px;border:1px solid var(--br);border-radius:var(--r12);box-shadow:var(--sh2);break-after:page}
+.print-sheet h2{font-size:22px;border-bottom:2px solid var(--grn);padding-bottom:10px;margin-bottom:14px;text-transform:uppercase}
+.ps-expert{margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--br)}
+.ps-expert:last-child{border-bottom:none}
+.ps-h{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--grn);display:flex;align-items:center;gap:8px}
+.ps-crit{margin-bottom:4px;font-size:12px; color:var(--txm)}
+.ps-crit strong{color:var(--tx);font-size:10px;text-transform:uppercase;margin-right:5px}
+.ps-sum{margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-left:3px solid var(--grn);font-style:italic;font-size:13px;color:var(--tx)}
+
+@media print {
+  body { background: white !important; color: black !important; padding: 0 !important; margin: 0 !important; }
+  .scr-dashboard { background: white !important; display: block !important; padding: 0 !important; margin: 0 !important; }
+  .pghd, .chips, .tbar, .tbar-acts, .hnav, header, .nav, .subm-bar, .modal, .btn { display: none !important; }
+  
+  .twrap-outer { 
+    display: block !important; 
+    width: 100% !important; 
+    border: 1px solid #000 !important; 
+    page-break-after: always !important; 
+    break-after: page !important;
+    margin-bottom: 50px !important;
+  }
+  table { color: black !important; border-collapse: collapse !important; }
+  th, td { border: 1px solid #ddd !important; color: black !important; padding: 6px !important; }
+  .sc, .av { background: none !important; border: 1px solid #ccc !important; color: black !important; }
+
+  .print-only-container { display: block !important; margin: 0 !important; position: static !important; }
+  .print-sheet { 
+    background: white !important; 
+    color: black !important; 
+    margin: 0 !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+    padding: 10px 0 !important; 
+    break-after: page !important; 
+    page-break-after: always !important; 
+  }
+  .print-sheet h2 { border-bottom: 2px solid #000 !important; color: black !important; font-size: 18px !important; }
+  .ps-h { color: #000 !important; border-bottom: 1px solid #eee !important; font-size: 13px !important; margin-bottom: 4px !important; }
+  .ps-crit { color: #333 !important; font-size: 11px !important; }
+  .ps-crit strong { color: #000 !important; }
+  .ps-sum { background: #f5f5f5 !important; border-left: 3px solid #000 !important; color: #000 !important; font-size: 12px !important; padding: 6px 10px !important; }
+  
+  .scr:not(.active) { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -210,7 +305,7 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
 <header id="hdr">
   <div class="logo" onclick="goHome()">
     <div class="logo-chip">СП'26</div>
-    <div><div class="logo-title">Дашборд жюри</div><div class="logo-sub">Современное предприятие · Sber University</div></div>
+    <div><div class="logo-title">Современное предприятие 2026</div><div class="logo-sub">Финальная защита проектов</div></div>
   </div>
   <div class="hgap"></div>
   <div id="hbadge" class="hbadge" style="display:none"><div class="hbdot"></div><span id="hbadge-txt"></span></div>
@@ -285,6 +380,18 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
       <div id="proj-list"><div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div></div>
     </div>
     <div class="exp-panel">
+      <div class="card card-sm timer-ctrl-card" style="margin-bottom: 18px;">
+        <div class="shd" style="margin-bottom:12px"><div class="shd-t">⏱ Управление таймером</div></div>
+        <div id="c-timer-display" style="text-align:center; padding:10px 0;">
+          <div id="c-timer-val" style="font:900 42px/1 var(--fn); margin-bottom:4px;">12:00</div>
+          <div id="c-timer-status" style="font:700 12px var(--fn); color:var(--txm); text-transform:uppercase;">Таймер остановлен</div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button class="btn btn-p btn-sm" id="btn-c-start" style="flex:1" onclick="remoteTimerStart()">▶ Запустить для всех</button>
+          <button class="btn btn-d btn-sm" id="btn-c-stop" style="flex:1; display:none" onclick="remoteTimerStop()">🛑 Стоп</button>
+          <button class="btn btn-s btn-sm" onclick="remoteTimerReset()">↺ Сброс</button>
+        </div>
+      </div>
       <div class="card card-sm">
         <div class="shd" style="margin-bottom:14px"><div class="shd-t">👥 Эксперты</div><button class="badd" onclick="addExpert()">＋ Добавить</button></div>
         <div id="experts-list"><div style="font:400 12px/1 var(--fn);color:var(--txm);padding:8px 0">Нет экспертов</div></div>
@@ -292,6 +399,7 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="btn btn-s btn-sm" onclick="saveCfgToFB()">☁️ Сохранить в Firebase</button>
           <button class="btn btn-s btn-sm" onclick="saveCfgLocal()">💾 Локально</button>
+          <button class="btn btn-d btn-sm" onclick="resetAllScores()" style="margin-left:auto">🧹 Сбросить всё</button>
         </div>
         <div id="save-hint" style="font-size:11px;color:var(--txm);margin-top:8px"></div>
       </div>
@@ -303,24 +411,20 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
 <div class="scr" id="scr-expert">
   <div class="tabs-bar np" id="ptabs"></div>
   <div class="exp-body" id="exp-body">
+    <div class="gtimer" id="gtimer">
+      <div class="gtimer-info">
+        <div class="gtimer-lbl" id="gt-lbl">Общий таймер</div>
+        <div class="gtimer-status" id="gtimer-status">Ожидание…</div>
+      </div>
+      <div class="gtimer-val" id="gtimer-val">12:00</div>
+    </div>
     <div class="pi" id="pi">
       <div class="pi-team" id="pi-team"></div>
       <div class="pi-name" id="pi-name"></div>
+      <div style="margin-bottom: 14px; font: 700 16px/1 var(--fn); color: var(--txm);">Выступает: <span id="pi-speaker-plain" style="color: var(--grn);"></span></div>
       <div class="pi-desc clamp" id="pi-desc"></div>
       <button class="btn-g" id="pi-expand" onclick="expandDesc()" style="font-size:12px;margin:4px 0 10px;display:none">▼ Показать полностью</button>
       <div class="pi-links" id="pi-links"></div>
-    </div>
-    <div class="twrap">
-      <div class="twrap-hd" onclick="toggleTimer()"><span class="twrap-lbl">⏱ Таймер выступления (12 мин)</span><span class="tmini" id="tmini">12:00</span></div>
-      <div class="twrap-body" id="twrap-body" style="display:none">
-        <div class="tdig" id="tdig">12:00</div>
-        <div class="tprog"><div class="tprog-f" id="tprog-f" style="width:100%"></div></div>
-        <div class="tctrl">
-          <button class="btn btn-s" id="btn-ts" onclick="timerStart()">▶ Старт</button>
-          <button class="btn btn-s" id="btn-tp" style="display:none" onclick="timerPause()">⏸ Пауза</button>
-          <button class="btn btn-s" onclick="timerReset()">↺ Сброс</button>
-        </div>
-      </div>
     </div>
     <div class="bcard" id="bc-b1">
       <div class="btop">
@@ -383,7 +487,12 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
       </div>
     </div>
     <div class="bcard">
-      <div class="btop"><div><div class="bey">ИТОГОВЫЙ КОММЕНТАРИЙ</div><div class="bnm">Общее резюме к проекту</div><div class="bmx">необязательно</div></div></div>
+      <div class="btop" style="margin-bottom:12px">
+        <div>
+          <div class="bey" style="background:var(--grn); color:#000; padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:8px">ВАША ОБРАТНАЯ СВЯЗЬ</div>
+          <div class="bnm" style="font-size:18px; line-height:1.3; color:var(--grn); font-weight:800; text-shadow: 0 0 20px rgba(0,255,153,0.3)">Ваши комментарии очень ценны и важны для группы, поддержите участников содержательной обратной связью</div>
+        </div>
+      </div>
       <textarea class="finp" id="comment-f" placeholder="Общее мнение по проекту в целом..." rows="3" oninput="saveComment()"></textarea>
     </div>
   </div>
@@ -391,24 +500,43 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
     <div class="done-ico">✅</div>
     <div class="done-t">Оценки отправлены!</div>
     <div class="done-s" id="done-s">Спасибо за работу</div>
-    <button class="btn btn-s" onclick="undoSubmit()">↩ Изменить оценки</button>
+    <div style="margin-top:20px; display:flex; gap:10px; justify-content:center">
+      <button class="btn btn-p" onclick="continueWork()">▶ Продолжить работу</button>
+      <button class="btn btn-s" onclick="undoSubmit()">↩ Изменить оценки</button>
+    </div>
   </div>
 </div>
 
 <!-- SCREEN: Dashboard -->
 <div class="scr" id="scr-dashboard">
   <div class="pghd"><h2>📊 Дашборд организатора</h2><p>Результаты обновляются в реальном времени через Firebase</p></div>
+  <div class="gtimer" id="gtimer-dash" style="margin-bottom: 24px; cursor: pointer" onclick="goSetup()">
+      <div class="gtimer-info">
+        <div class="gtimer-lbl">Общий таймер</div>
+        <div class="gtimer-status" id="gtimer-status-dash">Ожидание…</div>
+      </div>
+      <div class="gtimer-val" id="gtimer-val-dash">12:00</div>
+    </div>
   <div class="chips" id="exp-status"></div>
   <div class="tbar np">
     <div class="tbar-info" id="t-info">Ожидание данных…</div>
     <div class="tbar-acts"><button class="btn btn-s btn-sm" onclick="window.print()">🖨️</button><button class="btn btn-s btn-sm" onclick="exportCSV()">📄 CSV</button></div>
   </div>
   <div class="twrap-outer"><table><thead id="t-head"></thead><tbody id="t-body"></tbody></table></div>
+  <div id="dash-comments" class="print-only-container"></div>
 </div>
 </main>
 
 <div class="subm-bar np" id="subm-bar">
-  <div class="subm-prog">Оценено: <strong id="subm-cnt">0/0</strong> проектов</div>
+  <div class="subm-prog-wrap">
+    <div class="subm-prog-hdr">
+      <div class="subm-prog-t">Прогресс оценки проектов:</div>
+      <div class="subm-prog-v" id="subm-cnt">0/0</div>
+    </div>
+    <div class="subm-prog-bar">
+      <div class="subm-prog-fill" id="subm-fill"></div>
+    </div>
+  </div>
   <button class="subm-btn" onclick="submitScores()"><span>✓</span> Отправить оценки</button>
 </div>
 
@@ -420,14 +548,17 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
   </div>
 </div>
 
-<!-- Modal: Confirm without comments -->
+<!-- Modal: Confirm Actions -->
 <div class="overlay" id="modal-confirm">
-  <div class="mbox">
-    <div class="mhd"><h3>Отправить без комментариев?</h3><button class="mclose" onclick="closeModal('modal-confirm')">✕</button></div>
-    <div class="alrt alrt-w">⚠️ Не заполнены комментарии для проектов:</div>
-    <div id="mc-list" style="margin-bottom:12px"></div>
-    <p style="font:400 13px/1.5 var(--fn);color:var(--txm)">Вы можете вернуться и добавить комментарии, или отправить оценки без них.</p>
-    <div class="macts"><button class="btn btn-s" onclick="closeModal('modal-confirm')">← Вернуться</button><button class="btn btn-p" onclick="doSubmit()">Отправить всё равно</button></div>
+  <div class="mbox mbox-glass">
+    <div class="mhd"><h3 id="mc-title">Подтверждение</h3><button class="mclose" onclick="closeModal('modal-confirm')">✕</button></div>
+    <div id="mc-label" class="mc-label"></div>
+    <div id="mc-list" style="margin-bottom:8px; max-height: 250px; overflow-y: auto;"></div>
+    <p id="mc-hint" class="mc-hint"></p>
+    <div class="macts">
+      <button id="mc-btn-cancel" class="btn btn-glass-cancel" onclick="closeModal('modal-confirm')">← Вернуться</button>
+      <button id="mc-btn-confirm" class="btn btn-p" onclick="doSubmit()">Отправить всё равно</button>
+    </div>
   </div>
 </div>
 
@@ -437,6 +568,26 @@ td{padding:11px 14px;border-bottom:1px solid var(--br);vertical-align:middle}
     <div class="mhd"><h3>🔥 Firebase конфигурация</h3><button class="mclose" onclick="closeModal('modal-fb')">✕</button></div>
     <div class="fgrp"><label class="flbl">Firebase Config JSON</label><textarea class="finp" id="fb-modal-inp" rows="8"></textarea></div>
     <div class="macts"><button class="btn btn-s" onclick="closeModal('modal-fb')">Отмена</button><button class="btn btn-p" onclick="reconnectFB()">🔥 Переподключить</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-edit-score">
+  <div class="mbox mbox-glass" style="max-width:400px">
+    <div class="mhd"><h3>Редактировать баллы</h3><button class="mclose" onclick="closeModal('modal-edit-score')">✕</button></div>
+    <div style="margin-bottom:15px; font-size:13px; color:#555">Эксперт: <strong id="mes-ename" style="color:#1a1a1a"></strong><br>Проект: <strong id="mes-pname" style="color:#1a1a1a"></strong></div>
+    <input type="hidden" id="mes-eid"><input type="hidden" id="mes-pid">
+    <div class="fg2">
+      <div class="fgrp"><label class="flbl" style="color:#111">1. Проблема (0-3)</label><input id="mes-b1" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
+      <div class="fgrp"><label class="flbl" style="color:#111">2. Технологии (0-3)</label><input id="mes-b2" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
+    </div>
+    <div class="fg2">
+      <div class="fgrp"><label class="flbl" style="color:#111">3. Экономика (0-3)</label><input id="mes-b3" class="finp" type="number" min="0" max="3" oninput="if(this.value>3)this.value=3;if(this.value<0)this.value=0"></div>
+      <div class="fgrp"><label class="flbl" style="color:#111">4. Питч (0-1)</label><input id="mes-b4" class="finp" type="number" min="0" max="1" oninput="if(this.value>1)this.value=1;if(this.value<0)this.value=0"></div>
+    </div>
+    <div class="macts">
+      <button class="btn btn-s btn-glass-cancel" onclick="closeModal('modal-edit-score')">Отмена</button>
+      <button class="btn btn-p" onclick="saveCoordScore()">💾 Сохранить</button>
+    </div>
   </div>
 </div>
 
@@ -462,6 +613,7 @@ const BAKED_FB = {
 };
 // ── END CONFIG ─────────────────────────────────────────
 let db=null,dashRef=null,dashCb=null;
+let AUTH_SETUP = false;
 const CFG={projects:{},experts:{},_pid:1,_eid:1};
 const EXP={id:null,name:null,scores:{},submitted:false,activePid:null};
 const DASH={data:null};
@@ -538,6 +690,7 @@ function initFirebase(cfg){
     
     db=firebase.database();
     console.log('[Init] Database ready');
+    startTimerSync();
     
     db.ref('.info/connected').on('value',s=>{
       const connected = !!s.val();
@@ -644,11 +797,24 @@ function routeHash(){
 /* ── NAVIGATION ── */
 function show(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('active'));const e=G('scr-'+id);if(e)e.classList.add('active');window.scrollTo(0,0);}
 function goHome(){history.pushState(null,'',location.pathname);goCoordMode();goSetup();}
-function goSetup(){loadCfgFromFB();show('setup');setNavAct('setup');}
+function goSetup(){
+  if(!AUTH_SETUP){
+    const pin = prompt('Введите пин-код для доступа к разделу «Настройка»:');
+    if(pin === '5555'){
+      AUTH_SETUP = true;
+      toast('✅ Доступ разрешен');
+    } else {
+      if(pin !== null) toast('❌ Неверный пин-код');
+      return;
+    }
+  }
+  loadCfgFromFB();show('setup');setNavAct('setup');
+}
 function goDash(){startDashListener();show('dashboard');setNavAct('dash');}
 function setNavAct(id){document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));const e=G('nt-'+id);if(e)e.classList.add('active');}
 function goCoordMode(){
   G('hnav').style.display='flex';
+  G('hfb').style.display='flex';
   const b=G('hbadge');b.className='hbadge coord';b.style.display='flex';G('hbadge-txt').textContent='Организатор';
   G('subm-bar').classList.remove('vis');
 }
@@ -656,6 +822,7 @@ function goCoordMode(){
 /* ── EXPERT MODE ── */
 function goExpertMode(eid){
   G('hnav').style.display='none';
+  G('hfb').style.display='none';
   setFBStatus('loading','Загрузка…');
   db.ref('sp26/config').once('value').then(snap=>{
     const d=snap.val();
@@ -686,6 +853,7 @@ function collectSetupInputs(){
     const gn=G('pin-grp-'+pid);if(gn)p.groupNum=parseInt(gn.value)||0;
     const tn=G('pin-team-'+pid);if(tn)p.teamName=tn.value;
     const pn=G('pin-name-'+pid);if(pn)p.projName=pn.value;
+    const ps=G('pin-speaker-'+pid);if(ps)p.speaker=ps.value;
     const pd=G('pin-desc-'+pid);if(pd)p.desc=pd.value;
     const mu=G('pin-murl-'+pid);if(mu)p.materialsUrl=mu.value;
   });
@@ -720,7 +888,7 @@ function saveCfgLocal(){
 function addProject(){
   collectSetupInputs();
   const pid='p'+CFG._pid++;
-  CFG.projects[pid]={id:pid,groupNum:objSize(CFG.projects)+1,teamName:'',projName:'',desc:'',materialsUrl:'',members:[]};
+  CFG.projects[pid]={id:pid,groupNum:objSize(CFG.projects)+1,teamName:'',projName:'',speaker:'',desc:'',materialsUrl:'',members:[]};
   renderSetup();setTimeout(()=>{toggleCard(pid,true);G('pin-team-'+pid)?.focus();},40);
 }
 function removeProject(pid){collectSetupInputs();delete CFG.projects[pid];renderSetup();}
@@ -753,12 +921,29 @@ function genLink(eid){
     return `${getBaseUrl()}#expert=${eid}`;
   }
 }
+function saveCfgLocal(){const s=JSON.stringify(CFG);const b=new Blob([s],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`sp26-cfg-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}
+
+async function resetAllScores() {
+  if(!db) { toast('❌ Firebase не подключен'); return; }
+  const c1 = confirm('⚠️ ВНИМАНИЕ! Это действие УДАЛИТ ВСЕ оценки всех экспертов из базы данных Firebase.\n\nВы действительно хотите обнулить систему для начала новой сессии?');
+  if(!c1) return;
+  const c2 = confirm('ПОСЛЕДНЕЕ ПРЕДУПРЕЖДЕНИЕ: Все результаты будут безвозвратно удалены. Продолжить?');
+  if(!c2) return;
+
+  try {
+    await db.ref('sp26/scores').remove();
+    toast('✅ Все оценки успешно удалены из Firebase');
+  } catch (e) {
+    console.error(e);
+    alert('Ошибка при сбросе: ' + e.message);
+  }
+}
 function renderSetup(){
   const pids=Object.keys(CFG.projects);
   const pl=G('proj-list');
   if(!pids.length){pl.innerHTML='<div style="text-align:center;padding:32px;color:var(--txm);font-size:13px">Нажмите «+ Добавить проект» для начала</div>';}
   else{
-    pl.innerHTML=pids.map((pid,i)=>{const p=CFG.projects[pid];return`<div class="pjcard" id="pc-${pid}"><div class="pjcard-hd" onclick="toggleCard('${pid}')"><div class="pjcard-num">${i+1}</div><div class="pjcard-info"><div class="pjcard-name">${esc(p.projName||p.teamName||'Проект '+(i+1))}</div><div class="pjcard-sub">Группа ${p.groupNum||'?'} · ${esc(p.teamName||'—')} · ${(p.members||[]).length} участн.</div></div><span class="pjcard-arr">▾</span><button class="btn btn-xs btn-d" onclick="event.stopPropagation();removeProject('${pid}')">✕</button></div><div class="pjcard-body"><div class="fg2" style="margin-bottom:10px"><div class="fgrp"><label class="flbl">Группа №</label><input id="pin-grp-${pid}" class="finp" type="number" value="${p.groupNum||''}" style="width:80px" min="1" oninput="CFG.projects['${pid}'].groupNum=parseInt(this.value)||0"></div><div class="fgrp"><label class="flbl">Название команды</label><input id="pin-team-${pid}" class="finp" type="text" value="${esc(p.teamName)}" placeholder="Команда А" oninput="CFG.projects['${pid}'].teamName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=G('pin-name-${pid}').value||this.value"></div></div><div class="fgrp"><label class="flbl">Название проектной работы</label><input id="pin-name-${pid}" class="finp" type="text" value="${esc(p.projName)}" placeholder="Цифровая трансформация…" oninput="CFG.projects['${pid}'].projName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=this.value"></div><div class="fgrp"><label class="flbl">Описание проектной работы</label><textarea id="pin-desc-${pid}" class="finp" rows="3" placeholder="Цель, решение, ожидаемый эффект…" oninput="CFG.projects['${pid}'].desc=this.value">${esc(p.desc)}</textarea></div><div class="fgrp"><label class="flbl">Ссылка на материалы проекта</label><input id="pin-murl-${pid}" class="finp" type="url" value="${esc(p.materialsUrl)}" placeholder="https://drive.google.com/…" oninput="CFG.projects['${pid}'].materialsUrl=this.value"></div><div class="div"></div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div style="font:700 12px/1 var(--fn);color:var(--txm)">👤 Участники команды</div><button class="btn btn-sm btn-s" onclick="addMember('${pid}')">＋ Строку</button></div><div id="mtb-${pid}"></div></div></div>`;}).join('');
+    pl.innerHTML=pids.map((pid,i)=>{const p=CFG.projects[pid];return`<div class="pjcard" id="pc-${pid}"><div class="pjcard-hd" onclick="toggleCard('${pid}')"><div class="pjcard-num">${i+1}</div><div class="pjcard-info"><div class="pjcard-name">${esc(p.projName||p.teamName||'Проект '+(i+1))}</div><div class="pjcard-sub">Группа ${p.groupNum||'?'} · ${esc(p.teamName||'—')} · ${(p.members||[]).length} участн.</div></div><span class="pjcard-arr">▾</span><button class="btn btn-xs btn-d" onclick="event.stopPropagation();removeProject('${pid}')">✕</button></div><div class="pjcard-body"><div class="fg2" style="margin-bottom:10px"><div class="fgrp"><label class="flbl">Группа №</label><input id="pin-grp-${pid}" class="finp" type="number" value="${p.groupNum||''}" style="width:80px" min="1" oninput="CFG.projects['${pid}'].groupNum=parseInt(this.value)||0"></div><div class="fgrp"><label class="flbl">Название команды</label><input id="pin-team-${pid}" class="finp" type="text" value="${esc(p.teamName)}" placeholder="Команда А" oninput="CFG.projects['${pid}'].teamName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=G('pin-name-${pid}').value||this.value"></div></div><div class="fgrp"><label class="flbl">Название проектной работы</label><input id="pin-name-${pid}" class="finp" type="text" value="${esc(p.projName)}" placeholder="Цифровая трансформация…" oninput="CFG.projects['${pid}'].projName=this.value;this.closest('.pjcard').querySelector('.pjcard-name').textContent=this.value"></div><div class="fgrp"><label class="flbl">ФИО Спикера (будет КРУПНО на экране жюри)</label><input id="pin-speaker-${pid}" class="finp" type="text" value="${esc(p.speaker)}" placeholder="Иванов Иван Иванович" oninput="CFG.projects['${pid}'].speaker=this.value" style="border-color:var(--grn); background:rgba(16,185,129,0.05)"></div><div class="fgrp"><label class="flbl">Описание проектной работы</label><textarea id="pin-desc-${pid}" class="finp" rows="3" placeholder="Цель, решение, ожидаемый эффект…" oninput="CFG.projects['${pid}'].desc=this.value">${esc(p.desc)}</textarea></div><div class="fgrp"><label class="flbl">Ссылка на материалы проекта</label><input id="pin-murl-${pid}" class="finp" type="url" value="${esc(p.materialsUrl)}" placeholder="https://drive.google.com/…" oninput="CFG.projects['${pid}'].materialsUrl=this.value"></div><div class="div"></div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div style="font:700 12px/1 var(--fn);color:var(--txm)">👤 Участники команды</div><button class="btn btn-sm btn-s" onclick="addMember('${pid}')">＋ Строку</button></div><div id="mtb-${pid}"></div></div></div>`;}).join('');
     pids.forEach(pid=>renderMembersTable(pid));
   }
   const eids=Object.keys(CFG.experts);
@@ -814,24 +999,66 @@ function renderExpert(){
   renderTabs();if(EXP.activePid)renderProjView(EXP.activePid);updateSubmitBar();
 }
 function isScored(pid){const s=EXP.scores[pid];return s&&['b1','b2','b3','b4'].every(b=>s[b]!==null&&s[b]!==undefined);}
+function isFullyDone(pid){
+  const s=EXP.scores[pid];
+  if(!s) return false;
+  const scoresOk = ['b1','b2','b3','b4'].every(b=>s[b]!==null&&s[b]!==undefined);
+  if(!scoresOk) return false;
+  
+  const mainCommentOk = s.comment && s.comment.trim().length > 0;
+  if(!mainCommentOk) return false;
+
+  // Check block comments for non-max scores
+  for(const b of ['b1','b2','b3','b4']){
+    if(s[b] < BMAX[b]){
+      if(!s[b+'_comment'] || !s[b+'_comment'].trim()) return false;
+    }
+  }
+  return true;
+}
 function renderTabs(){
-  G('ptabs').innerHTML=Object.keys(CFG.projects).map(pid=>{const p=CFG.projects[pid];const done=isScored(pid);return`<div class="ptab ${pid===EXP.activePid?'active':''}" onclick="switchProj('${pid}')">${esc(p.teamName||p.projName||pid)}${done?'<span class="ptab-chk"> ✓</span>':''}</div>`;}).join('');
+  const pids = Object.keys(CFG.projects).filter(id => CFG.projects[id]);
+  G('ptabs').innerHTML=pids.map(pid=>{
+    const p=CFG.projects[pid];
+    const isFull=isFullyDone(pid);
+    const isPart=isScored(pid) && !isFull;
+    let cls = `ptab ${pid===EXP.activePid?'active':''}`;
+    if(isFull) cls += ' done';
+    else if(isPart) cls += ' partial';
+
+    return `<div class="${cls}" onclick="switchProj('${pid}')">
+      ${esc(p.teamName||p.projName||pid)}
+      ${isFull?'<span class="ptab-chk">✓</span>':''}
+      ${isPart?'<span class="ptab-warn">✎</span>':''}
+    </div>`;
+  }).join('');
 }
 function switchProj(pid){EXP.activePid=pid;renderTabs();renderProjView(pid);window.scrollTo({top:0,behavior:'smooth'});}
 function renderProjView(pid){
-  const p=CFG.projects[pid];if(!p)return;
-  G('pi-team').textContent=p.teamName||'';G('pi-name').textContent=p.projName||'Без названия';
-  const desc=G('pi-desc');desc.textContent=p.desc||'';
-  const long=p.desc&&p.desc.length>200;desc.className='pi-desc'+(long?' clamp':'');G('pi-expand').style.display=long?'':'none';
+  const p=CFG.projects[pid]; if(!p) return;
+  const teamEl = G('pi-team'); if(teamEl) teamEl.textContent=p.teamName||'';
+  const nameEl = G('pi-name'); if(nameEl) nameEl.textContent=p.projName||'Без названия';
+  const spkEl = G('pi-speaker-plain'); if(spkEl) spkEl.textContent=p.speaker||'—';
+  
+  const descEl=G('pi-desc');
+  if(descEl) {
+    descEl.textContent=p.desc||'';
+    const long=p.desc&&p.desc.length>200;
+    descEl.className='pi-desc'+(long?' clamp':'');
+    const expEl = G('pi-expand'); if(expEl) expEl.style.display=long?'':'none';
+  }
+  
   let links=[];
-  if(p.members&&p.members.length)links.push(`<button class="btn btn-s btn-sm" onclick="showMembers('${pid}')">👥 Состав команды (${p.members.length})</button>`);
-  if(p.materialsUrl)links.push(`<a href="${esc(p.materialsUrl)}" target="_blank" class="btn btn-s btn-sm">📁 Материалы проекта</a>`);
-  G('pi-links').innerHTML=links.join('');
+  if(p.members&&p.members.length) links.push(`<button class="btn btn-s btn-sm" onclick="showMembers('${pid}')">👥 Состав команды (${p.members.length})</button>`);
+  if(p.materialsUrl) links.push(`<a href="${esc(p.materialsUrl)}" target="_blank" class="btn btn-s btn-sm">📁 Материалы проекта</a>`);
+  const lBox = G('pi-links'); if(lBox) lBox.innerHTML=links.join('');
+  
   ['b1','b2','b3','b4'].forEach(b=>{
     buildRow(b,pid);
-    G('comm-'+b).value = (EXP.scores[pid]||{})[b+'_comment']||'';
+    const cel = G('comm-'+b); if(cel) cel.value = (EXP.scores[pid]||{})[b+'_comment']||'';
   });
-  G('comment-f').value=(EXP.scores[pid]||{}).comment||'';
+  
+  const cfEl = G('comment-f'); if(cfEl) cfEl.value=(EXP.scores[pid]||{}).comment||'';
   updateDisp(pid);
 }
 function buildRow(b,pid){
@@ -901,11 +1128,18 @@ function updateDisp(pid){
     }
   });
 }
-function getScoredCnt(){return Object.keys(CFG.projects).filter(pid=>isScored(pid)).length;}
+function getScoredCnt(){return Object.keys(CFG.projects).filter(pid=>isFullyDone(pid)).length;}
 function updateSubmitBar(){
-  const t=objSize(CFG.projects);
-  const c=getScoredCnt();
-  const el=G('subm-cnt'); if(el) el.textContent=c+'/'+t;
+  const pids = Object.keys(CFG.projects).filter(id => CFG.projects[id]);
+  const t = pids.length;
+  const c = pids.filter(id => isFullyDone(id)).length;
+  const cnt=G('subm-cnt');
+  const fill=G('subm-fill');
+  if(cnt) cnt.innerText=`${c}/${t}`;
+  if(fill) {
+    const p = t > 0 ? (c/t)*100 : 0;
+    fill.style.width = p + '%';
+  }
 }
 function expandDesc(){G('pi-desc').classList.remove('clamp');G('pi-expand').style.display='none';}
 function togCrit(id,btn){G(id).classList.toggle('open');btn.classList.toggle('open');}
@@ -913,19 +1147,66 @@ function togCrit(id,btn){G(id).classList.toggle('open');btn.classList.toggle('op
 /* ── SUBMIT ── */
 function submitScores(){
   const pids=Object.keys(CFG.projects);
-  const unscored=pids.filter(pid=>!isScored(pid));
-  if(unscored.length&&!confirm(`Не заполнены оценки для ${unscored.length} проекта(ов):\n${unscored.map(pid=>CFG.projects[pid].projName||CFG.projects[pid].teamName||pid).join(', ')}\n\nОтправить всё равно?`))return;
-  const noComment=pids.filter(pid=>{
-    const s=EXP.scores[pid];
-    if(!s)return true;
-    const hasAnyBlockComment = ['b1','b2','b3','b4'].some(b=>s[b+'_comment'] && s[b+'_comment'].trim());
-    const hasMainComment = s.comment && s.comment.trim();
-    return !hasAnyBlockComment && !hasMainComment;
+  const incomplete = []; // Starred but missing some scores
+  const noBlockComment = []; // Non-max scores but no justification
+  const noMainComment = [];  // All scores present but no summary comment
+
+  pids.forEach(pid => {
+    const s = EXP.scores[pid] || {};
+    const hasAny = (s.b1 != null || s.b2 != null || s.b3 != null || s.b4 != null || (s.comment && s.comment.trim()));
+    if (!hasAny) return;
+
+    const scoresDone = s.b1 != null && s.b2 != null && s.b3 != null && s.b4 != null;
+    if (!scoresDone) { incomplete.push(pid); return; }
+
+    const missingBlocks = [];
+    const BN = {b1:'Проблема', b2:'Технологии', b3:'Экономика', b4:'Питч'};
+    ['b1','b2','b3','b4'].forEach(b=>{
+      if(s[b] < BMAX[b] && (!s[b+'_comment'] || !s[b+'_comment'].trim())){
+        missingBlocks.push(BN[b]);
+      }
+    });
+    if(missingBlocks.length) noBlockComment.push({pid, blocks: missingBlocks});
+
+    if (!s.comment || !s.comment.trim()) noMainComment.push(pid);
   });
-  if(noComment.length){
-    G('mc-list').innerHTML=noComment.map(pid=>`<div style="padding:6px 0;border-bottom:1px solid var(--br);font-size:13px">• ${esc(CFG.projects[pid].projName||CFG.projects[pid].teamName||pid)}</div>`).join('');
-    openModal('modal-confirm');return;
+
+  if (incomplete.length || noBlockComment.length || noMainComment.length) {
+    G('mc-title').textContent = "Внимание";
+    G('mc-label').textContent = "Обнаружены неточности в активных группах:";
+    
+    let html = '';
+    if (incomplete.length) {
+      html += `<div style="margin-top:12px; font-weight:700; color:#1a1a1a; font-size:13px">⚠ Пропущены баллы:</div>`;
+      html += incomplete.map(pid => `<div class="mc-item" style="color:#444">• ${esc(CFG.projects[pid].projName || CFG.projects[pid].teamName || pid)}</div>`).join('');
+    }
+    
+    if (noBlockComment.length) {
+      html += `<div style="margin-top:12px; font-weight:700; color:#1a1a1a; font-size:13px">💡 Чего не хватило до максимума?</div>`;
+      html += `<div style="font-size:11px; color:#666; margin-bottom:5px">Если балл не максимальный, напишите пару слов в комментарии по данному критерию:</div>`;
+      noBlockComment.forEach(item => {
+        const p = CFG.projects[item.pid];
+        html += `<div class="mc-item" style="color:#444; margin-bottom:4px">
+          <strong>• ${esc(p.projName || p.teamName)}</strong>: <span style="font-style:italic; color:#c53030">${item.blocks.join(', ')}</span>
+        </div>`;
+      });
+    }
+
+    if (noMainComment.length) {
+      html += `<div style="margin-top:12px; font-weight:700; color:#1a1a1a; font-size:13px">📝 Нет итогового резюме:</div>`;
+      html += noMainComment.map(pid => `<div class="mc-item" style="color:#444">• ${esc(CFG.projects[pid].projName || CFG.projects[pid].teamName || pid)}</div>`).join('');
+    }
+
+    G('mc-list').innerHTML = html;
+    G('mc-hint').textContent = "Пожалуйста, дополните оценки комментариями.";
+    G('mc-hint').style.color = "#555";
+    G('mc-btn-confirm').style.display = 'inline-flex';
+    G('mc-btn-confirm').textContent = "Отправить как есть";
+    G('mc-btn-cancel').textContent = "← Дополнить";
+    openModal('modal-confirm');
+    return;
   }
+
   doSubmit();
 }
 function doSubmit(){
@@ -946,6 +1227,16 @@ function undoSubmit(){
   if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/submitted`).set(false);
   G('exp-body').style.display='';G('done-scr').style.display='none';
   G('subm-bar').classList.add('vis');renderExpert();
+}
+function continueWork(){
+  EXP.submitted=false;
+  if(db&&EXP.id)db.ref(`sp26/scores/${EXP.id}/submitted`).set(false);
+  G('exp-body').style.display='';G('done-scr').style.display='none';
+  G('subm-bar').classList.add('vis');
+  
+  const pids = Object.keys(CFG.projects);
+  const next = pids.find(pid => !isFullyDone(pid)) || pids[0];
+  switchProj(next);
 }
 
 /* ── MEMBERS MODAL ── */
@@ -977,11 +1268,112 @@ function renderDash(data){
   G('exp-status').innerHTML=experts.map(e=>{const sub=sc[e.id]?.submitted||false;return`<div class="echip ${sub?'sub':'pend'}"><div class="echip-dot"></div>${esc(e.name)} ${sub?'✓':'— ожидание'}</div>`;}).join('');
   const getT=(eid,pid)=>{const d=sc[eid]?.scores?.[pid];if(!d||d.b1==null||d.b2==null||d.b3==null||d.b4==null)return null;return d.b1+d.b2+d.b3+d.b4;};
   const rows=projects.map(p=>{const ts=experts.map(e=>getT(e.id,p.id));const vs=ts.filter(t=>t!==null);const avg=vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;return{p,ts,avg};});
-  rows.sort((a,b)=>{if(a.avg===null&&b.avg===null)return 0;if(a.avg===null)return 1;if(b.avg===null)return-1;return b.avg-a.avg;});
-  G('t-head').innerHTML=`<tr><th>#</th><th>Проект / Команда</th>${experts.map(e=>`<th style="text-align:center">${esc(e.name)}</th>`).join('')}<th style="text-align:center">Среднее</th></tr>`;
-  G('t-body').innerHTML=rows.map((r,i)=>`<tr><td class="td-r ${i<3?'r'+(i+1):''}">${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td><div class="td-nm">${esc(r.p.projName||'—')}</div><div class="td-sub">${esc(r.p.teamName||'')} · Группа ${r.p.groupNum||'?'}</div></td>${r.ts.map(t=>`<td class="td-c">${t!==null?`<span class="sc ${scCls(t)}">${t}</span>`:`<span class="sc sc-n">—</span>`}</td>`).join('')}${r.avg!==null?`<td class="td-c"><span class="av ${avCls(Math.round(r.avg))}">${r.avg.toFixed(1)}</span></td>`:`<td class="td-c"><span class="av av-n">—</span></td>`}</tr>`).join('');
+  rows.sort((a,b) => (parseInt(a.p.groupNum)||0) - (parseInt(b.p.groupNum)||0));
+  const hCols = experts.map(e => {
+    const p = e.name.trim().split(/\s+/);
+    let nHtml = esc(e.name);
+    if (p.length >= 2) {
+      // Пытаемся определить имя и фамилию. Если в данных "Фамилия Имя", меняем местами для порядка "Имя <br> Фамилия"
+      // Если же там уже "Имя Фамилия", просто ставим перенос.
+      nHtml = `${esc(p[1] || '')}<br>${esc(p[0] || '')}`;
+    }
+    return `<th style="text-align:center">${nHtml}</th>`;
+  }).join('');
+  G('t-head').innerHTML=`<tr><th>#</th><th style="text-align:left">Группа / Проект</th>${hCols}<th style="text-align:center">Среднее</th></tr>`;
+  G('t-body').innerHTML=rows.map((r,i)=>{
+    const p=r.p;
+    const gNum = p.groupNum || '?';
+    const tName = p.teamName || '';
+    const gLabel = `Группа ${gNum}`;
+    const displayGroup = (tName && tName !== gLabel && !tName.includes(gLabel)) ? `${tName} · ${gLabel}` : (tName || gLabel);
+    
+    return `<tr>
+      <td class="td-r ${i<3?'r'+(i+1):''}">${i<3?['🥇','🥈','🥉'][i]:i+1}</td>
+      <td>
+        <div class="td-sub">${esc(displayGroup)}</div>
+        <div class="td-nm">${esc(p.projName||'—')}</div>
+      </td>
+      ${r.ts.map((t,idx)=>{
+        const eid=experts[idx].id;
+        return `<td class="td-c" onclick="editScoreModal('${eid}','${p.id}')" title="Нажмите, чтобы изменить" style="cursor:pointer">
+          ${t!==null?`<span class="sc ${scCls(t)}">${t}</span>`:`<span class="sc sc-n">—</span>`}
+        </td>`;
+      }).join('')}
+      ${r.avg!==null?`<td class="td-c"><span class="av ${avCls(Math.round(r.avg))}">${r.avg.toFixed(1)}</span></td>`:`<td class="td-c"><span class="av av-n">—</span></td>`}
+    </tr>`;
+  }).join('');
   const sub=experts.filter(e=>sc[e.id]?.submitted).length;
   G('t-info').textContent=`${projects.length} проектов · ${sub}/${experts.length} экспертов сдали оценки`;
+
+  // --- Render Comment Sheets for Printing ---
+  let chtml = '';
+  projects.forEach(p => {
+    let pCommentsHtml = '';
+    experts.forEach(e => {
+      const s = sc[e.id]?.scores?.[p.id];
+      if (!s) return;
+      
+      const hasBlockComments = ['b1','b2','b3','b4'].some(b => s[b+'_comment'] && s[b+'_comment'].trim());
+      const hasMainComment = s.comment && s.comment.trim();
+      
+      if (!hasBlockComments && !hasMainComment) return;
+
+      pCommentsHtml += `<div class="ps-expert">
+        <div class="ps-h">👤 ${esc(e.name)} ${esc(e.surname || '')}</div>`;
+      
+      const BN = {b1:'Проблема', b2:'Технологии', b3:'Экономика', b4:'Питч'};
+      ['b1','b2','b3','b4'].forEach(b => {
+        if (s[b+'_comment'] && s[b+'_comment'].trim()) {
+          pCommentsHtml += `<div class="ps-crit"><strong>${BN[b]}:</strong> ${esc(s[b+'_comment'])}</div>`;
+        }
+      });
+
+      if (hasMainComment) {
+        pCommentsHtml += `<div class="ps-sum"><strong>Итоговое резюме:</strong><br>${esc(s.comment)}</div>`;
+      }
+      pCommentsHtml += `</div>`;
+    });
+
+    if (pCommentsHtml) {
+      chtml += `<div class="print-sheet">
+        <h2>Отзывы жюри: ${esc(p.projName || p.teamName)}</h2>
+        ${pCommentsHtml}
+      </div>`;
+    }
+  });
+
+  const dc = G('dash-comments');
+  if (dc) dc.innerHTML = chtml || '<div style="text-align:center; padding:40px; color:var(--txm)">Отзывы экспертов появятся здесь после начала оценки</div>';
+}
+
+function editScoreModal(eid, pid){
+  if(!db)return;
+  const e=CFG.experts[eid]; const p=CFG.projects[pid]; if(!e||!p)return;
+  const sc=(DASH.data.scores||{})[eid]?.scores?.[pid]||{};
+  G('mes-ename').textContent=e.name; G('mes-pname').textContent=p.projName||p.teamName;
+  G('mes-eid').value=eid; G('mes-pid').value=pid;
+  G('mes-b1').value=sc.b1===null||sc.b1===undefined?'':sc.b1;
+  G('mes-b2').value=sc.b2===null||sc.b2===undefined?'':sc.b2;
+  G('mes-b3').value=sc.b3===null||sc.b3===undefined?'':sc.b3;
+  G('mes-b4').value=sc.b4===null||sc.b4===undefined?'':sc.b4;
+  openModal('modal-edit-score');
+}
+
+function saveCoordScore(){
+  const eid=G('mes-eid').value, pid=G('mes-pid').value;
+  if(!eid || !pid) return;
+  const s={
+    b1: Math.max(0, Math.min(3, parseInt(G('mes-b1').value)||0)),
+    b2: Math.max(0, Math.min(3, parseInt(G('mes-b2').value)||0)),
+    b3: Math.max(0, Math.min(3, parseInt(G('mes-b3').value)||0)),
+    b4: Math.max(0, Math.min(1, parseInt(G('mes-b4').value)||0)),
+    updatedAt: Date.now(),
+    overridden: true
+  };
+  db.ref(`sp26/scores/${eid}/scores/${pid}`).update(s).then(()=>{
+    toast('✅ Сохранено');
+    closeModal('modal-edit-score');
+  }).catch(e=>alert('Ошибка: '+e.message));
 }
 function exportCSV(){
   const data=DASH.data;if(!data?.config){toast('Нет данных');return;}
@@ -993,13 +1385,114 @@ function exportCSV(){
   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='sp26-results.csv';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('CSV экспортирован');
 }
 
-/* ── TIMER ── */
-function toggleTimer(){TIMER.open=!TIMER.open;G('twrap-body').style.display=TIMER.open?'':'none';G('tmini').style.display=TIMER.open?'none':'';}
-function timerStart(){if(TIMER.running)return;TIMER.running=true;G('btn-ts').style.display='none';G('btn-tp').style.display='';TIMER.iv=setInterval(()=>{if(TIMER.left<=0){timerPause();playBeep();return;}TIMER.left--;renderTimer();},1000);}
-function timerPause(){clearInterval(TIMER.iv);TIMER.running=false;G('btn-ts').style.display='';G('btn-tp').style.display='none';}
-function timerReset(){timerPause();TIMER.left=TIMER.total;renderTimer();}
-function renderTimer(){const m=Math.floor(TIMER.left/60),s=TIMER.left%60,t=pad(m)+':'+pad(s);G('tdig').textContent=t;G('tmini').textContent=t;G('tprog-f').style.width=(TIMER.left/TIMER.total*100)+'%';const d=TIMER.left<120;G('tdig').classList.toggle('danger',d);G('tprog-f').classList.toggle('danger',d);}
-function playBeep(){try{const AC=window.AudioContext||window.webkitAudioContext,ctx=new AC();[880,1108,880,1108].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=f;const t=ctx.currentTime+i*.28;g.gain.setValueAtTime(.4,t);g.gain.exponentialRampToValueAtTime(.001,t+.22);o.start(t);o.stop(t+.28);});}catch(e){}}
+/* ── TIMER (CENTRALIZED) ── */
+const TIMER_PRESENTATION = 12 * 60; // 720s
+const TIMER_DISCUSSION = 8 * 60;    // 480s
+const TIMER_TOTAL = TIMER_PRESENTATION + TIMER_DISCUSSION; // 1200s
+let remoteTimer = { startTime: 0, status: 'stopped', offset: 0 };
+let timerIv = null;
+
+function startTimerSync() {
+  if (!db) return;
+  db.ref('sp26/timer').on('value', snap => {
+    const data = snap.val();
+    remoteTimer = data || { startTime: 0, status: 'stopped' };
+    updateTimerUI();
+  });
+}
+
+function updateTimerUI() {
+  if (remoteTimer.status === 'running') {
+    if (!timerIv) timerIv = setInterval(tickTimer, 200);
+    G('btn-c-start') && (G('btn-c-start').style.display = 'none');
+    G('btn-c-stop') && (G('btn-c-stop').style.display = 'inline-flex');
+  } else {
+    if (timerIv) { clearInterval(timerIv); timerIv = null; }
+    renderTimerView(0, 'stopped');
+    G('btn-c-start') && (G('btn-c-start').style.display = 'inline-flex');
+    G('btn-c-stop') && (G('btn-c-stop').style.display = 'none');
+  }
+}
+
+function tickTimer() {
+  if (remoteTimer.status !== 'running') return;
+  const now = Date.now();
+  const elapsed = Math.floor((now - remoteTimer.startTime) / 1000);
+  renderTimerView(elapsed, 'running');
+}
+
+function renderTimerView(elapsed, status) {
+  const instances = [
+    { val: 'gtimer-val', st: 'gtimer-status' },
+    { val: 'c-timer-val', st: 'c-timer-status' },
+    { val: 'gtimer-val-dash', st: 'gtimer-status-dash' }
+  ];
+  
+  instances.forEach(ins => {
+    const el = G(ins.val);
+    const st = G(ins.st);
+    if (!el || !st) return;
+
+    if (status === 'stopped') {
+      el.textContent = "12:00";
+      el.classList.remove('red');
+      st.textContent = ins.val === 'c-timer-val' ? "Таймер остановлен" : (ins.val === 'gtimer-val' ? "Ожидание старта" : "Ожидание…");
+      st.className = ins.val.startsWith('gtimer') ? "gtimer-status" : "";
+      return;
+    }
+
+    let timeLeft = 0;
+    let label = "";
+    let isOvertime = false;
+    let statusClass = ins.val.startsWith('gtimer') ? "gtimer-status" : "";
+
+    if (elapsed < TIMER_PRESENTATION) {
+      timeLeft = TIMER_PRESENTATION - elapsed;
+      label = "Выступление";
+    } else if (elapsed < TIMER_TOTAL) {
+      timeLeft = TIMER_TOTAL - elapsed;
+      label = "Обсуждение";
+      statusClass += " discussion";
+    } else {
+      timeLeft = elapsed - TIMER_TOTAL;
+      label = "ПРЕВЫШЕНИЕ";
+      statusClass += " overtime";
+      isOvertime = true;
+    }
+
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    const displayStr = (isOvertime ? "-" : "") + m + ":" + pad(s);
+    
+    el.textContent = displayStr;
+    el.classList.toggle('red', isOvertime);
+    st.textContent = label;
+    if (ins.val.startsWith('gtimer')) st.className = statusClass;
+  });
+}
+
+function remoteTimerStart() {
+  if (!db) return;
+  // Use a small buffer for sync
+  db.ref('sp26/timer').set({ startTime: Date.now(), status: 'running', updatedAt: Date.now() });
+}
+
+function remoteTimerStop() {
+  if (!db) return;
+  db.ref('sp26/timer/status').set('stopped');
+}
+
+function remoteTimerReset() {
+  if (!db) return;
+  db.ref('sp26/timer').set({ startTime: 0, status: 'stopped', updatedAt: Date.now() });
+}
+
+function toggleTimer(){ /* Legacy placeholder */ }
+function timerStart(){ /* Legacy placeholder */ }
+function timerPause(){ /* Legacy placeholder */ }
+function timerReset(){ /* Legacy placeholder */ }
+function renderTimer(){ /* Legacy placeholder */ }
+function playBeep(){ /* Legacy placeholder */ }
 
 /* ── MODALS ── */
 function openModal(id){G(id).classList.add('vis');}
